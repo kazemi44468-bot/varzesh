@@ -15,12 +15,16 @@
     "name": "تیراندازی با کمان",
     "slug": "archery",
     "website": "https://iran-archery.ir",
-    "status": "fetch-failed",
-    "error": "The read operation timed out",
+    "logo": "archery-logo.png",
+    "photos": [
+      "archery-photo-1.jpg",
+      "archery-photo-2.jpg"
+    ],
+    "logo_found": true,
     "directory_logo": "archery-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-32-150x150.png",
     "official_content_status": "collected",
-    "official_content_url": "http://iran-archery.ir",
+    "official_content_url": "https://iran-archery.ir",
     "official_content_paragraphs": 3
   },
   {
@@ -134,13 +138,12 @@
     "slug": "chess",
     "website": "https://iranchess.ir",
     "status": "fetch-failed",
-    "error": "Remote end closed connection without response",
+    "error": "HTTP Error 403: Forbidden",
     "directory_logo": "chess-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-41-150x150.png",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "limited",
     "official_content_url": "https://iranchess.ir",
-    "official_content_paragraphs": 0,
-    "official_content_error": "Remote end closed connection without response"
+    "official_content_paragraphs": 0
   },
   {
     "name": "کوه‌نوردی و صعودهای ورزشی",
@@ -197,10 +200,9 @@
     "logo_found": true,
     "directory_logo": "deaf-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-3-150x150.png",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://dsf.ir",
-    "official_content_paragraphs": 0,
-    "official_content_error": "The read operation timed out"
+    "official_content_paragraphs": 8
   },
   {
     "name": "سوارکاری",
@@ -404,6 +406,19 @@
     "official_content_paragraphs": 0
   },
   {
+    "name": "فدراسیون کونگ‌فو و هنرهای رزمی",
+    "slug": "kungfu",
+    "website": "https://ikmaf.ir",
+    "status": "fetch-failed",
+    "error": "The read operation timed out",
+    "directory_logo": "kungfu-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-51-150x150.png",
+    "official_content_status": "fetch-failed",
+    "official_content_url": "https://www.ikmaf.ir",
+    "official_content_paragraphs": 0,
+    "official_content_error": "timed out"
+  },
+  {
     "name": "کوراش",
     "slug": "kurash",
     "website": "https://kurash.ir",
@@ -434,14 +449,17 @@
     "name": "انجمن‌های ورزش‌های رزمی",
     "slug": "martialarts",
     "website": "https://irmaaf.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error _ssl.c:1129: The handshake operation timed out>",
+    "logo": "martialarts-logo.png",
+    "photos": [
+      "martialarts-photo-1.jpg",
+      "martialarts-photo-2.jpg"
+    ],
+    "logo_found": true,
     "directory_logo": "martialarts-logo.gif",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2026/09/fed_anjoman.gif",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://irmaaf.ir",
-    "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error _ssl.c:1129: The handshake operation timed out>"
+    "official_content_paragraphs": 8
   },
   {
     "name": "هنرهای رزمی ترکیبی (MMA)",
@@ -603,17 +621,14 @@
     "name": "تیراندازی",
     "slug": "shooting",
     "website": "https://www.irissf.ir",
-    "logo": null,
-    "photos": [
-      "shooting-photo-1.jpg",
-      "shooting-photo-2.jpg"
-    ],
-    "logo_found": false,
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -2] Name or service not known>",
     "directory_logo": "shooting-logo.gif",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/tirnadazi95-150x150.gif",
-    "official_content_status": "collected",
+    "official_content_status": "fetch-failed",
     "official_content_url": "https://www.irissf.ir",
-    "official_content_paragraphs": 8
+    "official_content_paragraphs": 0,
+    "official_content_error": "<urlopen error [Errno -2] Name or service not known>"
   },
   {
     "name": "اسکیت",
@@ -671,15 +686,23 @@
     "official_content_error": "<urlopen error [Errno -2] Name or service not known>"
   },
   {
+    "name": "فدراسیون انجمن‌های ورزشی",
+    "slug": "sports-associations",
+    "website": "https://ifsafed.com",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno 111] Connection refused>",
+    "directory_logo": "sports-associations-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-20.png",
+    "official_content_status": "collected",
+    "official_content_url": "http://www.ifsafed.com",
+    "official_content_paragraphs": 1
+  },
+  {
     "name": "پزشکی ورزشی",
     "slug": "sportsmedicine",
     "website": "https://ifsm.ir",
-    "logo": null,
-    "photos": [
-      "sportsmedicine-photo-1.jpg",
-      "sportsmedicine-photo-2.jpg"
-    ],
-    "logo_found": false,
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>",
     "directory_logo": "sportsmedicine-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-28-150x150.png",
     "official_content_status": "collected",
@@ -846,14 +869,17 @@
     "name": "ووشو",
     "slug": "wushu",
     "website": "https://iranwushufed.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error _ssl.c:1129: The handshake operation timed out>",
+    "logo": "wushu-logo.png",
+    "photos": [
+      "wushu-photo-1.jpg",
+      "wushu-photo-2.jpg"
+    ],
+    "logo_found": true,
     "directory_logo": "wushu-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-9-150x150.png",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://iranwushufed.ir",
-    "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error _ssl.c:1129: The handshake operation timed out>"
+    "official_content_paragraphs": 8
   },
   {
     "name": "پهلوانی و زورخانه‌ای",
