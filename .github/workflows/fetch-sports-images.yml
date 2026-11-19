@@ -10,40 +10,33 @@ permissions:
   contents: write
 jobs:
   download:
-    if: "!contains(github.event.head_commit.message, '[skip images]')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download locally hosted sports photography
+      - name: Download sports photography
         run: |
           mkdir -p images
-          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=2200&q=85&fm=webp" -o images/sports-running-track.webp
-          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=82&fm=webp" -o images/sports-training.webp
-          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=82&fm=webp" -o images/sports-team.webp
-          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1200&q=82&fm=webp" -o images/swimming.webp
-          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&w=1200&q=82&fm=webp" -o images/sports-competition.webp
-          test -s images/sports-running-track.webp
-          test -s images/sports-training.webp
-          test -s images/sports-team.webp
-          test -s images/swimming.webp
-          test -s images/sports-competition.webp
-      - name: Record image sources and license
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1723807566470-f94f30b6ae38?fit=crop&w=2200&q=84&fm=webp" -o images/sports-running-track.webp
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1636662978233-bbaf957292c9?fit=crop&w=1400&q=82&fm=webp" -o images/basketball.webp
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1758875569517-559a631fb44d?fit=crop&w=1400&q=82&fm=webp" -o images/team-training.webp
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1598268030450-7a476f602bf6?fit=crop&w=1400&q=82&fm=webp" -o images/fitness.webp
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1727449301677-84ddffa71fb6?fit=crop&w=1400&q=82&fm=webp" -o images/basketball-court.webp
+          for f in images/*.webp; do test -s "$f"; done
+      - name: Record sources and license
         run: |
           cat > images/README.md <<'EOF'
           # تصاویر پورتال ورزش
-          تصاویر این پوشه از Unsplash دریافت شده‌اند و طبق Unsplash License برای استفاده شخصی و تجاری قابل استفاده‌اند. اعتباردهی الزامی نیست، اما صفحه عکاس و منبع هر تصویر برای شفافیت ثبت شده است.
+          تصاویر از صفحات رایگان Unsplash دریافت شده‌اند. استفاده از آن‌ها تابع Unsplash License است: https://unsplash.com/license
           
-          - sports-running-track.webp — https://unsplash.com/photos/ (photo id: 1461896836934-ffe607ba8211)
-          - sports-training.webp — https://unsplash.com/photos/ (photo id: 1517649763962-0c623066013b)
-          - sports-team.webp — https://unsplash.com/photos/ (photo id: 1521412644187-c49fa049e84d)
-          - swimming.webp — https://unsplash.com/photos/ (photo id: 1530549387789-4c1017266635)
-          - sports-competition.webp — https://unsplash.com/photos/ (photo id: 1526676037777-05a232554f77)
-          
-          License: https://unsplash.com/license
+          - sports-running-track.webp — https://unsplash.com/photos/a-group-of-people-running-around-a-track-pbaDZJJOepI
+          - basketball.webp — https://unsplash.com/photos/a-group-of-young-men-playing-a-game-of-basketball-Y36pAJTt-CY
+          - team-training.webp — https://unsplash.com/photos/man-and-woman-exercising-with-battle-ropes-fnLjFrBjHm8
+          - fitness.webp — https://unsplash.com/photos/man-in-black-tank-top-and-white-cap-holding-black-and-gray-dumbbell-nR7RzE0OBI0
+          - basketball-court.webp — https://unsplash.com/photos/sports-action
           EOF
-      - name: Commit downloaded images
+      - name: Commit images to repository
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add images
-          git diff --cached --quiet || (git commit -m "Add locally hosted sports photography [skip images]" && git push)
+          git diff --cached --quiet || (git commit -m "Add local sports photo assets [skip images]" && git push)
