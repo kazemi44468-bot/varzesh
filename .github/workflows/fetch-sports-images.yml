@@ -1,0 +1,49 @@
+name: Download portal sports images
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/fetch-sports-images.yml"
+      - "index.html"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  download:
+    if: "!contains(github.event.head_commit.message, '[skip images]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download locally hosted sports photography
+        run: |
+          mkdir -p images
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=2200&q=85&fm=webp" -o images/sports-running-track.webp
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=82&fm=webp" -o images/sports-training.webp
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=82&fm=webp" -o images/sports-team.webp
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1200&q=82&fm=webp" -o images/swimming.webp
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1526676037777-05a232554f77?auto=format&fit=crop&w=1200&q=82&fm=webp" -o images/sports-competition.webp
+          test -s images/sports-running-track.webp
+          test -s images/sports-training.webp
+          test -s images/sports-team.webp
+          test -s images/swimming.webp
+          test -s images/sports-competition.webp
+      - name: Record image sources and license
+        run: |
+          cat > images/README.md <<'EOF'
+          # تصاویر پورتال ورزش
+          تصاویر این پوشه از Unsplash دریافت شده‌اند و طبق Unsplash License برای استفاده شخصی و تجاری قابل استفاده‌اند. اعتباردهی الزامی نیست، اما صفحه عکاس و منبع هر تصویر برای شفافیت ثبت شده است.
+          
+          - sports-running-track.webp — https://unsplash.com/photos/ (photo id: 1461896836934-ffe607ba8211)
+          - sports-training.webp — https://unsplash.com/photos/ (photo id: 1517649763962-0c623066013b)
+          - sports-team.webp — https://unsplash.com/photos/ (photo id: 1521412644187-c49fa049e84d)
+          - swimming.webp — https://unsplash.com/photos/ (photo id: 1530549387789-4c1017266635)
+          - sports-competition.webp — https://unsplash.com/photos/ (photo id: 1526676037777-05a232554f77)
+          
+          License: https://unsplash.com/license
+          EOF
+      - name: Commit downloaded images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images
+          git diff --cached --quiet || (git commit -m "Add locally hosted sports photography [skip images]" && git push)
