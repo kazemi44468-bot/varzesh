@@ -23,9 +23,10 @@
     "logo_found": true,
     "directory_logo": "archery-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-32-150x150.png",
-    "official_content_status": "collected",
+    "official_content_status": "fetch-failed",
     "official_content_url": "https://iran-archery.ir",
-    "official_content_paragraphs": 3
+    "official_content_paragraphs": 0,
+    "official_content_error": "The read operation timed out"
   },
   {
     "name": "دوومیدانی",
@@ -275,7 +276,9 @@
     "logo_found": false,
     "official_content_status": "collected",
     "official_content_url": "https://the-ffiri.com",
-    "official_content_paragraphs": 8
+    "official_content_paragraphs": 8,
+    "directory_logo": "futsal-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-14-150x150.png"
   },
   {
     "name": "گلف",
@@ -428,7 +431,9 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://kurash.ir",
     "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+    "official_content_error": "<urlopen error [Errno -3] Temporary failure in name resolution>",
+    "directory_logo": "kurash-logo.jpg",
+    "directory_logo_source": "https://kurash-ika.org/wp-content/uploads/2022/06/306380608_539153384878374_807882668608004300_n.jpg"
   },
   {
     "name": "نجات‌غریق و غواصی",
@@ -519,7 +524,9 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://irisfd.com",
     "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error [Errno -2] Name or service not known>"
+    "official_content_error": "<urlopen error [Errno -2] Name or service not known>",
+    "directory_logo": "para-athletics-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-33-150x150.png"
   },
   {
     "name": "چوگان",
@@ -798,9 +805,9 @@
     "logo_found": true,
     "directory_logo": "university-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-36-150x150.png",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://iusf.saorg.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 8,
     "official_content_error": "HTTP Error 500: Internal Server Error"
   },
   {
