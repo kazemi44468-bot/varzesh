@@ -57,7 +57,7 @@ function render(){
   const link=domain?'<a class="site-link" href="https://'+domain+'" target="_blank" rel="noopener noreferrer">وب‌سایت رسمی ↗</a>':'<span class="site-link disabled">پیوند در دست تکمیل</span>';
   const pageSlug=detailPaths[name]||slug;
   const detailLink='<a class="site-link" href="federations/'+pageSlug+'.html">صفحه معرفی و اطلاعات ←</a>';
-  return '<article class="fed-card"><div class="card-head"><div class="crest"><img src="../assets/images/federations/'+pageSlug+'-logo.png" alt="نشان '+name+'" onerror="this.remove()"></div><div><div class="fed-title">'+name+'</div><div class="fed-subtitle">فدراسیون / انجمن / مجموعه تخصصی</div></div></div><p class="fed-desc">'+desc+'</p>'+detailLink+'<div class="card-foot"><span class="domain">'+(domain||'نشانی تأییدنشده')+'</span>'+link+'</div></article>';
+  return '<article class="fed-card"><div class="card-head"><div class="crest"><img src="../assets/images/federations/'+pageSlug+'-logo.png" alt="نشان '+name+'" onerror="this.onerror=null;this.src='../assets/images/federations/'+pageSlug+'-logo.jpg';this.onerror=function(){this.style.display='none'}"></div><div><div class="fed-title">'+name+'</div><div class="fed-subtitle">فدراسیون / انجمن / مجموعه تخصصی</div></div></div><p class="fed-desc">'+desc+'</p>'+detailLink+'<div class="card-foot"><span class="domain">'+(domain||'نشانی تأییدنشده')+'</span>'+link+'</div></article>';
  }).join('');
  count.textContent=faNumber(rows.length)+' مورد';
  empty.style.display=rows.length?'none':'block';
