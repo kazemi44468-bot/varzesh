@@ -21,8 +21,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - name: Download logos and photos from federation homepages
-        run: python scripts/download_federation_assets.py
       - name: Collect logos from Bamorabi and official federation content
         run: python scripts/collect_federation_sources.py
       - name: Commit local image files
