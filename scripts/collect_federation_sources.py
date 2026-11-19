@@ -251,7 +251,7 @@ def inject_profiles(profiles):
         topics='<ul class="list">'+''.join('<li>'+esc(x)+'</li>' for x in heads[:12])+'</ul>' if heads else '<p>در صفحه اصلی منبع، فهرست موضوعات تفصیلی قابل استخراج نبود.</p>'
         source_url=prof.get('website','')
         content_block='<div class="cols"><div><section class="panel"><h2>معرفی و مطالب منتشرشده در پایگاه رسمی</h2>'+''.join(items)+'</section><section class="panel"><h2>بخش‌ها و موضوعات قابل دسترسی</h2>'+topics+'</section></div><aside><section class="panel"><h2>منبع اطلاعات</h2><p>این محتوا از صفحه عمومی وب‌سایت رسمی معرفی‌شده برای این مجموعه استخراج شده است. برای خبرها و اطلاعات به‌روز، به منبع اصلی مراجعه کنید.</p><p><a href="'+esc(source_url)+'" target="_blank" rel="noopener">ورود به پایگاه رسمی</a></p><div class="facts"><div class="fact"><b>عنوان صفحه</b><span>'+esc(prof.get('title') or e['name'])+'</span></div><div class="fact"><b>وضعیت منبع</b><span>دریافت‌شده از وب‌سایت</span></div></div></section></aside></div>'
-        html=re.sub(r'<div class="cols">.*?</div></div></main>',content_block+'</main>',html,flags=re.S)
+        html=re.sub(r'<div class="cols">.*?</aside></div></main>',content_block+'</main>',html,flags=re.S)
         m=re.search(r'<a class="action" href="[^"]*" target="_blank" rel="noopener">',html)
         if m and source_url:
             html=html[:m.start()]+'<a class="action" href="'+esc(source_url)+'" target="_blank" rel="noopener">'+html[m.end():]
