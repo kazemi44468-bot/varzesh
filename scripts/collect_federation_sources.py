@@ -168,25 +168,23 @@ def inject_profiles(profiles):
         if not path.exists():continue
         prof=profiles.get(slug)
         if not prof or prof.get('status') not in ('collected','limited'):continue
-        # Keep the extracted material concise and attributable; do not fabricate missing fields.
+        # Replace the generic placeholder panels with concise material actually found on the official site.
         items=[]
         desc=prof.get('description','').strip()
         if desc:items.append('<p>'+esc(desc)+'</p>')
-        for para in prof.get('paragraphs',[])[:5]:items.append('<p>'+esc(para)+'</p>')
-        heads=prof.get('headings',[])
-        if heads:items.append('<p class="source-headings"><strong>موضوعات منتشرشده در پایگاه رسمی:</strong> '+ '، '.join(esc(x) for x in heads[:8])+'</p>')
+        for para in prof.get('paragraphs',[])[:7]:
+            items.append('<p>'+esc(para)+'</p>')
         if not items:continue
-        block='<section class="panel official-source"><h2>اطلاعات استخراج‌شده از پایگاه رسمی</h2><p class="source-note">محتوای زیر از صفحه عمومی وب‌سایت رسمی معرفی‌شده برای این مجموعه گردآوری شده است.</p>'+''.join(items)+'<p><a href="'+esc(prof.get('website',''))+'" target="_blank" rel="noopener">مشاهده منبع رسمی</a></p></section>'
-        html=path.read_text(encoding='utf-8')
-        html=re.sub(r'<section class="panel official-source">.*?</section>','',html,flags=re.S)
-        html=html.replace('</main>',block+'</main>')
+        heads=prof.get('headings',[])
+        topics='<ul class="list">'+''.join('<li>'+esc(x)+'</li>' for x in heads[:12])+'</ul>' if heads else '<p>در صفحه اصلی منبع، فهرست موضوعات تفصیلی قابل استخراج نبود.</p>'
         source_url=prof.get('website','')
-        if source_url:
-            m=re.search(r'<a class="action" href="[^"]*" target="_blank" rel="noopener">',html)
-            if m:
-                html=html[:m.start()]+'<a class="action" href="'+esc(source_url)+'" target="_blank" rel="noopener">'+html[m.end():]
-        # logos may have png, jpg, webp or gif extension depending on source.
-        html=html.replace('onerror="this.style.display=\'none\'"','onerror="if(!this.dataset.try){this.dataset.try=\'1\';this.src=this.src.replace(/\\.png$/i,\'.jpg\')}else if(this.dataset.try===\'1\'){this.dataset.try=\'2\';this.src=this.src.replace(/\\.(png|jpg)$/i,\'.webp\')}else{this.style.display=\'none\'}"')
+        content_block='<div class="cols"><div><section class="panel"><h2>معرفی و مطالب منتشرشده در پایگاه رسمی</h2>'+''.join(items)+'</section><section class="panel"><h2>بخش‌ها و موضوعات قابل دسترسی</h2>'+topics+'</section></div><aside><section class="panel"><h2>منبع اطلاعات</h2><p>این محتوا از صفحه عمومی وب‌سایت رسمی معرفی‌شده برای این مجموعه استخراج شده است. برای خبرها و اطلاعات به‌روز، به منبع اصلی مراجعه کنید.</p><p><a href="'+esc(source_url)+'" target="_blank" rel="noopener">ورود به پایگاه رسمی</a></p><div class="facts"><div class="fact"><b>عنوان صفحه</b><span>'+esc(prof.get('title') or e['name'])+'</span></div><div class="fact"><b>وضعیت منبع</b><span>دریافت‌شده از وب‌سایت</span></div></div></section></aside></div>'
+        html=path.read_text(encoding='utf-8')
+        html=re.sub(r'<div class="cols">.*?</div></div></main>',content_block+'</main>',html,flags=re.S)
+        m=re.search(r'<a class="action" href="[^"]*" target="_blank" rel="noopener">',html)
+        if m and source_url:
+            html=html[:m.start()]+'<a class="action" href="'+esc(source_url)+'" target="_blank" rel="noopener">'+html[m.end():]
+        html=html.replace('onerror="this.style.display=\\'none\\'"','onerror="if(!this.dataset.try){this.dataset.try=\\'1\\';this.src=this.src.replace(/\\\\.png$/i,\\'.jpg\\')}else if(this.dataset.try===\\'1\\'){this.dataset.try=\\'2\\';this.src=this.src.replace(/\\\\.(png|jpg)$/i,\\'.webp\\')}else{this.style.display=\\'none\\'}"')
         path.write_text(html,encoding='utf-8')
 
 def esc(s):
