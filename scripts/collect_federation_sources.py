@@ -207,4 +207,4 @@ def main():
     rp.write_text(json.dumps(sorted(by.values(),key=lambda x:x.get('slug','')),ensure_ascii=False,indent=2),encoding='utf-8')
     print('Bamorabi logos:',len(logo_report),'official content pages:',sum(x.get('status') in ('collected','limited') for x in profiles.values()),'/',len(DATA))
 
-if __name__=='__main__':main()
+# Trigger official source and image collection on updates.\nif __name__=='__main__':main()
