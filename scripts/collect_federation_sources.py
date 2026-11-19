@@ -119,7 +119,7 @@ def collect_bamorabi():
         html=index_path.read_text(encoding='utf-8')
         rows=[[e['name'],e.get('short',e['name']),e.get('domain',''),e['slug'],e.get('description','')] for e in DATA]
         js=json.dumps(rows,ensure_ascii=False,separators=(',',':'))
-        html=re.sub(r'const federations=\\[.*?\\];','const federations='+js+';',html,flags=re.S)
+        html=re.sub(r'const federations=\[.*?\];','const federations='+js+';',html,flags=re.S)
         index_path.write_text(html,encoding='utf-8')
     return report
 
