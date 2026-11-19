@@ -101,23 +101,78 @@ def collect_bamorabi():
     url='https://bamorabi.ir/sports-federations/'
     ct,body=get(url,limit=4000000,timeout=25)
     p=SourceParser();p.feed(body.decode('utf-8','ignore'))
-    tasks=[]; seen=set()
+    logo_sources={}; seen=set()
     for rec in p.records:
         e=match_item(rec['name'])
         if not e or e['slug'] in seen:continue
         seen.add(e['slug'])
         if rec['website']:
-            host=urlparse(rec['website']).netloc.lower().replace('www.','')
+            host=urlparse(rec['website']).netloc.lower()
             if host:e['domain']=host
-        if rec['logo_url']:tasks.append((e,rec))
+        if rec['logo_url']:logo_sources[e['slug']]=(e,rec['logo_url'])
+    manual={
+      'squash':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-18.png',
+      'ski':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-19.png',
+      'skate':'https://bamorabi.ir/wp-content/uploads/2021/11/skate99.png',
+      'ifsaf':'https://bamorabi.ir/wp-content/uploads/2026/09/amaadegik.jpg',
+      'martialarts':'https://bamorabi.ir/wp-content/uploads/2026/09/fed_anjoman.gif',
+      'badminton':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-21.png',
+      'bodybuilding':'https://bamorabi.ir/wp-content/uploads/2021/11/fed_badansazi-150x150.png',
+      'basketball':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-22-150x150.png',
+      'boxing':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-23-150x150.png',
+      'billiards':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-24-150x150.png',
+      'sportsmedicine':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-28-150x150.png',
+      'taekwondo':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-16-150x150.png',
+      'shooting':'https://bamorabi.ir/wp-content/uploads/2021/11/tirnadazi95-150x150.gif',
+      'archery':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-32-150x150.png',
+      'tennis':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-30-150x150.png',
+      'tabletennis':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-29-150x150.png',
+      'judo':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-34-150x150.png',
+      'polo':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-35-150x150.png',
+      'cycling':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-38-150x150.png',
+      'athletics':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-37-150x150.png',
+      'gymnastics':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-39-150x150.png',
+      'equestrian':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-15-150x150.png',
+      'chess':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-41-150x150.png',
+      'fencing':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-42-150x150.png',
+      'aquatics':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-43-150x150.png',
+      'football':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-14-150x150.png',
+      'canoe':'https://www.msy.gov.ir/data/0/Image/theme-img/federetion/federartion-logo-44.png',
+      'karate':'https://bamorabi.ir/wp-content/uploads/2021/11/IranKarate-150x150.png',
+      'kabaddi':'https://bamorabi.ir/wp-content/uploads/2021/11/fedkabedi-150x150.gif',
+      'wrestling':'https://bamorabi.ir/wp-content/uploads/2021/11/koshti_fed-150x150.gif',
+      'climbing':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-46-150x150.png',
+      'golf':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-47-150x150.png',
+      'university':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-36-150x150.png',
+      'motorsport':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-1-150x150.png',
+      'lifesaving':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-5-150x150.png',
+      'volleyball':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-6-150x150.png',
+      'special':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-26-150x150.png',
+      'school':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-50-150x150.png',
+      'rural':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-25-150x150.png',
+      'triathlon':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-40-150x150.png',
+      'workers':'https://bamorabi.ir/wp-content/uploads/2021/11/fed_karegari-150x150.gif',
+      'para':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-33-150x150.png',
+      'zurkhaneh':'https://bamorabi.ir/wp-content/uploads/2021/11/logo-fipz-1-125x150.png',
+      'blind':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-2-150x150.png',
+      'deaf':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-3-150x150.png',
+      'publicsport':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-7-150x150.png',
+      'weightlifting':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-8-150x150.png',
+      'wushu':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-9-150x150.png',
+      'hockey':'https://bamorabi.ir/wp-content/uploads/2021/11/haki_logo.jpg',
+      'handball':'https://bamorabi.ir/wp-content/uploads/2021/11/logo-handball.png'
+    }
+    for slug,url in manual.items():
+        e=next((x for x in DATA if x['slug']==slug),None)
+        if e:logo_sources[slug]=(e,url)
     def download(task):
-        e,rec=task
-        saved=save_image(rec['logo_url'],e['slug']+'-logo')
-        if saved:return {'slug':e['slug'],'name':e['name'],'logo':saved,'source':rec['logo_url'],'source_type':'Bamorabi logo directory'}
+        e,url=task
+        saved=save_image(url,e['slug']+'-logo')
+        if saved:return {'slug':e['slug'],'name':e['name'],'logo':saved,'source':url,'source_type':'Bamorabi logo directory'}
         return None
     report=[]
     with ThreadPoolExecutor(max_workers=16) as pool:
-        for result in as_completed([pool.submit(download,t) for t in tasks]):
+        for result in as_completed([pool.submit(download,t) for t in logo_sources.values()]):
             item=result.result()
             if item:report.append(item)
     DATA_PATH.write_text(json.dumps(DATA,ensure_ascii=False,indent=2),encoding='utf-8')
