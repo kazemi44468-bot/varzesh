@@ -1,0 +1,512 @@
+[
+  {
+    "name": "شنا، شیرجه و واترپلو",
+    "slug": "aquatics",
+    "website": "https://iranswimming.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+    "name": "تیراندازی با کمان",
+    "slug": "archery",
+    "website": "https://iran-archery.ir",
+    "logo": "archery-logo.png",
+    "photos": [
+      "archery-photo-1.jpg",
+      "archery-photo-2.jpg"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "دوومیدانی",
+    "slug": "athletics",
+    "website": "https://athletic.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  },
+  {
+    "name": "بدمینتون",
+    "slug": "badminton",
+    "website": "https://badminton.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -2] Name or service not known>"
+  },
+  {
+    "name": "بسکتبال",
+    "slug": "basketball",
+    "website": "https://iranbasketball.org",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno 104] Connection reset by peer>"
+  },
+  {
+    "name": "بولینگ و بیلیارد",
+    "slug": "billiards",
+    "website": "https://iranbcs.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+    "name": "پاراتیراندازی و ورزش نابینایان و کم‌بینایان",
+    "slug": "blind",
+    "website": "https://blindsports.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+    "name": "بدنسازی و پرورش اندام",
+    "slug": "bodybuilding",
+    "website": "https://bb-pl-sm.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -2] Name or service not known>"
+  },
+  {
+    "name": "بوکس",
+    "slug": "boxing",
+    "website": "https://boxing.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1147)>"
+  },
+  {
+    "name": "قایقرانی",
+    "slug": "canoe",
+    "website": "https://icf.ir",
+    "logo": "canoe-logo.png",
+    "photos": [
+      "canoe-photo-1.jpg",
+      "canoe-photo-2.jpg"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "شطرنج",
+    "slug": "chess",
+    "website": "https://iranchess.ir",
+    "status": "fetch-failed",
+    "error": "Remote end closed connection without response"
+  },
+  {
+    "name": "کوه‌نوردی و صعودهای ورزشی",
+    "slug": "climbing",
+    "website": "https://mfi.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -2] Name or service not known>"
+  },
+  {
+    "name": "کریکت",
+    "slug": "cricket",
+    "website": "https://cricketiran.com",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -2] Name or service not known>"
+  },
+  {
+    "name": "دوچرخه‌سواری",
+    "slug": "cycling",
+    "website": "https://cfi.ir",
+    "logo": "cycling-logo.png",
+    "photos": [
+      "cycling-photo-1.jpg",
+      "cycling-photo-2.jpg"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "ورزش ناشنوایان",
+    "slug": "deaf",
+    "website": "https://dsf.ir",
+    "logo": "deaf-logo.jpg",
+    "photos": [
+      "deaf-photo-1.png",
+      "deaf-photo-2.png"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "سوارکاری",
+    "slug": "equestrian",
+    "website": "https://feiri.ir",
+    "logo": "equestrian-logo.png",
+    "photos": [
+      "equestrian-photo-1.jpg",
+      "equestrian-photo-2.jpg"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "ورزش‌های الکترونیک",
+    "slug": "esports",
+    "website": "https://esports.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+    "name": "شمشیربازی",
+    "slug": "fencing",
+    "website": "https://fencing.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1147)>"
+  },
+  {
+    "name": "فوتبال",
+    "slug": "football",
+    "website": "https://the-ffiri.com",
+    "status": "fetch-failed",
+    "error": "<urlopen error timed out>"
+  },
+  {
+    "name": "فوتسال و فوتبال ساحلی",
+    "slug": "futsal",
+    "website": "https://the-ffiri.com",
+    "status": "fetch-failed",
+    "error": "<urlopen error timed out>"
+  },
+  {
+    "name": "گلف",
+    "slug": "golf",
+    "website": "https://golfir.com",
+    "logo": "golf-logo.webp",
+    "photos": [
+      "golf-photo-1.webp",
+      "golf-photo-2.webp"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "ژیمناستیک",
+    "slug": "gymnastics",
+    "website": "https://gymnastic.ir",
+    "logo": "gymnastics-logo.png",
+    "photos": [
+      "gymnastics-photo-1.jpg",
+      "gymnastics-photo-2.png"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "هندبال",
+    "slug": "handball",
+    "website": "https://irhandball.com",
+    "logo": null,
+    "photos": [],
+    "logo_found": false
+  },
+  {
+    "name": "هاکی",
+    "slug": "hockey",
+    "website": "https://iranhockey.org",
+    "logo": null,
+    "photos": [
+      "hockey-photo-1.gif"
+    ],
+    "logo_found": false
+  },
+  {
+    "name": "آمادگی جسمانی و تندرستی",
+    "slug": "ifsaf",
+    "website": "https://ifsaf.com",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+    "name": "جودو",
+    "slug": "judo",
+    "website": "https://irjudo.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  },
+  {
+    "name": "جوجیتسو",
+    "slug": "jujitsu",
+    "website": "https://ju-jitsu.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -2] Name or service not known>"
+  },
+  {
+    "name": "کبدی",
+    "slug": "kabaddi",
+    "website": "https://irankabaddi.com",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -2] Name or service not known>"
+  },
+  {
+    "name": "کاراته",
+    "slug": "karate",
+    "website": "https://irikf.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -2] Name or service not known>"
+  },
+  {
+    "name": "کوراش",
+    "slug": "kurash",
+    "website": "https://kurash.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  },
+  {
+    "name": "نجات‌غریق و غواصی",
+    "slug": "lifesaving",
+    "website": "https://lifesaving.ir",
+    "logo": "lifesaving-logo.png",
+    "photos": [
+      "lifesaving-photo-1.jpg",
+      "lifesaving-photo-2.jpg"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "انجمن‌های ورزش‌های رزمی",
+    "slug": "martialarts",
+    "website": "https://irmaaf.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error _ssl.c:1129: The handshake operation timed out>"
+  },
+  {
+    "name": "هنرهای رزمی ترکیبی (MMA)",
+    "slug": "mma",
+    "status": "no-domain"
+  },
+  {
+    "name": "موتورسواری و اتومبیل‌رانی",
+    "slug": "motorsport",
+    "website": "https://mafiri.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+    "name": "موی‌تای",
+    "slug": "muaythai",
+    "website": "https://muaythai.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -5] No address associated with hostname>"
+  },
+  {
+    "name": "پاراوزنه‌برداری و ورزش‌های جانبازان و توان‌یابان",
+    "slug": "para",
+    "website": "https://irisfd.com",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -2] Name or service not known>"
+  },
+  {
+    "name": "پارا دوومیدانی",
+    "slug": "para-athletics",
+    "website": "https://irisfd.com",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -2] Name or service not known>"
+  },
+  {
+    "name": "چوگان",
+    "slug": "polo",
+    "website": "https://iranpolo.org",
+    "status": "fetch-failed",
+    "error": "<urlopen error timed out>"
+  },
+  {
+    "name": "ورزش‌های همگانی",
+    "slug": "publicsport",
+    "website": "https://isfaf.com",
+    "logo": null,
+    "photos": [
+      "publicsport-photo-1.png",
+      "publicsport-photo-2.jpg"
+    ],
+    "logo_found": false
+  },
+  {
+    "name": "روئینگ",
+    "slug": "rowing",
+    "website": "https://rowing.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+    "name": "ورزش‌های روستایی، عشایری و بازی‌های بومی‌محلی",
+    "slug": "rural",
+    "website": "https://roostasport.ir",
+    "logo": "rural-logo.png",
+    "photos": [
+      "rural-photo-1.jpg",
+      "rural-photo-2.jpg"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "بادبانی",
+    "slug": "sailing",
+    "website": "https://sailing.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno 111] Connection refused>"
+  },
+  {
+    "name": "ساواته",
+    "slug": "savate",
+    "status": "no-domain"
+  },
+  {
+    "name": "ورزش دانش‌آموزی",
+    "slug": "school",
+    "website": "https://sport.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  },
+  {
+    "name": "سپک‌تاکرا",
+    "slug": "sepak",
+    "status": "no-domain"
+  },
+  {
+    "name": "تیراندازی",
+    "slug": "shooting",
+    "website": "https://irissf.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+    "name": "اسکیت",
+    "slug": "skate",
+    "website": "https://iranskating.ir",
+    "logo": "skate-logo.png",
+    "photos": [
+      "skate-photo-1.png",
+      "skate-photo-2.png"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "اسکی و ورزش‌های زمستانی",
+    "slug": "ski",
+    "website": "https://skifed.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno 104] Connection reset by peer>"
+  },
+  {
+    "name": "ورزش بیماران خاص و پیوند اعضا",
+    "slug": "special",
+    "website": "https://sdsfiran.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -2] Name or service not known>"
+  },
+  {
+    "name": "المپیک ویژه",
+    "slug": "special-olympics",
+    "website": "https://specialolympics.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -2] Name or service not known>"
+  },
+  {
+    "name": "پزشکی ورزشی",
+    "slug": "sportsmedicine",
+    "website": "https://iransportsmedicine.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -2] Name or service not known>"
+  },
+  {
+    "name": "اسکواش",
+    "slug": "squash",
+    "website": "https://squashiran.ir",
+    "logo": null,
+    "photos": [
+      "squash-photo-1.jpg",
+      "squash-photo-2.png"
+    ],
+    "logo_found": false
+  },
+  {
+    "name": "تنیس روی میز",
+    "slug": "tabletennis",
+    "website": "https://pingpong.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  },
+  {
+    "name": "تکواندو",
+    "slug": "taekwondo",
+    "website": "https://iritf.ir",
+    "logo": "taekwondo-logo.png",
+    "photos": [
+      "taekwondo-photo-1.png",
+      "taekwondo-photo-2.png"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "تنیس",
+    "slug": "tennis",
+    "website": "https://iritf.ir",
+    "logo": "tennis-logo.png",
+    "photos": [
+      "tennis-photo-1.png",
+      "tennis-photo-2.png"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "ورزش‌های سه‌گانه",
+    "slug": "triathlon",
+    "website": "https://triathlon.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f"
+  },
+  {
+    "name": "ورزش‌های دانشگاهی",
+    "slug": "university",
+    "status": "no-domain"
+  },
+  {
+    "name": "والیبال",
+    "slug": "volleyball",
+    "website": "https://volleyball.ir",
+    "status": "fetch-failed",
+    "error": "The read operation timed out"
+  },
+  {
+    "name": "وزنه‌برداری",
+    "slug": "weightlifting",
+    "website": "https://iwf.ir",
+    "logo": "weightlifting-logo.png",
+    "photos": [
+      "weightlifting-photo-1.jpg",
+      "weightlifting-photo-2.jpg"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "ورزش‌های اسلامی زنان",
+    "slug": "women",
+    "website": "https://sport.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  },
+  {
+    "name": "ورزش کارگری",
+    "slug": "workers",
+    "status": "no-domain"
+  },
+  {
+    "name": "کشتی",
+    "slug": "wrestling",
+    "website": "https://iawf.ir",
+    "logo": "wrestling-logo.png",
+    "photos": [
+      "wrestling-photo-1.jpg",
+      "wrestling-photo-2.jpg"
+    ],
+    "logo_found": true
+  },
+  {
+    "name": "ووشو",
+    "slug": "wushu",
+    "website": "https://iranwushufed.ir",
+    "status": "fetch-failed",
+    "error": "<urlopen error _ssl.c:1129: The handshake operation timed out>"
+  },
+  {
+    "name": "پهلوانی و زورخانه‌ای",
+    "slug": "zurkhaneh",
+    "website": "https://izpf.ir",
+    "logo": null,
+    "photos": [
+      "zurkhaneh-photo-1.jpg",
+      "zurkhaneh-photo-2.jpg"
+    ],
+    "logo_found": false
+  }
+]
