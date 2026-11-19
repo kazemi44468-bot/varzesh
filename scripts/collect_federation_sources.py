@@ -113,6 +113,14 @@ def collect_bamorabi():
             if host: e['domain']=host
         if saved:report.append({'slug':e['slug'],'name':e['name'],'logo':saved,'source':rec['logo_url'],'source_type':'Bamorabi logo directory'})
     DATA_PATH.write_text(json.dumps(DATA,ensure_ascii=False,indent=2),encoding='utf-8')
+    # Keep the public directory cards aligned with the current official domains.
+    index_path=ROOT/'centers'/'federations.html'
+    if index_path.exists():
+        html=index_path.read_text(encoding='utf-8')
+        rows=[[e['name'],e.get('short',e['name']),e.get('domain',''),e['slug'],e.get('description','')] for e in DATA]
+        js=json.dumps(rows,ensure_ascii=False,separators=(',',':'))
+        html=re.sub(r'const federations=\\[.*?\\];','const federations='+js+';',html,flags=re.S)
+        index_path.write_text(html,encoding='utf-8')
     return report
 
 class TextParser(HTMLParser):
@@ -172,6 +180,11 @@ def inject_profiles(profiles):
         html=path.read_text(encoding='utf-8')
         html=re.sub(r'<section class="panel official-source">.*?</section>','',html,flags=re.S)
         html=html.replace('</main>',block+'</main>')
+        source_url=prof.get('website','')
+        if source_url:
+            m=re.search(r'<a class="action" href="[^"]*" target="_blank" rel="noopener">',html)
+            if m:
+                html=html[:m.start()]+'<a class="action" href="'+esc(source_url)+'" target="_blank" rel="noopener">'+html[m.end():]
         # logos may have png, jpg, webp or gif extension depending on source.
         html=html.replace('onerror="this.style.display=\'none\'"','onerror="if(!this.dataset.try){this.dataset.try=\'1\';this.src=this.src.replace(/\\.png$/i,\'.jpg\')}else if(this.dataset.try===\'1\'){this.dataset.try=\'2\';this.src=this.src.replace(/\\.(png|jpg)$/i,\'.webp\')}else{this.style.display=\'none\'}"')
         path.write_text(html,encoding='utf-8')
