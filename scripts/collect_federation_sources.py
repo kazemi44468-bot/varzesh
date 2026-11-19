@@ -111,6 +111,8 @@ def collect_bamorabi():
             if host:e['domain']=host
         if rec['logo_url']:logo_sources[e['slug']]=(e,rec['logo_url'])
     manual={
+      'sports-associations':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-20.png',
+      'kungfu':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-51-150x150.png',
       'squash':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-18.png',
       'ski':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-19.png',
       'skate':'https://bamorabi.ir/wp-content/uploads/2021/11/skate99.png',
