@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Download sports photography
         run: |
-          mkdir -p images
+          mkdir -p assets/images
           curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1723807566470-f94f30b6ae38?fit=crop&w=2200&q=84&fm=webp" -o assets/images/sports-running-track.webp
           curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1636662978233-bbaf957292c9?fit=crop&w=1400&q=82&fm=webp" -o assets/images/basketball.webp
           curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1758875569517-559a631fb44d?fit=crop&w=1400&q=82&fm=webp" -o assets/images/team-training.webp
@@ -38,5 +38,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add images
+          git add assets/images
           git diff --cached --quiet || (git commit -m "Add local sports photo assets [skip images]" && git push)
