@@ -112,6 +112,9 @@ def collect_bamorabi():
         if rec['logo_url']:logo_sources[e['slug']]=(e,rec['logo_url'])
     manual={
       'sports-associations':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-20.png',
+      'kurash':'https://kurash-ika.org/wp-content/uploads/2022/06/306380608_539153384878374_807882668608004300_n.jpg',
+      'futsal':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-14-150x150.png',
+      'para-athletics':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-33-150x150.png',
       'kungfu':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-51-150x150.png',
       'squash':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-18.png',
       'ski':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-19.png',
