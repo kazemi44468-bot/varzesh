@@ -22,7 +22,7 @@ jobs:
           python-version: "3.x"
       - name: Download logos and photos from federation homepages
         run: python scripts/download_federation_assets.py
-      - name: Commit local image files
+      - name: Collect logos from Bamorabi and official federation content\n        run: python scripts/collect_federation_sources.py\n      - name: Commit local image files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
