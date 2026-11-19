@@ -163,7 +163,7 @@ def fetch_profile(e):
     last=''
     for url in urls:
         try:
-            ct,body=get(url,limit=2200000,timeout=13)
+            ct,body=get(url,limit=2200000,timeout=6)
             if 'html' not in ct:continue
             p=TextParser();p.feed(body.decode('utf-8','ignore'))
             return e['slug'],{'website':url,'title':p.title,'description':p.meta,'headings':p.headings[:12],'paragraphs':p.paragraphs[:8],'status':'collected' if (p.paragraphs or p.meta) else 'limited'}
