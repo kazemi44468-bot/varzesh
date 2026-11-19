@@ -7,7 +7,9 @@
     "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
     "official_content_status": "collected",
     "official_content_url": "https://iranswimming.ir",
-    "official_content_paragraphs": 1
+    "official_content_paragraphs": 1,
+    "directory_logo": "aquatics-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-43-150x150.png"
   },
   {
     "name": "تیراندازی با کمان",
@@ -19,9 +21,12 @@
       "archery-photo-2.jpg"
     ],
     "logo_found": true,
-    "official_content_status": "collected",
+    "official_content_status": "fetch-failed",
     "official_content_url": "https://iran-archery.ir",
-    "official_content_paragraphs": 3
+    "official_content_paragraphs": 0,
+    "directory_logo": "archery-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-32-150x150.png",
+    "official_content_error": "The read operation timed out"
   },
   {
     "name": "دوومیدانی",
@@ -32,7 +37,9 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://athletic.ir",
     "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+    "official_content_error": "<urlopen error [Errno -3] Temporary failure in name resolution>",
+    "directory_logo": "athletics-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-37-150x150.png"
   },
   {
     "name": "بدمینتون",
@@ -55,7 +62,7 @@
     "directory_logo": "basketball-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-22-150x150.png",
     "official_content_status": "fetch-failed",
-    "official_content_url": "https://iribf.ir",
+    "official_content_url": "https://www.iribf.ir",
     "official_content_paragraphs": 0,
     "official_content_error": "HTTP Error 404: Not Found"
   },
@@ -80,7 +87,9 @@
     "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
     "official_content_status": "collected",
     "official_content_url": "https://blindsports.ir",
-    "official_content_paragraphs": 8
+    "official_content_paragraphs": 8,
+    "directory_logo": "blind-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-2-150x150.png"
   },
   {
     "name": "بدنسازی و پرورش اندام",
@@ -89,9 +98,11 @@
     "status": "fetch-failed",
     "error": "<urlopen error [Errno -2] Name or service not known>",
     "official_content_status": "fetch-failed",
-    "official_content_url": "https://iranbbf.ir",
+    "official_content_url": "https://www.iranbbf.ir",
     "official_content_paragraphs": 0,
-    "official_content_error": "HTTP Error 404: Not Found"
+    "official_content_error": "HTTP Error 404: Not Found",
+    "directory_logo": "bodybuilding-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/fed_badansazi-150x150.png"
   },
   {
     "name": "بوکس",
@@ -101,7 +112,9 @@
     "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1147)>",
     "official_content_status": "collected",
     "official_content_url": "https://boxing.ir",
-    "official_content_paragraphs": 7
+    "official_content_paragraphs": 7,
+    "directory_logo": "boxing-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-23-150x150.png"
   },
   {
     "name": "قایقرانی",
@@ -114,7 +127,7 @@
     ],
     "logo_found": true,
     "official_content_status": "limited",
-    "official_content_url": "https://icf.ir",
+    "official_content_url": "https://www.icf.ir",
     "official_content_paragraphs": 0
   },
   {
@@ -126,7 +139,9 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://iranchess.ir",
     "official_content_paragraphs": 0,
-    "official_content_error": "Remote end closed connection without response"
+    "official_content_error": "Remote end closed connection without response",
+    "directory_logo": "chess-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-41-150x150.png"
   },
   {
     "name": "کوه‌نوردی و صعودهای ورزشی",
@@ -164,7 +179,7 @@
     "directory_logo": "cycling-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-38-150x150.png",
     "official_content_status": "collected",
-    "official_content_url": "https://cfi.ir",
+    "official_content_url": "https://www.cfi.ir",
     "official_content_paragraphs": 0
   },
   {
@@ -257,7 +272,9 @@
     "logo_found": true,
     "official_content_status": "collected",
     "official_content_url": "https://golfir.com",
-    "official_content_paragraphs": 8
+    "official_content_paragraphs": 8,
+    "directory_logo": "golf-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-47-150x150.png"
   },
   {
     "name": "ژیمناستیک",
@@ -284,7 +301,9 @@
     "logo_found": false,
     "official_content_status": "collected",
     "official_content_url": "https://irihf.ir",
-    "official_content_paragraphs": 4
+    "official_content_paragraphs": 4,
+    "directory_logo": "handball-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/logo-handball.png"
   },
   {
     "name": "هاکی",
@@ -297,7 +316,9 @@
     "logo_found": false,
     "official_content_status": "limited",
     "official_content_url": "https://iranhockey.org",
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "directory_logo": "hockey-logo.jpg",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/haki_logo.jpg"
   },
   {
     "name": "آمادگی جسمانی و تندرستی",
@@ -307,7 +328,9 @@
     "error": "<urlopen error [Errno 111] Connection refused>",
     "official_content_status": "collected",
     "official_content_url": "https://iranpffw.ir",
-    "official_content_paragraphs": 8
+    "official_content_paragraphs": 8,
+    "directory_logo": "ifsaf-logo.jpg",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2026/09/amaadegik.jpg"
   },
   {
     "name": "جودو",
@@ -318,7 +341,9 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://irjudo.ir",
     "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+    "official_content_error": "<urlopen error [Errno -3] Temporary failure in name resolution>",
+    "directory_logo": "judo-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-34-150x150.png"
   },
   {
     "name": "جوجیتسو",
@@ -340,7 +365,9 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://irankabaddi.com",
     "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error [Errno -2] Name or service not known>"
+    "official_content_error": "<urlopen error [Errno -2] Name or service not known>",
+    "directory_logo": "kabaddi-logo.gif",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/fedkabedi-150x150.gif"
   },
   {
     "name": "کاراته",
@@ -350,7 +377,9 @@
     "error": "<urlopen error [Errno -2] Name or service not known>",
     "official_content_status": "limited",
     "official_content_url": "https://ikf.ir",
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "directory_logo": "karate-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/IranKarate-150x150.png"
   },
   {
     "name": "کوراش",
@@ -376,7 +405,7 @@
     "directory_logo": "lifesaving-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-5-150x150.png",
     "official_content_status": "collected",
-    "official_content_url": "https://lifesaving.ir",
+    "official_content_url": "https://www.lifesaving.ir",
     "official_content_paragraphs": 0
   },
   {
@@ -388,7 +417,9 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://irmaaf.ir",
     "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error _ssl.c:1129: The handshake operation timed out>"
+    "official_content_error": "<urlopen error _ssl.c:1129: The handshake operation timed out>",
+    "directory_logo": "martialarts-logo.gif",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2026/09/fed_anjoman.gif"
   },
   {
     "name": "هنرهای رزمی ترکیبی (MMA)",
@@ -407,7 +438,7 @@
     "directory_logo": "motorsport-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-1-150x150.png",
     "official_content_status": "collected",
-    "official_content_url": "https://mafiri.ir",
+    "official_content_url": "https://www.mafiri.ir",
     "official_content_paragraphs": 8
   },
   {
@@ -430,7 +461,7 @@
     "directory_logo": "para-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-33-150x150.png",
     "official_content_status": "collected",
-    "official_content_url": "https://irisfd.ir",
+    "official_content_url": "https://www.irisfd.ir",
     "official_content_paragraphs": 0
   },
   {
@@ -453,7 +484,9 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://iranpolo.org",
     "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error timed out>"
+    "official_content_error": "<urlopen error timed out>",
+    "directory_logo": "polo-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-35-150x150.png"
   },
   {
     "name": "ورزش‌های همگانی",
@@ -468,7 +501,7 @@
     "directory_logo": "publicsport-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-7-150x150.png",
     "official_content_status": "collected",
-    "official_content_url": "https://isfaf.ir",
+    "official_content_url": "https://www.isfaf.ir",
     "official_content_paragraphs": 8
   },
   {
@@ -493,7 +526,9 @@
     "logo_found": true,
     "official_content_status": "collected",
     "official_content_url": "https://roostasport.ir",
-    "official_content_paragraphs": 1
+    "official_content_paragraphs": 1,
+    "directory_logo": "rural-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-25-150x150.png"
   },
   {
     "name": "بادبانی",
@@ -541,8 +576,10 @@
     "status": "fetch-failed",
     "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
     "official_content_status": "collected",
-    "official_content_url": "https://irissf.ir",
-    "official_content_paragraphs": 8
+    "official_content_url": "http://www.irissf.ir",
+    "official_content_paragraphs": 8,
+    "directory_logo": "shooting-logo.gif",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/tirnadazi95-150x150.gif"
   },
   {
     "name": "اسکیت",
@@ -556,7 +593,9 @@
     "logo_found": true,
     "official_content_status": "limited",
     "official_content_url": "https://iranskating.ir",
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "directory_logo": "skate-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/skate99.png"
   },
   {
     "name": "اسکی و ورزش‌های زمستانی",
@@ -567,7 +606,7 @@
     "directory_logo": "ski-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-19.png",
     "official_content_status": "collected",
-    "official_content_url": "http://skifed.ir",
+    "official_content_url": "http://www.skifed.ir",
     "official_content_paragraphs": 8
   },
   {
@@ -618,7 +657,7 @@
     "directory_logo": "squash-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-18.png",
     "official_content_status": "limited",
-    "official_content_url": "https://squashiran.ir",
+    "official_content_url": "https://www.squashiran.ir",
     "official_content_paragraphs": 0
   },
   {
@@ -630,7 +669,7 @@
     "directory_logo": "tabletennis-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-29-150x150.png",
     "official_content_status": "collected",
-    "official_content_url": "https://irttf.ir",
+    "official_content_url": "https://www.irttf.ir",
     "official_content_paragraphs": 8
   },
   {
@@ -646,7 +685,7 @@
     "directory_logo": "taekwondo-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-16-150x150.png",
     "official_content_status": "limited",
-    "official_content_url": "http://iritf.org.ir",
+    "official_content_url": "http://www.iritf.org.ir",
     "official_content_paragraphs": 0
   },
   {
@@ -661,7 +700,9 @@
     "logo_found": true,
     "official_content_status": "limited",
     "official_content_url": "https://iritf.ir",
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "directory_logo": "tennis-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-30-150x150.png"
   },
   {
     "name": "ورزش‌های سه‌گانه",
@@ -671,7 +712,9 @@
     "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
     "official_content_status": "collected",
     "official_content_url": "https://triathlon.ir",
-    "official_content_paragraphs": 3
+    "official_content_paragraphs": 3,
+    "directory_logo": "triathlon-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-40-150x150.png"
   },
   {
     "name": "ورزش‌های دانشگاهی",
@@ -679,9 +722,10 @@
     "status": "no-domain",
     "directory_logo": "university-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-36-150x150.png",
-    "official_content_status": "collected",
+    "official_content_status": "fetch-failed",
     "official_content_url": "https://iusf.saorg.ir",
-    "official_content_paragraphs": 8
+    "official_content_paragraphs": 0,
+    "official_content_error": "HTTP Error 500: Internal Server Error"
   },
   {
     "name": "والیبال",
@@ -729,7 +773,9 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://fawsi.mcls.gov.ir",
     "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error timed out>"
+    "official_content_error": "<urlopen error timed out>",
+    "directory_logo": "workers-logo.gif",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/fed_karegari-150x150.gif"
   },
   {
     "name": "کشتی",
@@ -743,7 +789,9 @@
     "logo_found": true,
     "official_content_status": "collected",
     "official_content_url": "https://iawf.ir",
-    "official_content_paragraphs": 2
+    "official_content_paragraphs": 2,
+    "directory_logo": "wrestling-logo.gif",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/koshti_fed-150x150.gif"
   },
   {
     "name": "ووشو",
@@ -754,7 +802,9 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://iranwushufed.ir",
     "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error _ssl.c:1129: The handshake operation timed out>"
+    "official_content_error": "<urlopen error _ssl.c:1129: The handshake operation timed out>",
+    "directory_logo": "wushu-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-9-150x150.png"
   },
   {
     "name": "پهلوانی و زورخانه‌ای",
@@ -768,6 +818,8 @@
     "logo_found": false,
     "official_content_status": "collected",
     "official_content_url": "https://izsf.ch",
-    "official_content_paragraphs": 8
+    "official_content_paragraphs": 8,
+    "directory_logo": "zurkhaneh-logo.png",
+    "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/logo-fipz-1-125x150.png"
   }
 ]
