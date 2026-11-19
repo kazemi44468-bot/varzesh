@@ -1,0 +1,27 @@
+name: Download official federation logos and photos
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/federations.json"
+      - "scripts/download_federation_assets.py"
+      - "centers/federations/**"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Download images from federation homepages
+        run: python scripts/download_federation_assets.py
+      - name: Commit local image files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/images/federations
+          git diff --cached --quiet || (git commit -m "Add downloaded federation logos and photos [skip ci]" && git push)
