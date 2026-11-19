@@ -4,7 +4,7 @@ on:
     branches: [main]
     paths:
       - "data/federations.json"
-      - "scripts/download_federation_assets.py"
+      - "scripts/download_federation_assets.py"\n      - "scripts/collect_federation_sources.py"
       - "centers/federations/**"
   workflow_dispatch:
 permissions:
