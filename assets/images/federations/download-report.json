@@ -138,12 +138,13 @@
     "slug": "chess",
     "website": "https://iranchess.ir",
     "status": "fetch-failed",
-    "error": "HTTP Error 403: Forbidden",
+    "error": "Remote end closed connection without response",
     "directory_logo": "chess-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-41-150x150.png",
-    "official_content_status": "limited",
+    "official_content_status": "fetch-failed",
     "official_content_url": "https://iranchess.ir",
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "official_content_error": "Remote end closed connection without response"
   },
   {
     "name": "کوه‌نوردی و صعودهای ورزشی",
@@ -408,7 +409,7 @@
   {
     "name": "فدراسیون کونگ‌فو و هنرهای رزمی",
     "slug": "kungfu",
-    "website": "https://ikmaf.ir",
+    "website": "https://www.ikmaf.ir",
     "status": "fetch-failed",
     "error": "The read operation timed out",
     "directory_logo": "kungfu-logo.png",
@@ -449,17 +450,14 @@
     "name": "انجمن‌های ورزش‌های رزمی",
     "slug": "martialarts",
     "website": "https://irmaaf.ir",
-    "logo": "martialarts-logo.png",
-    "photos": [
-      "martialarts-photo-1.jpg",
-      "martialarts-photo-2.jpg"
-    ],
-    "logo_found": true,
+    "status": "fetch-failed",
+    "error": "<urlopen error _ssl.c:1129: The handshake operation timed out>",
     "directory_logo": "martialarts-logo.gif",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2026/09/fed_anjoman.gif",
-    "official_content_status": "collected",
+    "official_content_status": "fetch-failed",
     "official_content_url": "https://irmaaf.ir",
-    "official_content_paragraphs": 8
+    "official_content_paragraphs": 0,
+    "official_content_error": "<urlopen error _ssl.c:1129: The handshake operation timed out>"
   },
   {
     "name": "هنرهای رزمی ترکیبی (MMA)",
@@ -621,14 +619,17 @@
     "name": "تیراندازی",
     "slug": "shooting",
     "website": "https://www.irissf.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error [Errno -2] Name or service not known>",
+    "logo": null,
+    "photos": [
+      "shooting-photo-1.jpg",
+      "shooting-photo-2.jpg"
+    ],
+    "logo_found": false,
     "directory_logo": "shooting-logo.gif",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/tirnadazi95-150x150.gif",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://www.irissf.ir",
-    "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error [Errno -2] Name or service not known>"
+    "official_content_paragraphs": 8
   },
   {
     "name": "اسکیت",
@@ -688,7 +689,7 @@
   {
     "name": "فدراسیون انجمن‌های ورزشی",
     "slug": "sports-associations",
-    "website": "https://ifsafed.com",
+    "website": "https://www.ifsafed.com",
     "status": "fetch-failed",
     "error": "<urlopen error [Errno 111] Connection refused>",
     "directory_logo": "sports-associations-logo.png",
@@ -701,8 +702,12 @@
     "name": "پزشکی ورزشی",
     "slug": "sportsmedicine",
     "website": "https://ifsm.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>",
+    "logo": null,
+    "photos": [
+      "sportsmedicine-photo-1.jpg",
+      "sportsmedicine-photo-2.jpg"
+    ],
+    "logo_found": false,
     "directory_logo": "sportsmedicine-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-28-150x150.png",
     "official_content_status": "collected",
@@ -793,9 +798,10 @@
     "logo_found": true,
     "directory_logo": "university-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-36-150x150.png",
-    "official_content_status": "collected",
+    "official_content_status": "fetch-failed",
     "official_content_url": "https://iusf.saorg.ir",
-    "official_content_paragraphs": 8
+    "official_content_paragraphs": 0,
+    "official_content_error": "HTTP Error 500: Internal Server Error"
   },
   {
     "name": "والیبال",
@@ -869,17 +875,14 @@
     "name": "ووشو",
     "slug": "wushu",
     "website": "https://iranwushufed.ir",
-    "logo": "wushu-logo.png",
-    "photos": [
-      "wushu-photo-1.jpg",
-      "wushu-photo-2.jpg"
-    ],
-    "logo_found": true,
+    "status": "fetch-failed",
+    "error": "<urlopen error _ssl.c:1129: The handshake operation timed out>",
     "directory_logo": "wushu-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-9-150x150.png",
-    "official_content_status": "collected",
+    "official_content_status": "fetch-failed",
     "official_content_url": "https://iranwushufed.ir",
-    "official_content_paragraphs": 8
+    "official_content_paragraphs": 0,
+    "official_content_error": "<urlopen error _ssl.c:1129: The handshake operation timed out>"
   },
   {
     "name": "پهلوانی و زورخانه‌ای",
