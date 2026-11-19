@@ -110,7 +110,7 @@ def collect_bamorabi():
         if rec['website']:
             host=urlparse(rec['website']).netloc.lower().replace('www.','')
             # use this listing only as an additional verified candidate, not if the record has a clearly established domain
-            if host and not e.get('domain'): e['domain']=host
+            if host: e['domain']=host
         if saved:report.append({'slug':e['slug'],'name':e['name'],'logo':saved,'source':rec['logo_url'],'source_type':'Bamorabi logo directory'})
     DATA_PATH.write_text(json.dumps(DATA,ensure_ascii=False,indent=2),encoding='utf-8')
     return report
