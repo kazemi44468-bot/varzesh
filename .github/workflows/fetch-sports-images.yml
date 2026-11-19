@@ -16,15 +16,15 @@ jobs:
       - name: Download sports photography
         run: |
           mkdir -p images
-          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1723807566470-f94f30b6ae38?fit=crop&w=2200&q=84&fm=webp" -o images/sports-running-track.webp
-          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1636662978233-bbaf957292c9?fit=crop&w=1400&q=82&fm=webp" -o images/basketball.webp
-          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1758875569517-559a631fb44d?fit=crop&w=1400&q=82&fm=webp" -o images/team-training.webp
-          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1598268030450-7a476f602bf6?fit=crop&w=1400&q=82&fm=webp" -o images/fitness.webp
-          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1727449301677-84ddffa71fb6?fit=crop&w=1400&q=82&fm=webp" -o images/basketball-court.webp
-          for f in images/*.webp; do test -s "$f"; done
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1723807566470-f94f30b6ae38?fit=crop&w=2200&q=84&fm=webp" -o assets/images/sports-running-track.webp
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1636662978233-bbaf957292c9?fit=crop&w=1400&q=82&fm=webp" -o assets/images/basketball.webp
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1758875569517-559a631fb44d?fit=crop&w=1400&q=82&fm=webp" -o assets/images/team-training.webp
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1598268030450-7a476f602bf6?fit=crop&w=1400&q=82&fm=webp" -o assets/images/fitness.webp
+          curl -L --fail --silent --show-error "https://images.unsplash.com/photo-1727449301677-84ddffa71fb6?fit=crop&w=1400&q=82&fm=webp" -o assets/images/basketball-court.webp
+          for f in assets/images/*.webp; do test -s "$f"; done
       - name: Record sources and license
         run: |
-          cat > images/README.md <<'EOF'
+          cat > assets/images/README.md <<'EOF'
           # تصاویر پورتال ورزش
           تصاویر از صفحات رایگان Unsplash دریافت شده‌اند. استفاده از آن‌ها تابع Unsplash License است: https://unsplash.com/license
           
