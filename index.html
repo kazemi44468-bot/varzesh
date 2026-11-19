@@ -8,6 +8,9 @@
 <title>پورتال ورزش | همه مسیرهای ورزش</title>
 <style>
 @font-face{font-family:PortalFa;src:url("assets/fonts/Vazirmatn-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:PortalFa;src:url("assets/fonts/Vazirmatn-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:PortalFa;src:url("assets/fonts/Vazirmatn-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:Shekasteh;src:url("assets/fonts/shekasteh%20v2.001.woff") format("woff"),url("assets/fonts/shekasteh%20v2.001.ttf") format("truetype");font-weight:400;font-display:swap}
 @font-face{font-family:PortalFa;src:url("assets/fonts/Vazirmatn-Bold.woff2") format("woff2");font-weight:700 900;font-display:swap}
 :root{--ink:#17324b;--muted:#61758a;--orange:#ff8b42;--coral:#ff6b72;--blue:#3d9fe8;--teal:#27b9a8;--violet:#8d7be8;--yellow:#ffd45e}
 *{box-sizing:border-box}
@@ -20,43 +23,43 @@ a{color:inherit;text-decoration:none}
 .glow{position:absolute;z-index:-1;border-radius:50%;filter:blur(2px);pointer-events:none}
 .glow.one{width:360px;height:360px;top:-170px;right:-90px;background:rgba(255,195,87,.34)}
 .glow.two{width:300px;height:300px;bottom:-150px;left:-80px;background:rgba(57,190,203,.25)}
-.wrap{width:min(1180px,calc(100% - 48px));margin:auto}
-.layout{display:grid;grid-template-columns:.86fr 1.14fr;align-items:center;gap:clamp(30px,5vw,70px)}
-.copy{max-width:490px;padding:14px 0}
+.wrap{width:min(1080px,calc(100% - 48px));margin:auto}
+.layout{display:grid;grid-template-columns:.82fr 1.18fr;align-items:center;gap:clamp(24px,3.5vw,48px)}
+.copy{max-width:430px;padding:10px 0}
 .kicker{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border-radius:30px;background:#fff;border:1px solid #f5dfbf;color:#bd7135;font-size:12px;font-weight:800;box-shadow:0 7px 24px #8c653014}
 .kicker:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px #27b9a81c}
-h1{font-size:clamp(42px,5.4vw,72px);line-height:1.38;letter-spacing:-2px;margin:22px 0 13px;font-weight:900;color:#173b59}
-h1 span{color:#f17b43;position:relative;white-space:nowrap}
-h1 span:after{content:"";position:absolute;right:3px;left:0;bottom:1px;height:9px;border-radius:9px;background:#ffd45e;opacity:.65;z-index:-1}
-.description{font-size:15px;line-height:2.2;color:#4e6579;max-width:440px;margin:0}
-.slogan{display:flex;align-items:center;gap:10px;margin-top:27px;color:#267f83;font-size:12px;font-weight:800}
+h1{font-size:clamp(34px,3.8vw,49px);line-height:1.55;letter-spacing:-.7px;margin:17px 0 10px;font-weight:700;color:#173b59}
+h1 span{display:inline-block;color:#e97842;position:relative;white-space:nowrap;font-family:Shekasteh,PortalFa,serif;font-size:1.12em;font-weight:400;line-height:1.65;letter-spacing:0}
+h1 span:after{content:"";position:absolute;right:8px;left:4px;bottom:7px;height:6px;border-radius:9px;background:#ffd45e;opacity:.55;z-index:-1}
+.description{font-size:13px;line-height:2.15;color:#4e6579;max-width:400px;margin:0}
+.slogan{display:flex;align-items:center;gap:10px;margin-top:20px;color:#267f83;font-size:11px;font-weight:700}
 .slogan:before{content:"";width:35px;height:3px;border-radius:4px;background:linear-gradient(90deg,var(--orange),var(--yellow),var(--teal))}
-.gateway{position:relative;background:rgba(255,255,255,.91);border:1px solid #fff;border-radius:28px;padding:clamp(17px,2.5vw,27px);box-shadow:0 22px 65px rgba(47,78,94,.15);backdrop-filter:blur(14px)}
+.gateway{position:relative;background:rgba(255,255,255,.93);border:1px solid #fff;border-radius:24px;padding:clamp(15px,2vw,22px);box-shadow:0 18px 48px rgba(47,78,94,.13);backdrop-filter:blur(12px)}
 .gateway:before{content:"";position:absolute;inset:0 18% auto;height:4px;border-radius:0 0 8px 8px;background:linear-gradient(90deg,var(--teal),var(--blue),var(--violet),var(--coral),var(--orange))}
-.gateway-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:1px 2px 19px}
-.gateway-title{font-size:18px;font-weight:900;color:#1b3c56}
+.gateway-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:1px 2px 14px}
+.gateway-title{font-size:16px;font-weight:700;color:#1b3c56}
 .gateway-sub{font-size:11px;color:#788b9a;margin-top:4px}
 .gateway-mark{width:43px;height:43px;display:grid;place-items:center;border-radius:15px;background:#fff3df;color:#e78a39;font-size:23px}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-.card{--accent:var(--blue);--wash:#edf7ff;position:relative;display:flex;align-items:center;gap:12px;min-height:92px;padding:13px 12px;background:var(--wash);border:1px solid transparent;border-radius:17px;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.card{--accent:var(--blue);--wash:#edf7ff;position:relative;display:flex;align-items:center;gap:10px;min-height:78px;padding:10px 11px;background:var(--wash);border:1px solid transparent;border-radius:15px;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
 .card:after{content:"";position:absolute;right:0;top:15px;bottom:15px;width:4px;border-radius:5px;background:var(--accent);transform:scaleY(.45);opacity:.7;transition:.2s}
 .card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 35%,white);box-shadow:0 12px 24px rgba(42,75,97,.10)}
 .card:hover:after{transform:scaleY(1);opacity:1}
-.card-icon{width:43px;height:43px;flex:0 0 43px;display:grid;place-items:center;border-radius:14px;background:#fff;color:var(--accent);font-size:21px;box-shadow:0 4px 12px rgba(31,61,79,.06)}
+.card-icon{width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;border-radius:12px;background:#fff;color:var(--accent);font-size:19px;box-shadow:0 4px 12px rgba(31,61,79,.06)}
 .card-copy{min-width:0}
-.card strong{display:block;font-size:12px;line-height:1.8;font-weight:900;color:#24445d}
-.card small{display:block;margin-top:2px;font-size:10px;line-height:1.7;color:#6b7f90}
+.card strong{display:block;font-size:11px;line-height:1.8;font-weight:700;color:#24445d}
+.card small{display:block;margin-top:2px;font-size:9px;line-height:1.7;color:#6b7f90}
 .card-arrow{margin-right:auto;color:var(--accent);font-size:19px;transition:transform .2s}
 .card:hover .card-arrow{transform:translateX(-3px)}
 .c1{--accent:#299cdb;--wash:#edf8ff}.c2{--accent:#e66d78;--wash:#fff1f1}.c3{--accent:#df9636;--wash:#fff6e8}.c4{--accent:#20a993;--wash:#eaf9f4}.c5{--accent:#8876dc;--wash:#f3f0ff}
-.federations{grid-column:1/-1;--accent:#e98736;--wash:#fff4df;min-height:78px}
+.federations{--accent:#e98736;--wash:#fff4df}
 .federations .card-icon{background:#fff;color:#df8b31}
-.federations strong{font-size:13px}
+.federations strong{font-size:11px}
 .federations small{color:#7e725e}
 .bottom-note{display:flex;justify-content:center;gap:8px;align-items:center;margin-top:17px;color:#91a0aa;font-size:10px}
 .bottom-note span{color:#e58b42;font-weight:800}
-@media(max-width:900px){.layout{grid-template-columns:1fr;gap:26px;max-width:700px;margin:auto}.copy{max-width:650px;padding:0}.description{max-width:590px}h1{font-size:clamp(40px,7vw,60px)}}
-@media(max-width:540px){.intro{padding:30px 0}.wrap{width:calc(100% - 28px)}.layout{gap:22px}.kicker{font-size:10px;padding:7px 12px}h1{font-size:39px;line-height:1.45;letter-spacing:-1.2px;margin:15px 0 8px}.description{font-size:12px;line-height:2.05}.slogan{margin-top:15px;font-size:10px}.gateway{padding:15px;border-radius:21px}.gateway-head{margin-bottom:13px}.gateway-title{font-size:15px}.gateway-sub{font-size:10px}.gateway-mark{width:37px;height:37px;border-radius:12px}.cards{gap:8px}.card{min-height:83px;padding:9px 8px;gap:8px;border-radius:13px}.card-icon{width:35px;height:35px;flex-basis:35px;border-radius:11px;font-size:17px}.card strong{font-size:10px}.card small{font-size:9px}.card-arrow{font-size:15px}.federations{min-height:70px}.federations strong{font-size:11px}.bottom-note{font-size:9px;margin-top:12px}}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:20px;max-width:700px;margin:auto}.copy{max-width:650px;padding:0}.description{max-width:590px}h1{font-size:clamp(34px,5.5vw,44px)}}
+@media(max-width:540px){.intro{padding:25px 0}.wrap{width:calc(100% - 28px)}.layout{gap:17px}.kicker{font-size:10px;padding:7px 12px}h1{font-size:34px;line-height:1.48;letter-spacing:-.4px;margin:12px 0 6px}h1 span{font-size:1.13em}.description{font-size:11px;line-height:2}.slogan{margin-top:12px;font-size:10px}.gateway{padding:13px;border-radius:19px}.gateway-head{margin-bottom:11px}.gateway-title{font-size:14px}.gateway-sub{font-size:9px}.gateway-mark{width:34px;height:34px;border-radius:11px}.cards{gap:7px}.card{min-height:72px;padding:8px 7px;gap:7px;border-radius:12px}.card-icon{width:32px;height:32px;flex-basis:32px;border-radius:10px;font-size:16px}.card strong{font-size:10px}.card small{font-size:8.5px}.card-arrow{font-size:14px}.bottom-note{font-size:9px;margin-top:10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
 </style>
 </head>
@@ -66,22 +69,22 @@ h1 span:after{content:"";position:absolute;right:3px;left:0;bottom:1px;height:9p
 <div class="wrap layout">
 <section class="copy">
 <div class="kicker">درگاه یکپارچه زیست‌بوم ورزش ایران</div>
-<h1>ورزش ایران،<br><span>یک آغاز تازه</span></h1>
-<p class="description">اینجا نقطهٔ آغاز آشنایی و ارتباط با ظرفیت‌ها، خدمات و فرصت‌های ورزش ایران است؛ مسیر موردنظرتان را انتخاب کنید و به دنیای تخصصی آن وارد شوید.</p>
-<div class="slogan">یک پورتال، مسیرهای بی‌شمار برای ورزش</div>
+<h1>ورزش ایران،<br><span>همراه با آینده</span></h1>
+<p class="description">درگاه یکپارچه مراکز و ظرفیت‌های ورزش ایران؛ برای دسترسی به مسیرهای تخصصی، یکی از حوزه‌های زیر را انتخاب کنید.</p>
+<div class="slogan">یک درگاه برای زیست‌بوم ورزش ایران</div>
 </section>
 <section class="gateway" aria-label="درگاه ورود به مراکز پورتال ورزش">
 <div class="gateway-head">
-<div><div class="gateway-title">به کدام مسیر می‌روید؟</div><div class="gateway-sub">برای ورود، یکی از مراکز زیر را انتخاب کنید</div></div>
+<div><div class="gateway-title">مراکز اصلی پورتال ورزش</div><div class="gateway-sub">انتخاب حوزه موردنظر</div></div>
 <div class="gateway-mark" aria-hidden="true">✦</div>
 </div>
 <div class="cards">
-<a class="card c1" href="centers/governance.html"><span class="card-icon">⌘</span><span class="card-copy"><strong>راهبری و مدیریت</strong><small>سیاست‌گذاری و پایش ورزش</small></span><span class="card-arrow">←</span></a>
-<a class="card c2" href="centers/transparency.html"><span class="card-icon">◈</span><span class="card-copy"><strong>شفافیت و سلامت</strong><small>اعتماد و پاسخگویی</small></span><span class="card-arrow">←</span></a>
-<a class="card c3" href="centers/economy.html"><span class="card-icon">↗</span><span class="card-copy"><strong>اقتصاد و سرمایه‌گذاری</strong><small>منابع و فرصت‌های اقتصادی</small></span><span class="card-arrow">←</span></a>
-<a class="card c4" href="centers/people.html"><span class="card-icon">♙</span><span class="card-copy"><strong>سرمایه انسانی ورزش</strong><small>ورزشکاران و متخصصان</small></span><span class="card-arrow">←</span></a>
+<a class="card c1" href="centers/governance.html"><span class="card-icon">⌘</span><span class="card-copy"><strong>راهبری و مدیریت</strong><small>سیاست‌گذاری، برنامه‌ریزی و نظارت</small></span><span class="card-arrow">←</span></a>
+<a class="card c2" href="centers/transparency.html"><span class="card-icon">◈</span><span class="card-copy"><strong>شفافیت و سلامت</strong><small>سلامت اداری و پاسخگویی</small></span><span class="card-arrow">←</span></a>
+<a class="card c3" href="centers/economy.html"><span class="card-icon">↗</span><span class="card-copy"><strong>اقتصاد و سرمایه‌گذاری</strong><small>تأمین مالی و کسب‌وکار ورزش</small></span><span class="card-arrow">←</span></a>
+<a class="card c4" href="centers/people.html"><span class="card-icon">♙</span><span class="card-copy"><strong>سرمایه انسانی ورزش</strong><small>ورزشکار، مربی، داور و متخصص</small></span><span class="card-arrow">←</span></a>
 <a class="card c5" href="centers/knowledge.html"><span class="card-icon">✳</span><span class="card-copy"><strong>دانش و نوآوری</strong><small>آموزش، پژوهش و فناوری</small></span><span class="card-arrow">←</span></a>
-<a class="card federations" href="centers/federations.html"><span class="card-icon">🏆</span><span class="card-copy"><strong>فدراسیون‌های ورزشی ایران</strong><small>معرفی فدراسیون‌ها، رشته‌ها و ساختار ورزش قهرمانی</small></span><span class="card-arrow">←</span></a>
+<a class="card federations" href="centers/federations.html"><span class="card-icon">🏆</span><span class="card-copy"><strong>فدراسیون‌های ورزشی</strong><small>فدراسیون‌ها و رشته‌های ورزشی کشور</small></span><span class="card-arrow">←</span></a>
 </div>
 <div class="bottom-note"><span>پورتال ورزش</span> · پیوند ظرفیت‌ها، گشودن مسیرها</div>
 </section>
