@@ -101,17 +101,25 @@ def collect_bamorabi():
     url='https://bamorabi.ir/sports-federations/'
     ct,body=get(url,limit=4000000,timeout=25)
     p=SourceParser();p.feed(body.decode('utf-8','ignore'))
-    report=[]; seen=set()
+    tasks=[]; seen=set()
     for rec in p.records:
         e=match_item(rec['name'])
         if not e or e['slug'] in seen:continue
         seen.add(e['slug'])
-        saved=save_image(rec['logo_url'],e['slug']+'-logo') if rec['logo_url'] else None
         if rec['website']:
             host=urlparse(rec['website']).netloc.lower().replace('www.','')
-            # use this listing only as an additional verified candidate, not if the record has a clearly established domain
-            if host: e['domain']=host
-        if saved:report.append({'slug':e['slug'],'name':e['name'],'logo':saved,'source':rec['logo_url'],'source_type':'Bamorabi logo directory'})
+            if host:e['domain']=host
+        if rec['logo_url']:tasks.append((e,rec))
+    def download(task):
+        e,rec=task
+        saved=save_image(rec['logo_url'],e['slug']+'-logo')
+        if saved:return {'slug':e['slug'],'name':e['name'],'logo':saved,'source':rec['logo_url'],'source_type':'Bamorabi logo directory'}
+        return None
+    report=[]
+    with ThreadPoolExecutor(max_workers=16) as pool:
+        for result in as_completed([pool.submit(download,t) for t in tasks]):
+            item=result.result()
+            if item:report.append(item)
     DATA_PATH.write_text(json.dumps(DATA,ensure_ascii=False,indent=2),encoding='utf-8')
     # Keep the public directory cards aligned with the current official domains.
     index_path=ROOT/'centers'/'federations.html'
@@ -119,7 +127,7 @@ def collect_bamorabi():
         html=index_path.read_text(encoding='utf-8')
         rows=[[e['name'],e.get('short',e['name']),e.get('domain',''),e['slug'],e.get('description','')] for e in DATA]
         js=json.dumps(rows,ensure_ascii=False,separators=(',',':'))
-        html=re.sub(r'const federations=\[.*?\];','const federations='+js+';',html,flags=re.S)
+        html=re.sub(r'const federations=\\[.*?\\];','const federations='+js+';',html,flags=re.S)
         index_path.write_text(html,encoding='utf-8')
     return report
 
