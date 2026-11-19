@@ -3,66 +3,89 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101d35">
-<meta name="description" content="درگاه یکپارچه ورود به مراکز، خدمات و ظرفیت‌های زیست‌بوم ورزش ایران.">
-<title>پورتال ورزش | درگاه یکپارچه ورزش ایران</title>
+<meta name="theme-color" content="#fff8ed">
+<meta name="description" content="پورتال ورزش؛ درگاه یکپارچه مراکز، خدمات و ظرفیت‌های زیست‌بوم ورزش ایران.">
+<title>پورتال ورزش | همه مسیرهای ورزش</title>
 <style>
-@font-face{font-family:PortalFa;src:url("assets/fonts/Vazirmatn-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}@font-face{font-family:PortalFa;src:url("assets/fonts/Vazirmatn-Bold.woff2") format("woff2");font-weight:700 900;font-style:normal;font-display:swap}
-:root{--navy:#101d35;--navy2:#172b49;--gold:#d9b77d;--ink:#17243a;--muted:#6c7888;--line:#e6eaf0;--paper:#f4f6f9}
-*{box-sizing:border-box}html{min-height:100%;scroll-behavior:smooth}body{margin:0;min-height:100vh;font-family:PortalFa,Tahoma,sans-serif;color:var(--ink);background:var(--paper)}a{color:inherit;text-decoration:none}.shell{width:min(1160px,calc(100% - 44px));margin:auto}
-.hero{min-height:100svh;position:relative;isolation:isolate;display:flex;flex-direction:column;overflow:hidden;background:#101d35;color:#fff}
-.hero:before{content:"";position:absolute;z-index:-2;inset:0;background:url("assets/images/sports-running-track.webp") center 44%/cover no-repeat;transform:scale(1.015)}
-.hero:after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(105deg,rgba(8,18,34,.90),rgba(12,29,52,.76) 52%,rgba(13,31,52,.64)),linear-gradient(0deg,#101d35 0%,transparent 48%)}
-.header{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff27}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:19px;letter-spacing:-.4px}.brand-mark{width:42px;height:42px;display:grid;place-items:center;border:1px solid #d9b77d88;border-radius:14px;color:var(--gold);font-size:23px;background:#ffffff0b}.brand small{display:block;font-size:9px;letter-spacing:1.8px;color:#c2cedd;font-weight:500;direction:ltr;text-align:right}
-.header-link{display:inline-flex;align-items:center;gap:9px;border:1px solid #ffffff66;border-radius:30px;padding:9px 17px;font-size:12px;color:#fff;transition:.2s}.header-link:hover{background:#ffffff18;border-color:#e1c18a}
-.main{flex:1;display:flex;align-items:center;padding:52px 0 44px}.content{width:100%;display:grid;grid-template-columns:.92fr 1.08fr;gap:56px;align-items:center}
-.intro{max-width:470px}.eyebrow{display:flex;align-items:center;gap:10px;color:#e4c891;font-size:12px;font-weight:700;letter-spacing:.2px}.eyebrow:before{content:"";width:27px;height:1px;background:var(--gold)}
-h1{font-size:clamp(36px,4.5vw,58px);line-height:1.48;letter-spacing:-1.7px;margin:18px 0 13px;font-weight:900}h1 span{color:#e4c891}.lead{font-size:14px;line-height:2.15;color:#d7e0ea;margin:0;max-width:440px}
-.short-rule{width:54px;height:2px;background:var(--gold);margin:26px 0 0}
-.portal{border:1px solid #ffffff38;border-radius:25px;background:rgba(245,248,252,.96);padding:23px;color:var(--ink);box-shadow:0 24px 80px #06132645;backdrop-filter:blur(12px)}
-.portal-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:0 2px 17px}.portal-title{font-size:16px;font-weight:900}.portal-sub{font-size:10px;color:var(--muted);margin-top:2px}.portal-count{font-size:10px;color:#8a6a3d;background:#f3eadb;padding:6px 10px;border-radius:20px;white-space:nowrap}
-.entries{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.entry{min-height:91px;display:flex;align-items:center;gap:12px;padding:14px 13px;background:#fff;border:1px solid var(--line);border-radius:15px;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative;overflow:hidden}
-.entry:after{content:"";position:absolute;right:0;top:15px;bottom:15px;width:3px;border-radius:3px;background:#c8a36b;opacity:0;transition:.2s}
-.entry:hover{transform:translateY(-3px);border-color:#c7b18d;box-shadow:0 10px 24px #142b470d}.entry:hover:after{opacity:1}
-.entry-icon{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:13px;background:#edf2f7;color:#24486c;font-size:19px;font-weight:800}
-.entry-text{min-width:0}.entry strong{display:block;font-size:12px;font-weight:800;line-height:1.8}.entry small{display:block;color:var(--muted);font-size:10px;line-height:1.8;margin-top:1px}.entry-arrow{margin-right:auto;color:#9a815e;font-size:18px;align-self:center}
-.entry.federation{grid-column:1/-1;background:linear-gradient(100deg,#142b49,#1c3c61);border-color:#244568;color:#fff;min-height:76px}.entry.federation .entry-icon{background:#ffffff14;color:#e5c58f}.entry.federation small{color:#c7d3e0}.entry.federation .entry-arrow{color:#e5c58f}
-.bottom{padding:0 0 21px;display:flex;justify-content:space-between;align-items:center;gap:20px;color:#b8c5d4;font-size:10px}.bottom strong{color:#e1c18a;font-weight:600}.bottom-links{display:flex;gap:18px;flex-wrap:wrap}.bottom a:hover{color:#fff}
-@media(max-width:850px){.main{padding:48px 0}.content{grid-template-columns:1fr;gap:30px;max-width:650px;margin:auto}.intro{max-width:600px}.lead{max-width:580px}h1{font-size:clamp(34px,7vw,50px)}.short-rule{margin-top:18px}.portal{padding:20px}}
-@media(max-width:520px){.shell{width:calc(100% - 28px)}.header{height:70px}.brand{font-size:16px}.brand-mark{width:37px;height:37px}.header-link{padding:8px 12px;font-size:10px}.main{padding:39px 0 32px}.content{gap:25px}.eyebrow{font-size:11px}h1{font-size:35px;line-height:1.5;margin:13px 0 9px}.lead{font-size:12px}.portal{padding:14px;border-radius:19px}.portal-head{margin-bottom:12px}.portal-title{font-size:14px}.entries{gap:8px}.entry{min-height:82px;padding:10px 9px;gap:8px;border-radius:12px}.entry-icon{width:35px;height:35px;flex-basis:35px;font-size:16px;border-radius:10px}.entry strong{font-size:10px}.entry small{font-size:9px}.entry-arrow{font-size:15px}.entry.federation{min-height:69px}.bottom{font-size:9px;align-items:flex-start;flex-direction:column;gap:8px}.bottom-links{gap:14px}}
+@font-face{font-family:PortalFa;src:url("assets/fonts/Vazirmatn-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:PortalFa;src:url("assets/fonts/Vazirmatn-Bold.woff2") format("woff2");font-weight:700 900;font-display:swap}
+:root{--ink:#17324b;--muted:#61758a;--orange:#ff8b42;--coral:#ff6b72;--blue:#3d9fe8;--teal:#27b9a8;--violet:#8d7be8;--yellow:#ffd45e}
+*{box-sizing:border-box}
+html{min-height:100%;scroll-behavior:smooth}
+body{margin:0;min-height:100vh;font-family:PortalFa,Tahoma,sans-serif;color:var(--ink);background:#fff8ed}
+a{color:inherit;text-decoration:none}
+.intro{position:relative;isolation:isolate;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:clamp(24px,4vw,54px) 0}
+.intro:before{content:"";position:absolute;z-index:-3;inset:0;background:url("assets/images/sports-running-track.webp") center 48%/cover no-repeat;transform:scale(1.025)}
+.intro:after{content:"";position:absolute;z-index:-2;inset:0;background:linear-gradient(100deg,rgba(255,249,235,.89) 0%,rgba(255,250,239,.79) 42%,rgba(255,255,255,.54) 100%),linear-gradient(0deg,rgba(255,255,255,.64),transparent 42%)}
+.glow{position:absolute;z-index:-1;border-radius:50%;filter:blur(2px);pointer-events:none}
+.glow.one{width:360px;height:360px;top:-170px;right:-90px;background:rgba(255,195,87,.34)}
+.glow.two{width:300px;height:300px;bottom:-150px;left:-80px;background:rgba(57,190,203,.25)}
+.wrap{width:min(1180px,calc(100% - 48px));margin:auto}
+.layout{display:grid;grid-template-columns:.86fr 1.14fr;align-items:center;gap:clamp(30px,5vw,70px)}
+.copy{max-width:490px;padding:14px 0}
+.kicker{display:inline-flex;align-items:center;gap:9px;padding:8px 15px;border-radius:30px;background:#fff;border:1px solid #f5dfbf;color:#bd7135;font-size:12px;font-weight:800;box-shadow:0 7px 24px #8c653014}
+.kicker:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px #27b9a81c}
+h1{font-size:clamp(42px,5.4vw,72px);line-height:1.38;letter-spacing:-2px;margin:22px 0 13px;font-weight:900;color:#173b59}
+h1 span{color:#f17b43;position:relative;white-space:nowrap}
+h1 span:after{content:"";position:absolute;right:3px;left:0;bottom:1px;height:9px;border-radius:9px;background:#ffd45e;opacity:.65;z-index:-1}
+.description{font-size:15px;line-height:2.2;color:#4e6579;max-width:440px;margin:0}
+.slogan{display:flex;align-items:center;gap:10px;margin-top:27px;color:#267f83;font-size:12px;font-weight:800}
+.slogan:before{content:"";width:35px;height:3px;border-radius:4px;background:linear-gradient(90deg,var(--orange),var(--yellow),var(--teal))}
+.gateway{position:relative;background:rgba(255,255,255,.91);border:1px solid #fff;border-radius:28px;padding:clamp(17px,2.5vw,27px);box-shadow:0 22px 65px rgba(47,78,94,.15);backdrop-filter:blur(14px)}
+.gateway:before{content:"";position:absolute;inset:0 18% auto;height:4px;border-radius:0 0 8px 8px;background:linear-gradient(90deg,var(--teal),var(--blue),var(--violet),var(--coral),var(--orange))}
+.gateway-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:1px 2px 19px}
+.gateway-title{font-size:18px;font-weight:900;color:#1b3c56}
+.gateway-sub{font-size:11px;color:#788b9a;margin-top:4px}
+.gateway-mark{width:43px;height:43px;display:grid;place-items:center;border-radius:15px;background:#fff3df;color:#e78a39;font-size:23px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.card{--accent:var(--blue);--wash:#edf7ff;position:relative;display:flex;align-items:center;gap:12px;min-height:92px;padding:13px 12px;background:var(--wash);border:1px solid transparent;border-radius:17px;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.card:after{content:"";position:absolute;right:0;top:15px;bottom:15px;width:4px;border-radius:5px;background:var(--accent);transform:scaleY(.45);opacity:.7;transition:.2s}
+.card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 35%,white);box-shadow:0 12px 24px rgba(42,75,97,.10)}
+.card:hover:after{transform:scaleY(1);opacity:1}
+.card-icon{width:43px;height:43px;flex:0 0 43px;display:grid;place-items:center;border-radius:14px;background:#fff;color:var(--accent);font-size:21px;box-shadow:0 4px 12px rgba(31,61,79,.06)}
+.card-copy{min-width:0}
+.card strong{display:block;font-size:12px;line-height:1.8;font-weight:900;color:#24445d}
+.card small{display:block;margin-top:2px;font-size:10px;line-height:1.7;color:#6b7f90}
+.card-arrow{margin-right:auto;color:var(--accent);font-size:19px;transition:transform .2s}
+.card:hover .card-arrow{transform:translateX(-3px)}
+.c1{--accent:#299cdb;--wash:#edf8ff}.c2{--accent:#e66d78;--wash:#fff1f1}.c3{--accent:#df9636;--wash:#fff6e8}.c4{--accent:#20a993;--wash:#eaf9f4}.c5{--accent:#8876dc;--wash:#f3f0ff}
+.federations{grid-column:1/-1;--accent:#e98736;--wash:#fff4df;min-height:78px}
+.federations .card-icon{background:#fff;color:#df8b31}
+.federations strong{font-size:13px}
+.federations small{color:#7e725e}
+.bottom-note{display:flex;justify-content:center;gap:8px;align-items:center;margin-top:17px;color:#91a0aa;font-size:10px}
+.bottom-note span{color:#e58b42;font-weight:800}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:26px;max-width:700px;margin:auto}.copy{max-width:650px;padding:0}.description{max-width:590px}h1{font-size:clamp(40px,7vw,60px)}}
+@media(max-width:540px){.intro{padding:30px 0}.wrap{width:calc(100% - 28px)}.layout{gap:22px}.kicker{font-size:10px;padding:7px 12px}h1{font-size:39px;line-height:1.45;letter-spacing:-1.2px;margin:15px 0 8px}.description{font-size:12px;line-height:2.05}.slogan{margin-top:15px;font-size:10px}.gateway{padding:15px;border-radius:21px}.gateway-head{margin-bottom:13px}.gateway-title{font-size:15px}.gateway-sub{font-size:10px}.gateway-mark{width:37px;height:37px;border-radius:12px}.cards{gap:8px}.card{min-height:83px;padding:9px 8px;gap:8px;border-radius:13px}.card-icon{width:35px;height:35px;flex-basis:35px;border-radius:11px;font-size:17px}.card strong{font-size:10px}.card small{font-size:9px}.card-arrow{font-size:15px}.federations{min-height:70px}.federations strong{font-size:11px}.bottom-note{font-size:9px;margin-top:12px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
 </style>
 </head>
 <body>
-<div class="hero">
-<header class="shell header">
-<a class="brand" href="./" aria-label="پورتال ورزش، صفحه ورود"><span class="brand-mark">و</span><span>پورتال ورزش<small>VARZESH PORTAL</small></span></a>
-<a class="header-link" href="https://fedrasionha.ir" target="_blank" rel="noopener">درگاه فدراسیون‌ها <span>↗</span></a>
-</header>
-<main class="shell main">
-<div class="content">
-<section class="intro">
-<div class="eyebrow">درگاه یکپارچه زیست‌بوم ورزش ایران</div>
-<h1>همه مسیرهای ورزش،<br><span>از یک درگاه</span></h1>
-<p class="lead">به مراکز تخصصی، خدمات و ظرفیت‌های ورزش ایران وارد شوید؛ یک نقطه آغاز برای ارتباط، شناخت و توسعه.</p>
-<div class="short-rule"></div>
+<main class="intro">
+<div class="glow one"></div><div class="glow two"></div>
+<div class="wrap layout">
+<section class="copy">
+<div class="kicker">درگاه یکپارچه زیست‌بوم ورزش ایران</div>
+<h1>ورزش ایران،<br><span>یک آغاز تازه</span></h1>
+<p class="description">اینجا نقطهٔ آغاز آشنایی و ارتباط با ظرفیت‌ها، خدمات و فرصت‌های ورزش ایران است؛ مسیر موردنظرتان را انتخاب کنید و به دنیای تخصصی آن وارد شوید.</p>
+<div class="slogan">یک پورتال، مسیرهای بی‌شمار برای ورزش</div>
 </section>
-<section class="portal" aria-label="درگاه ورود به مراکز پورتال ورزش">
-<div class="portal-head"><div><div class="portal-title">از کجا شروع می‌کنید؟</div><div class="portal-sub">یکی از درگاه‌های زیر را انتخاب کنید</div></div><span class="portal-count">مراکز پورتال</span></div>
-<div class="entries">
-<a class="entry" href="centers/governance.html"><span class="entry-icon">⌘</span><span class="entry-text"><strong>راهبری و مدیریت</strong><small>سیاست‌گذاری و پایش ورزش</small></span><span class="entry-arrow">←</span></a>
-<a class="entry" href="centers/transparency.html"><span class="entry-icon">◈</span><span class="entry-text"><strong>شفافیت و سلامت</strong><small>اعتماد و پاسخگویی</small></span><span class="entry-arrow">←</span></a>
-<a class="entry" href="centers/economy.html"><span class="entry-icon">↗</span><span class="entry-text"><strong>اقتصاد و سرمایه‌گذاری</strong><small>منابع و فرصت‌های اقتصادی</small></span><span class="entry-arrow">←</span></a>
-<a class="entry" href="centers/people.html"><span class="entry-icon">♙</span><span class="entry-text"><strong>سرمایه انسانی ورزش</strong><small>ورزشکاران و متخصصان</small></span><span class="entry-arrow">←</span></a>
-<a class="entry" href="centers/knowledge.html"><span class="entry-icon">✳</span><span class="entry-text"><strong>دانش و نوآوری</strong><small>آموزش، پژوهش و فناوری</small></span><span class="entry-arrow">←</span></a>
-<a class="entry federation" href="https://fedrasionha.ir" target="_blank" rel="noopener"><span class="entry-icon">🏆</span><span class="entry-text"><strong>فدراسیون‌های ورزشی ایران</strong><small>ورود به درگاه مستقل معرفی فدراسیون‌ها و رشته‌های ورزشی</small></span><span class="entry-arrow">↗</span></a>
+<section class="gateway" aria-label="درگاه ورود به مراکز پورتال ورزش">
+<div class="gateway-head">
+<div><div class="gateway-title">به کدام مسیر می‌روید؟</div><div class="gateway-sub">برای ورود، یکی از مراکز زیر را انتخاب کنید</div></div>
+<div class="gateway-mark" aria-hidden="true">✦</div>
 </div>
+<div class="cards">
+<a class="card c1" href="centers/governance.html"><span class="card-icon">⌘</span><span class="card-copy"><strong>راهبری و مدیریت</strong><small>سیاست‌گذاری و پایش ورزش</small></span><span class="card-arrow">←</span></a>
+<a class="card c2" href="centers/transparency.html"><span class="card-icon">◈</span><span class="card-copy"><strong>شفافیت و سلامت</strong><small>اعتماد و پاسخگویی</small></span><span class="card-arrow">←</span></a>
+<a class="card c3" href="centers/economy.html"><span class="card-icon">↗</span><span class="card-copy"><strong>اقتصاد و سرمایه‌گذاری</strong><small>منابع و فرصت‌های اقتصادی</small></span><span class="card-arrow">←</span></a>
+<a class="card c4" href="centers/people.html"><span class="card-icon">♙</span><span class="card-copy"><strong>سرمایه انسانی ورزش</strong><small>ورزشکاران و متخصصان</small></span><span class="card-arrow">←</span></a>
+<a class="card c5" href="centers/knowledge.html"><span class="card-icon">✳</span><span class="card-copy"><strong>دانش و نوآوری</strong><small>آموزش، پژوهش و فناوری</small></span><span class="card-arrow">←</span></a>
+<a class="card federations" href="centers/federations.html"><span class="card-icon">🏆</span><span class="card-copy"><strong>فدراسیون‌های ورزشی ایران</strong><small>معرفی فدراسیون‌ها، رشته‌ها و ساختار ورزش قهرمانی</small></span><span class="card-arrow">←</span></a>
+</div>
+<div class="bottom-note"><span>پورتال ورزش</span> · پیوند ظرفیت‌ها، گشودن مسیرها</div>
 </section>
 </div>
 </main>
-<footer class="shell bottom"><span><strong>پورتال ورزش</strong> · پیوند ظرفیت‌ها، گشودن مسیرها</span><nav class="bottom-links" aria-label="پیوندهای تکمیلی"><a href="https://varzeshportal.ir">صفحه ورود</a><a href="https://fedrasionha.ir" target="_blank" rel="noopener">فدراسیون‌ها</a><a href="https://kazemi44468-bot.github.io/tarhha/pages/shafaf-varzesh-tarh.html" target="_blank" rel="noopener">طرح شفاف ورزش</a></nav></footer>
-</div>
 </body>
 </html>
