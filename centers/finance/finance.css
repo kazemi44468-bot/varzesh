@@ -119,3 +119,11 @@ table{border:1px solid #e2e9ee;border-radius:8px;overflow:hidden}
 .profile-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;font-size:11px;color:#526d80}
 @media(max-width:600px){.profile-head{align-items:stretch;flex-direction:column}.profile-total{min-width:0}.profile-details{grid-template-columns:1fr}.search-input{min-width:0;width:100%}}
 @media print{.tabs,.topbar,.head-tools,.form-panel,.btn{display:none!important}.view.hidden{display:none!important}.view:not(.hidden){display:block!important}.panel{box-shadow:none;break-inside:avoid}}
+
+/* Extended employee registry fields */
+.person-row-details summary{cursor:pointer;color:#315f7c;font-size:10px;font-weight:700;white-space:nowrap}
+.person-details-grid{display:grid;grid-template-columns:repeat(3,minmax(150px,1fr));gap:8px 14px;padding:12px;margin-top:8px;background:#f7fafb;border:1px solid #e0e8ed;border-radius:8px;white-space:normal;min-width:520px}
+.person-details-grid span{font-size:10px;color:#526d80;white-space:normal;overflow-wrap:anywhere}
+.person-details-grid b{color:#244f6c}
+.person-row-details{min-width:150px}
+@media(max-width:650px){.person-details-grid{grid-template-columns:repeat(2,minmax(130px,1fr))}}
