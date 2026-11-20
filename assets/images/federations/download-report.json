@@ -107,7 +107,7 @@
     "slug": "blind",
     "website": "https://blindsports.ir",
     "status": "fetch-failed",
-    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
+    "error": "<urlopen error timed out>",
     "directory_logo": "blind-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-2-150x150.png",
     "official_content_status": "collected",
@@ -125,7 +125,7 @@
     "slug": "bodybuilding",
     "website": "https://iranbbf.ir",
     "status": "fetch-failed",
-    "error": "<urlopen error timed out>",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
     "directory_logo": "bodybuilding-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/fed_badansazi-150x150.png",
     "official_content_status": "limited",
@@ -442,7 +442,7 @@
     "logo": "gymnastics-logo.png",
     "photos": [
       "gymnastics-photo-1.jpg",
-      "gymnastics-photo-2.png"
+      "gymnastics-photo-2.jpg"
     ],
     "logo_found": true,
     "directory_logo": "gymnastics-logo.png",
@@ -484,7 +484,7 @@
     "slug": "hockey",
     "website": "https://hockeyfed.ir",
     "status": "fetch-failed",
-    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
+    "error": "<urlopen error timed out>",
     "directory_logo": "hockey-logo.jpg",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/haki_logo.jpg",
     "official_content_status": "limited",
@@ -643,7 +643,7 @@
     "slug": "motorsport",
     "website": "https://mafiri.ir",
     "status": "fetch-failed",
-    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
+    "error": "<urlopen error timed out>",
     "directory_logo": "motorsport-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-1-150x150.png",
     "official_content_status": "limited",
@@ -896,18 +896,13 @@
     "slug": "ski",
     "website": "https://skifed.ir",
     "status": "fetch-failed",
-    "error": "<urlopen error [Errno 104] Connection reset by peer>",
+    "error": "<urlopen error timed out>",
     "directory_logo": "ski-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-19.png",
-    "official_content_status": "collected",
+    "official_content_status": "limited",
     "official_content_url": "http://skifed.ir",
-    "official_content_paragraphs": 9,
-    "official_content_sources": [
-      {
-        "url": "http://skifed.ir#",
-        "title": "فدراسیون اسکی و ورزشهای زمستانی جمهوری اسلامی ایران www.SKIFED.ir"
-      }
-    ]
+    "official_content_paragraphs": 0,
+    "official_content_sources": []
   },
   {
     "name": "ورزش بیماران خاص و پیوند اعضا",
