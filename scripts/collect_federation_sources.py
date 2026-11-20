@@ -287,27 +287,26 @@ def inject_profiles(profiles):
         html=path.read_text(encoding='utf-8')
         logo_files=sorted(OUT.glob(slug+'-logo.*'),key=lambda p:{'.png':0,'.jpg':1,'.webp':2,'.gif':3}.get(p.suffix.lower(),9))
         logo_file=logo_files[0] if logo_files else None
-        logo_tag=re.search(r'<img class="logo"[^>]*>',html)
-        if logo_tag:
-            if logo_file:
-                tag=re.sub(r'src="[^"]+"','src="../../assets/images/federations/'+logo_file.name+'"',logo_tag.group(0))
-                html=html.replace(logo_tag.group(0),tag)
-            else:
-                html=html.replace(logo_tag.group(0),'<div class="logo-placeholder">نشان '+esc(e.get('short',e['name']))+'</div>')
-                if '.logo-placeholder' not in html:
-                    html=html.replace('.media .logo{','.media .logo-placeholder{grid-column:1/-1;min-height:76px;display:grid;place-items:center;background:#fff;color:#6b8292;border:1px solid #e1e8ed;border-radius:8px;font-size:11px}.media .logo{')
         photo_files=[]
         for photo in sorted(OUT.glob(slug+'-photo-*')):
             if photo.stem not in [x.stem for x in photo_files]:photo_files.append(photo)
-        for i in range(1,3):
-            pattern=r'<img src="[^"]*'+re.escape(slug)+r'-photo-'+str(i)+r'\\.[^"]*"[^>]*>'
-            match=re.search(pattern,html)
-            if match:
-                if i<=len(photo_files):
-                    tag=re.sub(r'src="[^"]+"','src="../../assets/images/federations/'+photo_files[i-1].name+'"',match.group(0))
-                    html=html[:match.start()]+tag+html[match.end():]
-                else:
-                    html=html[:match.start()]+html[match.end():]
+        media=re.search(r'<div class="media">.*?</div>',html,re.S)
+        if media:
+            pieces=[]
+            if logo_file:
+                pieces.append('<img class="logo" src="../../assets/images/federations/'+logo_file.name+'" alt="نشان '+esc(e['name'])+'">')
+            else:
+                pieces.append('<div class="logo-placeholder">نشان '+esc(e.get('short',e['name']))+'</div>')
+                html=html.replace('.media .logo{','.media .logo-placeholder{grid-column:1/-1;min-height:76px;display:grid;place-items:center;background:#fff;color:#6b8292;border:1px solid #e1e8ed;border-radius:8px;font-size:11px}.media .logo{')
+            for i,photo in enumerate(photo_files[:2],1):
+                pieces.append('<img src="../../assets/images/federations/'+photo.name+'" alt="تصویر فعالیت '+esc(e.get('short',e['name']))+'" loading="lazy">')
+            html=html[:media.start()]+'<div class="media">' + ''.join(pieces) + '</div>'+html[media.end():]
+        official_url=('https://'+e['domain'].strip('/')) if e.get('domain') else ''
+        action=re.search(r'<a class="action" href="[^"]*" target="_blank" rel="noopener">[^<]*</a>',html)
+        if action and official_url:
+            html=html[:action.start()]+'<a class="action" href="'+esc(official_url)+'" target="_blank" rel="noopener">پایگاه اینترنتی فدراسیون</a>'+html[action.end():]
+        elif action:
+            html=html[:action.start()]+'<span class="action secondary">نشانی رسمی نیازمند تأیید</span>'+html[action.end():]
         prof=profiles.get(slug)
         if not prof or prof.get('status') not in ('collected','limited'):
             path.write_text(html,encoding='utf-8')
