@@ -59,19 +59,11 @@
     "error": "<urlopen error [Errno 104] Connection reset by peer>",
     "directory_logo": "athletics-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-37-150x150.png",
-    "official_content_status": "collected",
-    "official_content_url": "http://iranathletics.ir",
-    "official_content_paragraphs": 4,
-    "official_content_sources": [
-      {
-        "url": "http://iranathletics.ir#",
-        "title": "فدراسیون دو و میدانی جمهوری اسلامی ایران www.IranAthletics.ir"
-      },
-      {
-        "url": "http://iranathletics.ir",
-        "title": "فدراسیون دو و میدانی جمهوری اسلامی ایران www.IranAthletics.ir"
-      }
-    ]
+    "official_content_status": "fetch-failed",
+    "official_content_url": "https://iranathletics.ir",
+    "official_content_paragraphs": 0,
+    "official_content_sources": [],
+    "official_content_error": "<urlopen error timed out>"
   },
   {
     "name": "بدمینتون",
@@ -148,7 +140,7 @@
     "slug": "blind",
     "website": "https://blindsports.ir",
     "status": "fetch-failed",
-    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
+    "error": "<urlopen error timed out>",
     "directory_logo": "blind-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-2-150x150.png",
     "official_content_status": "collected",
@@ -274,7 +266,7 @@
         "title": "فدراسیون شطرنج جمهوری اسلامی ایران www.ircf.ir"
       },
       {
-        "url": "http://ircf.ir/PhotoReport/dpic?id=7&ts=14050829091940127",
+        "url": "http://ircf.ir/PhotoReport/dpic?id=7&ts=14050829092420451",
         "title": "قدردانی فدراسیون شطرنج از امدادگران هلال احمر"
       },
       {
@@ -316,14 +308,34 @@
   {
     "name": "کریکت",
     "slug": "cricket",
-    "website": "https://cricketiran.com",
+    "website": "https://ifsafed.com",
     "status": "fetch-failed",
-    "error": "<urlopen error [Errno -2] Name or service not known>",
-    "official_content_status": "fetch-failed",
-    "official_content_url": "https://cricketiran.com",
-    "official_content_paragraphs": 0,
-    "official_content_sources": [],
-    "official_content_error": "<urlopen error [Errno -2] Name or service not known>"
+    "error": "<urlopen error [Errno 111] Connection refused>",
+    "official_content_status": "collected",
+    "official_content_url": "http://ifsafed.com",
+    "official_content_paragraphs": 1,
+    "official_content_sources": [
+      {
+        "url": "http://ifsafed.com/Item.aspx?id=21234",
+        "title": "فدراسیون انجمنهای ورزشی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "http://ifsafed.com/Item.aspx?id=21385",
+        "title": "فدراسیون انجمنهای ورزشی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "http://ifsafed.com/Item.aspx?id=20819",
+        "title": "فدراسیون انجمنهای ورزشی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "http://ifsafed.com/Item.aspx?id=20815",
+        "title": "فدراسیون انجمنهای ورزشی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "http://ifsafed.com",
+        "title": "فدراسیون انجمنهای ورزشی جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "دوچرخه‌سواری",
@@ -647,31 +659,11 @@
     "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
     "directory_logo": "hockey-logo.jpg",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/haki_logo.jpg",
-    "official_content_status": "collected",
-    "official_content_url": "https://hockeyfed.ir",
-    "official_content_paragraphs": 10,
-    "official_content_sources": [
-      {
-        "url": "https://hockeyfed.ir#",
-        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.HockeyFed.ir"
-      },
-      {
-        "url": "https://hockeyfed.ir/Personel/All?id=1",
-        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.hockeyfed.ir"
-      },
-      {
-        "url": "https://hockeyfed.ir/Personel/All?id=3",
-        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.hockeyfed.ir"
-      },
-      {
-        "url": "https://hockeyfed.ir/PhotoReport/dpic?id=44&ts=14050829091710389",
-        "title": "مهدی احمدی با کسب ۱۱ رای اعضا مجمع برای مدت ۴سال رییس هیئت هاکی استان گلستان شد."
-      },
-      {
-        "url": "https://hockeyfed.ir",
-        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.HockeyFed.ir"
-      }
-    ]
+    "official_content_status": "fetch-failed",
+    "official_content_url": "http://hockeyfed.ir",
+    "official_content_paragraphs": 0,
+    "official_content_sources": [],
+    "official_content_error": "<urlopen error timed out>"
   },
   {
     "name": "آمادگی جسمانی و تندرستی",
@@ -1002,16 +994,24 @@
   {
     "name": "روئینگ",
     "slug": "rowing",
-    "website": "https://rowing.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
-    "official_content_status": "collected",
-    "official_content_url": "https://rowing.ir",
-    "official_content_paragraphs": 4,
+    "website": "https://icf.ir",
+    "logo": "rowing-logo.png",
+    "photos": [
+      "rowing-photo-1.jpg",
+      "rowing-photo-2.jpg"
+    ],
+    "logo_found": true,
+    "official_content_status": "limited",
+    "official_content_url": "https://icf.ir",
+    "official_content_paragraphs": 0,
     "official_content_sources": [
       {
-        "url": "https://rowing.ir",
-        "title": "Web Server's Default Page"
+        "url": "https://www.icf.ir/federations-authorities/",
+        "title": "مسئولین فدراسیون"
+      },
+      {
+        "url": "https://icf.ir",
+        "title": "فدراسیون قایقرانی ایران"
       }
     ]
   },
@@ -1056,18 +1056,26 @@
   {
     "name": "بادبانی",
     "slug": "sailing",
-    "website": "https://sailing.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error [Errno 111] Connection refused>",
+    "website": "https://icf.ir",
+    "logo": "sailing-logo.png",
+    "photos": [
+      "sailing-photo-1.jpg",
+      "sailing-photo-2.jpg"
+    ],
+    "logo_found": true,
     "directory_logo": "sailing-logo.jpg",
     "directory_logo_source": "https://media.licdn.com/dms/image/v2/D4E16AQGqQT3D-5oNew/profile-displaybackgroundimage-shrink_200_800/profile-displaybackgroundimage-shrink_200_800/0/1694867004838?e=2147483647&t=RU9lsdAPnMsAxtXNkTg9W0wWikM8p2qSN6p1INThPsE&v=beta",
     "official_content_status": "limited",
-    "official_content_url": "http://sailing.ir",
+    "official_content_url": "https://icf.ir",
     "official_content_paragraphs": 0,
     "official_content_sources": [
       {
-        "url": "http://sailing.ir",
-        "title": "http://sailing.ir"
+        "url": "https://www.icf.ir/federations-authorities/",
+        "title": "مسئولین فدراسیون"
+      },
+      {
+        "url": "https://icf.ir",
+        "title": "فدراسیون قایقرانی ایران"
       }
     ]
   },
@@ -1141,7 +1149,7 @@
         "title": "فدراسیون تیراندازی جمهوری اسلامی ایران www.irissf.ir"
       },
       {
-        "url": "https://irissf.ir/PhotoReport/dpic?id=436&ts=14050829092030162",
+        "url": "https://irissf.ir/PhotoReport/dpic?id=436&ts=14050829092413664",
         "title": "مراسم تودیع و معارفه سرپرست و رییس فدراسیون تیراندازی"
       },
       {
@@ -1559,14 +1567,11 @@
   {
     "name": "ورزش‌های اسلامی زنان",
     "slug": "women",
-    "website": "https://sport.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>",
-    "official_content_status": "fetch-failed",
-    "official_content_url": "https://sport.ir",
+    "status": "no-domain",
+    "official_content_status": "no-official-domain",
+    "official_content_url": null,
     "official_content_paragraphs": 0,
-    "official_content_sources": [],
-    "official_content_error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+    "official_content_sources": []
   },
   {
     "name": "ورزش کارگری",
