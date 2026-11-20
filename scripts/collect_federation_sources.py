@@ -232,16 +232,53 @@ class TextParser(HTMLParser):
 def fetch_profile(e):
     domain=(e.get('domain') or '').strip()
     if not domain:return e['slug'],{'status':'no-official-domain'}
-    urls=['https://'+domain,'http://'+domain]
-    last=''
-    for url in urls:
+    homepage=''; last=''
+    for url in ['https://'+domain,'http://'+domain]:
         try:
-            ct,body=get(url,limit=2200000,timeout=6)
-            if 'html' not in ct:continue
-            p=TextParser();p.feed(body.decode('utf-8','ignore'))
-            return e['slug'],{'website':url,'title':p.title,'description':p.meta,'headings':p.headings[:12],'paragraphs':p.paragraphs[:8],'status':'collected' if (p.paragraphs or p.meta) else 'limited'}
+            ct,body=get(url,limit=2200000,timeout=8)
+            if 'html' in ct:
+                homepage=url
+                break
         except Exception as ex:last=str(ex)[:160]
-    return e['slug'],{'website':'https://'+domain,'status':'fetch-failed','error':last}
+    if not homepage:return e['slug'],{'website':'https://'+domain,'status':'fetch-failed','error':last}
+    try:
+        ct,body=get(homepage,limit=2200000,timeout=8)
+        first=TextParser();first.feed(body.decode('utf-8','ignore'))
+        links=LinkParser();links.feed(body.decode('utf-8','ignore'))
+        host=urlparse(homepage).netloc.lower().replace('www.','')
+        include=('درباره','معرفی','تاریخچه','ساختار','چارت','کمیته','هیئت','اهداف','رسالت','فدراسیون','about','history','organization','structure','committee','federation','mission')
+        exclude=('news','خبر','اخبار','article','post','event','رویداد','gallery','گالری','category','tag','search')
+        candidates=[]
+        for href,label in links.links:
+            full=urljoin(homepage,href)
+            parsed=urlparse(full)
+            if parsed.scheme not in ('http','https') or parsed.netloc.lower().replace('www.','')!=host:continue
+            key=(label+' '+parsed.path).lower()
+            if any(x in key for x in exclude):continue
+            if any(x in key for x in include) and full.rstrip('/')!=homepage.rstrip('/') and full not in candidates:candidates.append(full)
+        pages=[(homepage,first)]
+        for url in candidates[:4]:
+            try:
+                ct,raw=get(url,limit=1600000,timeout=6)
+                if 'html' not in ct:continue
+                p=TextParser();p.feed(raw.decode('utf-8','ignore'))
+                if p.paragraphs or p.headings:pages.append((url,p))
+            except Exception:continue
+        paragraphs=[];headings=[];sources=[]
+        for url,p in pages[1:]+pages[:1]:
+            sources.append({'url':url,'title':p.title or url})
+            for para in p.paragraphs:
+                if para not in paragraphs:paragraphs.append(para)
+            for heading in p.headings:
+                if heading not in headings:headings.append(heading)
+        return e['slug'],{
+            'website':homepage,'title':first.title,'description':first.meta,
+            'headings':headings[:18],'paragraphs':paragraphs[:12],
+            'sources':sources[:5],
+            'status':'collected' if (paragraphs or first.meta) else 'limited'
+        }
+    except Exception as ex:
+        return e['slug'],{'website':homepage,'status':'fetch-failed','error':str(ex)[:160]}
 
 def inject_profiles(profiles):
     for e in DATA:
