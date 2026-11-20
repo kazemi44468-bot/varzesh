@@ -1,7 +1,7 @@
 (()=>{'use strict';
-const $=id=>document.getElementById(id), FED='FED-SQUASH', SCHEMA=1, KEY='varzeshportal.finance.federation.squash.v1';
-const blank=()=>({schemaVersion:SCHEMA,federationId:FED,federationName:'اسکواش',updatedAt:new Date().toISOString(),transactions:[],budgets:[],documents:[]});
-function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return x&&x.federationId===FED?{...blank(),...x}:blank()}catch(e){return blank()}}
+const $=id=>document.getElementById(id), FED='FED-SQUASH', SCHEMA=2, KEY='varzeshportal.finance.federation.squash.v1', ACCESS_CODE='124000';
+const blank=()=>({schemaVersion:SCHEMA,federationId:FED,federationName:'اسکواش',updatedAt:new Date().toISOString(),transactions:[],budgets:[],documents:[],personnel:[],payroll:[]});
+function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return x&&x.federationId===FED?{...blank(),...x,personnel:Array.isArray(x.personnel)?x.personnel:[],payroll:Array.isArray(x.payroll)?x.payroll:[]}:blank()}catch(e){return blank()}}
 let db=load(),view='home',mode='treasurer';
 function save(){db.updatedAt=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(db));$('storageState').textContent='ذخیره شد · '+new Date(db.updatedAt).toLocaleString('fa-IR')}
 const num=n=>new Intl.NumberFormat('fa-IR').format(Math.round(Number(n)||0)),money=n=>num(n)+' ریال',today=()=>new Date().toISOString().slice(0,10);
@@ -33,9 +33,9 @@ function exportBudgets(){csvFile('squash-budgets.csv',['شناسه','شناسه 
 function exportDocs(){csvFile('squash-documents.csv',['شناسه','شناسه فدراسیون','نوع','شماره','تاریخ','مبلغ ریال','وضعیت','شرح'],db.documents.map(x=>[x.id,FED,x.type,x.number,x.date,x.amount,x.status,x.description]))}
 function backup(){download('squash-finance-backup.json',JSON.stringify(db,null,2),'application/json;charset=utf-8')}
 function id(){return 'sq-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8)}
-$('loginForm').addEventListener('submit',e=>{e.preventDefault();mode=$('mode').value;$('roleText').textContent=mode==='admin'?'نمای مدیریتی نمونه · فقط پرونده اسکواش':'محیط خزانه‌داری فدراسیون اسکواش';$('login').classList.add('hidden');$('app').classList.remove('hidden');$('logout').classList.remove('hidden');render();setTab('home')});
+$('loginForm').addEventListener('submit',e=>{e.preventDefault();$('loginError').textContent='';if($('accessPassword').value!==ACCESS_CODE){$('loginError').textContent='رمز ورود صحیح نیست.';return}mode=$('mode').value;$('roleText').textContent=mode==='admin'?'نمای مدیریتی نمونه · فقط پرونده اسکواش':'محیط خزانه‌داری فدراسیون اسکواش';$('login').classList.add('hidden');$('app').classList.remove('hidden');$('logout').classList.remove('hidden');render();renderPersonnel();renderPayroll();renderProfile();setTab('home')});
 $('logout').addEventListener('click',()=>{$('app').classList.add('hidden');$('login').classList.remove('hidden');$('logout').classList.add('hidden')});
-document.querySelectorAll('.tab').forEach(x=>x.addEventListener('click',()=>setTab(x.dataset.tab)));document.querySelectorAll('[data-open]').forEach(x=>x.addEventListener('click',()=>setTab(x.dataset.open)));
+document.querySelectorAll('.tab').forEach(x=>x.addEventListener('click',()=>{setTab(x.dataset.tab);if(x.dataset.tab==='personnel')renderPersonnel();if(x.dataset.tab==='payroll')renderPayroll();if(x.dataset.tab==='profile')renderProfile()}));document.querySelectorAll('[data-open]').forEach(x=>x.addEventListener('click',()=>setTab(x.dataset.open)));
 $('date').value=today();$('docDate').value=today();
 $('txForm').addEventListener('submit',e=>{e.preventDefault();db.transactions.push({id:id(),federationId:FED,date:$('date').value,type:$('type').value,category:$('category').value,costCenter:$('costCenter').value,amount:Number($('amount').value),description:$('description').value.trim(),ref:$('ref').value.trim(),createdAt:new Date().toISOString()});save();e.target.reset();$('date').value=today();$('feedback').textContent='رویداد مالی ثبت شد.';render()});
 $('budgetForm').addEventListener('submit',e=>{e.preventDefault();db.budgets.push({id:id(),federationId:FED,year:Number($('year').value),title:$('budgetTitle').value.trim(),amount:Number($('budgetAmount').value),commitment:Number($('commitment').value||0),note:$('budgetNote').value.trim()});save();e.target.reset();$('year').value=1405;$('commitment').value=0;render()});
@@ -43,5 +43,53 @@ $('docForm').addEventListener('submit',e=>{e.preventDefault();db.documents.push(
 $('filter').addEventListener('change',render);$('search').addEventListener('input',render);
 $('backup').addEventListener('click',backup);$('exportJson').addEventListener('click',backup);$('exportTransactions').addEventListener('click',exportTransactions);$('exportBudgets').addEventListener('click',exportBudgets);$('exportDocs').addEventListener('click',exportDocs);$('reportCsv').addEventListener('click',exportTransactions);$('print').addEventListener('click',()=>window.print());
 $('importBtn').addEventListener('click',()=>{const f=$('importFile').files[0];if(!f){$('importStatus').textContent='ابتدا فایل پشتیبان را انتخاب کنید.';return}const reader=new FileReader();reader.onload=()=>{try{const x=JSON.parse(reader.result);if(x.federationId!==FED||!Array.isArray(x.transactions)||!Array.isArray(x.budgets)||!Array.isArray(x.documents))throw new Error('invalid');if(!confirm('اطلاعات فعلی با نسخه پشتیبان جایگزین شود؟'))return;db={...blank(),...x};save();render();$('importStatus').textContent='بازیابی اطلاعات انجام شد.'}catch(e){$('importStatus').textContent='فایل انتخاب‌شده معتبر نیست یا متعلق به پرونده اسکواش نیست.'}};reader.readAsText(f)});
+
+function seedPersonnel(){
+ if(db.personnel.length)return;
+ const first=['آرمان','پارسا','سامان','کیان','بردیا','ماهان','آریا','رادین','شایان','نیما','امیرعلی','طاها','مهراد','پویان','سینا','یاسین','اشکان','عرفان','مبین','دانیال','سپهر','آبتین','نوید','سروش','مانی','ایلیا','متین','آراد','رهام','محمدطاها','امیرحسین','علی‌رضا','هومن','بهنام','میلاد','پویا','فرزاد','کامیار','بهراد','شروین','پارسا','سام','کیارش'];
+ const roles=['کارشناس اداری','کارشناس مالی','کارشناس اجرایی','کارشناس آموزش','کارشناس مسابقات','مسئول پشتیبانی'];
+ db.personnel=first.map((name,i)=>({id:'demo-person-'+String(i+1).padStart(3,'0'),code:'DEMO-'+String(i+1).padStart(3,'0'),name:name+' آزمایشی',gender:i%5===0?'زن':'مرد',fatherName:'اطلاعات محرمانه',maritalStatus:i%3===0?'مجرد':'متأهل',children:i%3===0?0:i%4,birthDate:'۱۳۷'+(i%10)+'/۰'+(i%9+1)+'/۱۵',education:['کارشناسی','کارشناسی ارشد','دیپلم'][i%3],birthPlace:'اطلاعات محرمانه',issuePlace:'اطلاعات محرمانه',identityBookNo:'اطلاعات محرمانه',nationalId:'اطلاعات محرمانه',job:'اطلاعات محرمانه',start:'۱۴۰'+(i%5)+'/۰'+(i%9+1)+'/۰۱',financialContractCode:['01','02','03'][i%3],financialContractType:['قرارداد مدت‌معین','قرارداد پروژه‌ای','همکاری پاره‌وقت'][i%3],workplace:'ساختمان فدراسیون',hasInsurance:i%4!==0,bankName:'اطلاعات محرمانه',accountNumber:'اطلاعات محرمانه',phone:'اطلاعات محرمانه',unit:'فدراسیون اسکواش',type:['تمام‌وقت','پاره‌وقت','پروژه‌ای'][i%3],status:'فعال',dailyBase:Math.round((4200000+(i%7)*175000)/50000)*50000,createdAt:new Date().toISOString()}));
+}
+const confidential='اطلاعات محرمانه';
+function renderPersonnel(){
+ const q=$('personSearch').value.trim().toLowerCase();
+ const rows=db.personnel.filter(p=>(p.code+' '+p.name).toLowerCase().includes(q));
+ $('personnelTable').innerHTML=table(['کد پرسنلی','نام نمایشی','جنسیت','وضعیت تأهل','تحصیلات','تاریخ شروع','بیمه','اطلاعات هویتی','سمت'],rows.map(p=>'<tr><td>'+esc(p.code)+'</td><td>'+esc(p.name)+'</td><td>'+esc(p.gender)+'</td><td>'+esc(p.maritalStatus)+'</td><td>'+esc(p.education)+'</td><td>'+esc(p.start)+'</td><td>'+(p.hasInsurance?'دارد':'ندارد')+'</td><td>'+confidential+'</td><td>'+confidential+'</td></tr>'));
+ const options=db.personnel.map(p=>'<option value="'+esc(p.id)+'">'+esc(p.code+' · '+p.name)+'</option>').join('');
+ $('payEmployee').innerHTML=options;$('profileEmployee').innerHTML=options;
+}
+function renderPayroll(){
+ $('payrollTable').innerHTML=table(['کد پرسنلی','نام نمایشی','سال','ماه','حقوق پایه','مزایا','کسورات','خالص پرداختی','عملیات'],db.payroll.slice().sort((a,b)=>(b.year+b.month).localeCompare(a.year+a.month)).map(p=>'<tr><td>'+esc(p.employeeCode)+'</td><td>'+esc(p.employeeName)+'</td><td>'+num(p.year)+'</td><td>'+esc(p.monthName)+'</td><td>'+money(p.base)+'</td><td>'+money(p.benefits)+'</td><td>'+money(p.deductions)+'</td><td><b>'+money(p.net)+'</b></td><td><button class="text-btn" data-slip="'+esc(p.id)+'">چاپ فیش</button></td></tr>'));
+}
+function renderProfile(){
+ const p=db.personnel.find(x=>x.id===$('profileEmployee').value)||db.personnel[0];
+ if(!p){$('personProfile').innerHTML=empty('پرونده‌ای وجود ندارد.');return}
+ const pays=db.payroll.filter(x=>x.employeeId===p.id).sort((a,b)=>(b.year+b.month).localeCompare(a.year+a.month));
+ $('personProfile').innerHTML='<div class="profile-head"><div><span class="pill">'+esc(p.code)+'</span><h2>'+esc(p.name)+'</h2><p class="muted">'+confidential+'</p></div><div class="profile-total"><small>مجموع خالص پرداختی ثبت‌شده</small><strong>'+money(pays.reduce((a,x)=>a+x.net,0))+'</strong></div></div><div class="profile-details"><span>وضعیت همکاری: <b>'+esc(p.status)+'</b></span><span>واحد سازمانی: <b>'+esc(p.unit)+'</b></span><span>نوع قرارداد: <b>'+esc(p.financialContractType)+'</b></span><span>وضعیت بیمه: <b>'+(p.hasInsurance?'دارای بیمه':'فاقد بیمه')+'</b></span><span>شماره تماس: <b>'+confidential+'</b></span><span>شماره حساب: <b>'+confidential+'</b></span></div><h3>تاریخچه پرداخت</h3>'+table(['سال','ماه','خالص پرداختی'],pays.map(x=>'<tr><td>'+num(x.year)+'</td><td>'+esc(x.monthName)+'</td><td>'+money(x.net)+'</td></tr>'));
+}
+function printSlip(id){
+ const p=db.payroll.find(x=>x.id===id);if(!p)return;
+ const w=window.open('','_blank','width=760,height=650');if(!w)return;
+ w.document.write('<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8"><title>فیش حقوقی آزمایشی</title><style>body{font-family:Tahoma;padding:30px;color:#183d58}h2{margin-bottom:8px}table{width:100%;border-collapse:collapse;margin-top:20px}td{border:1px solid #ccd9e2;padding:12px}</style><h2>فیش حقوقی آزمایشی فدراسیون اسکواش</h2><p>کد پرسنلی: '+esc(p.employeeCode)+' · '+esc(p.employeeName)+'</p><p>دوره: '+num(p.year)+' / '+esc(p.monthName)+'</p><table><tr><td>حقوق پایه</td><td>'+money(p.base)+'</td></tr><tr><td>مزایا</td><td>'+money(p.benefits)+'</td></tr><tr><td>کسورات</td><td>'+money(p.deductions)+'</td></tr><tr><td><b>خالص پرداختی</b></td><td><b>'+money(p.net)+'</b></td></tr></table><p>این فیش صرفاً داده آزمایشی است.</p><script>window.onload=()=>window.print()<\/script></html>');w.document.close();
+}
+function bindPersonnel(){
+ $('personSearch').addEventListener('input',renderPersonnel);
+ $('profileEmployee').addEventListener('change',renderProfile);
+ $('payBase').addEventListener('input',updatePayPreview);$('payBenefits').addEventListener('input',updatePayPreview);$('payDeductions').addEventListener('input',updatePayPreview);
+ $('payrollForm').addEventListener('submit',e=>{e.preventDefault();const p=db.personnel.find(x=>x.id===$('payEmployee').value);if(!p)return;
+ const year=String($('payYear').value),month=$('payMonth').value;
+ if(db.payroll.some(x=>x.employeeId===p.id&&String(x.year)===year&&x.month===month)){$('payFeedback').textContent='برای این شخص در این ماه فیش ثبت شده است.';return}
+ const base=Number($('payBase').value),benefits=Number($('payBenefits').value||0),deductions=Number($('payDeductions').value||0);
+ if(base+benefits<deductions){$('payFeedback').textContent='کسورات نمی‌تواند از مجموع حقوق و مزایا بیشتر باشد.';return}
+ const monthName=$('payMonth').selectedOptions[0].textContent,net=base+benefits-deductions;
+ db.payroll.push({id:id(),employeeId:p.id,employeeCode:p.code,employeeName:p.name,year,month,monthName,base,benefits,deductions,net,note:$('payNote').value.trim(),createdAt:new Date().toISOString()});
+ db.transactions.push({id:id(),federationId:FED,date:today(),type:'expense',category:'حقوق و دستمزد',costCenter:'ستاد فدراسیون',amount:net,description:'حقوق آزمایشی '+monthName+' '+year+' · '+p.code,ref:p.code,createdAt:new Date().toISOString()});
+ save();e.target.reset();$('payYear').value=1405;$('payBase').value=180000000;$('payBenefits').value=0;$('payDeductions').value=0;$('payFeedback').textContent='فیش ثبت شد و هزینه آن به دفتر مالی افزوده شد.';updatePayPreview();render();renderPayroll();renderProfile();
+ });
+ document.addEventListener('click',e=>{const b=e.target.closest('[data-slip]');if(b)printSlip(b.dataset.slip)});
+}
+function updatePayPreview(){const n=Number($('payBase').value||0)+Number($('payBenefits').value||0)-Number($('payDeductions').value||0);$('payPreview').textContent='خالص پرداختی: '+money(n)}
+
+seedPersonnel();bindPersonnel();renderPersonnel();renderPayroll();
 if(!localStorage.getItem(KEY))save();$('storageState').textContent='ذخیره محلی در همین مرورگر';
 })();
