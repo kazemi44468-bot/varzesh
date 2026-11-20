@@ -187,7 +187,7 @@ def collect_bamorabi():
         for result in as_completed([pool.submit(download,t) for t in logo_sources.values()]):
             item=result.result()
             if item:report.append(item)
-    # The official Savate association poster contains its emblem at the top centre; extract a local square mark.
+    # The official Savate association poster contains its emblem at the top centre; extract a local square mark and rebuild safely against main.
     savate_source=next(iter(OUT.glob('savate-logo.jpg')),None)
     if savate_source:
         try:
