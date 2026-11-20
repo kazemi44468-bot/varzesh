@@ -253,15 +253,6 @@ class TextParser(HTMLParser):
         s=re.sub(r'\\s+([،؛:.!?])',r'\\1',s)
         return s[:limit]
     def handle_endtag(self,t):
-        if t in ('script','style','nav','footer','header','noscript','svg','form'):
-            self.skip=max(0,self.skip-1)
-            return
-        if self.capture and ((self.capture=='title' and t=='title') or (self.capture=='heading' and t in ('h1','h2','h3','h4')) or (self.capture=='p' and t in ('p','li'))):
-            s=self._clean(self.buf,1200)
-            if self.capture=='title' and s:self.title=s[:220]
-            elif self.capture=='heading' and s and len(s)>2:self.headings.append(s[:160])
-            elif self.capture=='p' and len(s)>=25 and s not in self.paragraphs:self.paragraphs.append(s)
-            self.capture=None;self.buf=[]
         if self.container_buf is not None and self.container_stack:
             if self.container_stack[-1]==t:self.container_stack.pop()
             else:
@@ -273,6 +264,15 @@ class TextParser(HTMLParser):
                 s=self._clean(self.container_buf,7000)
                 if len(s)>=90 and s not in self.paragraphs:self.paragraphs.append(s)
                 self.container_buf=None
+        if t in ('script','style','nav','footer','header','noscript','svg','form'):
+            self.skip=max(0,self.skip-1)
+            return
+        if self.capture and ((self.capture=='title' and t=='title') or (self.capture=='heading' and t in ('h1','h2','h3','h4')) or (self.capture=='p' and t in ('p','li'))):
+            s=self._clean(self.buf,1200)
+            if self.capture=='title' and s:self.title=s[:220]
+            elif self.capture=='heading' and s and len(s)>2:self.headings.append(s[:160])
+            elif self.capture=='p' and len(s)>=25 and s not in self.paragraphs:self.paragraphs.append(s)
+            self.capture=None;self.buf=[]
 
 def fetch_profile(e):
     domain=(e.get('domain') or '').strip()
