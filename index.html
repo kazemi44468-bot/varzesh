@@ -35,20 +35,20 @@ h1 span:after{content:"";position:absolute;right:8px;left:4px;bottom:8px;height:
 .slogan:before{content:"";width:29px;height:2px;border-radius:4px;background:#6c879b}
 .gateway{position:relative;background:rgba(255,255,255,.96);border:1px solid #dce4ea;border-radius:18px;padding:clamp(15px,2vw,22px);box-shadow:0 14px 36px rgba(31,57,76,.09);backdrop-filter:blur(10px)}
 .gateway:before{content:"";position:absolute;inset:0 18% auto;height:4px;border-radius:0 0 8px 8px;background:#54748d}
-.gateway-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 2px 13px}
+.gateway-head{display:flex;align-items:center;justify-content:flex-start;gap:12px;margin:0 2px 13px}
 .gateway-title{font-size:16px;font-weight:700;color:#1b3c56}
 .gateway-sub{font-size:10px;color:#788b9a;margin-top:3px}
-.gateway-mark{width:39px;height:39px;flex:0 0 39px;display:grid;place-items:center;border-radius:13px;background:#edf2f6;color:#315873;font-size:21px}
+
 .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-.card{--accent:var(--steel);--wash:#edf7ff;position:relative;display:flex;align-items:center;gap:10px;min-height:76px;padding:10px 11px;background:#f8fafb;border:1px solid #e2e8ed;border-radius:12px;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-.card:after{content:"";position:absolute;right:0;top:13px;bottom:13px;width:4px;border-radius:5px;background:var(--accent);opacity:.75}
+.card{--accent:var(--steel);--wash:#edf7ff;position:relative;display:flex;align-items:center;gap:0;min-height:76px;padding:10px 11px;background:#f8fafb;border:1px solid #e2e8ed;border-radius:12px;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.card:after{content:"";position:absolute;right:0;top:13px;bottom:13px;width:3px;border-radius:5px;background:var(--accent);opacity:.55}
 .card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 35%,white);box-shadow:0 8px 18px rgba(42,75,97,.08)}
-.card-icon{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border-radius:11px;background:#fff;color:var(--accent);font-size:18px;box-shadow:0 4px 12px rgba(31,61,79,.06)}
-.card-copy{min-width:0}
+
+.card-copy{min-width:0;padding-right:8px}
 .card strong{display:block;font-size:11px;line-height:1.8;font-weight:700;color:#24445d}
 .card small{display:block;margin-top:1px;font-size:9px;line-height:1.7;color:#6b7f90}
-.card-arrow{margin-right:auto;color:var(--accent);font-size:17px;transition:transform .2s}
-.card:hover .card-arrow{transform:translateX(-3px)}
+
+.card:hover 
 .c1,.c2,.c3{--accent:#315873;--wash:#f8fafb}
 .service-line{margin:13px 3px 0;padding-top:11px;border-top:1px solid #edf0f1;text-align:center;color:#687f90;font-size:10px;line-height:2}
 .service-line b{color:#496a83;font-weight:700}
@@ -79,13 +79,13 @@ h1 span:after{content:"";position:absolute;right:8px;left:4px;bottom:8px;height:
  .gateway-head{margin-bottom:10px}
  .gateway-title{font-size:14px}
  .gateway-sub{font-size:9px}
- .gateway-mark{width:34px;height:34px;flex-basis:34px;border-radius:11px;font-size:18px}
+ 
  .cards{grid-template-columns:1fr;gap:7px}
- .card{min-height:65px;padding:8px 10px;gap:9px;border-radius:12px}
- .card-icon{width:33px;height:33px;flex-basis:33px;font-size:16px}
+ .card{min-height:65px;padding:8px 14px;gap:0;border-radius:12px}
+ 
  .card strong{font-size:10px}
  .card small{font-size:8.5px}
- .card-arrow{font-size:15px}
+ 
  .service-line{font-size:9px;margin-top:10px;padding-top:8px}
  .bottom-note{margin-top:9px;font-size:8.5px}
 }
@@ -98,11 +98,14 @@ h1 span:after{content:"";position:absolute;right:8px;left:4px;bottom:8px;height:
  .description{font-size:10.5px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* Refined, typography-led entry cards: no decorative pictograms */
+.card{padding-inline:16px}.card-copy{padding:0}.card:before{content:"";position:absolute;left:15px;top:50%;width:18px;height:1px;background:#9aabb7;opacity:.65}.gateway{box-shadow:0 12px 32px rgba(31,57,76,.07)}.gateway-title{letter-spacing:-.2px}.service-line{border-top-color:#e7edf1}
 </style>
 </head>
 <body>
 <main class="intro">
-<div class="glow one" aria-hidden="true"></div><div class="glow two" aria-hidden="true"></div>
+
 <div class="wrap layout">
 <section class="copy">
 <h1>پورتال ورزش<br><span>همراه ورزش ایران</span></h1>
@@ -112,12 +115,12 @@ h1 span:after{content:"";position:absolute;right:8px;left:4px;bottom:8px;height:
 <section class="gateway" aria-label="مسیرهای ورود به خدمات پورتال ورزش">
 <div class="gateway-head">
 <div><div class="gateway-title">مسیرهای ورود به پورتال</div><div class="gateway-sub">حوزه موردنظر خود را انتخاب کنید</div></div>
-<div class="gateway-mark" aria-hidden="true">✦</div>
+
 </div>
 <div class="cards">
-<a class="card c1" href="centers/governance.html"><span class="card-icon" aria-hidden="true">⌘</span><span class="card-copy"><strong>اشراف و راهبری هوشمند ورزش</strong><small>سامانه‌های مدیریتی و پایش ساختار ورزش</small></span><span class="card-arrow" aria-hidden="true">←</span></a>
-<a class="card c2" href="centers/transparency.html"><span class="card-icon" aria-hidden="true">◈</span><span class="card-copy"><strong>شفاف ورزش</strong><small>مرکز شفافیت و سلامت وزارت ورزش</small></span><span class="card-arrow" aria-hidden="true">←</span></a>
-<a class="card c3" href="centers/federations.html"><span class="card-icon" aria-hidden="true">🏆</span><span class="card-copy"><strong>فدراسیون‌های ورزشی</strong><small>درگاه معرفی و دسترسی به فدراسیون‌ها</small></span><span class="card-arrow" aria-hidden="true">←</span></a>
+<a class="card c1" href="centers/governance.html"><span class="card-copy"><strong>اشراف و راهبری هوشمند ورزش</strong><small>سامانه‌های مدیریتی و پایش ساختار ورزش</small></span></a>
+<a class="card c2" href="centers/transparency.html"><span class="card-copy"><strong>شفاف ورزش</strong><small>مرکز شفافیت و سلامت وزارت ورزش</small></span></a>
+<a class="card c3" href="centers/federations.html"><span class="card-copy"><strong>فدراسیون‌های ورزشی</strong><small>درگاه معرفی و دسترسی به فدراسیون‌ها</small></span></a>
 </div>
 <div class="service-line"><b>خدمات مکمل:</b> ثبت‌نام و باشگاه اعضا · مشاوره تخصصی · خدمات مالی و وبی</div>
 <div class="bottom-note"><span>پورتال ورزش</span> · varzeshportal.ir</div>
