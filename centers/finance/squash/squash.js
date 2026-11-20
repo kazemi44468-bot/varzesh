@@ -43,52 +43,146 @@ $('filter').addEventListener('change',render);$('search').addEventListener('inpu
 $('backup').addEventListener('click',backup);$('exportJson').addEventListener('click',backup);$('exportTransactions').addEventListener('click',exportTransactions);$('exportBudgets').addEventListener('click',exportBudgets);$('exportDocs').addEventListener('click',exportDocs);$('reportCsv').addEventListener('click',exportTransactions);$('print').addEventListener('click',()=>window.print());
 $('importBtn').addEventListener('click',()=>{const f=$('importFile').files[0];if(!f){$('importStatus').textContent='ابتدا فایل پشتیبان را انتخاب کنید.';return}const reader=new FileReader();reader.onload=()=>{try{const x=JSON.parse(reader.result);if(x.federationId!==FED||!Array.isArray(x.transactions)||!Array.isArray(x.budgets)||!Array.isArray(x.documents))throw new Error('invalid');if(!confirm('اطلاعات فعلی با نسخه پشتیبان جایگزین شود؟'))return;db={...blank(),...x};save();render();$('importStatus').textContent='بازیابی اطلاعات انجام شد.'}catch(e){$('importStatus').textContent='فایل انتخاب‌شده معتبر نیست یا متعلق به پرونده اسکواش نیست.'}};reader.readAsText(f)});
 
-function seedPersonnel(){
- if(db.personnel.length)return;
- const first=['آرمان','پارسا','سامان','کیان','بردیا','ماهان','آریا','رادین','شایان','نیما','امیرعلی','طاها','مهراد','پویان','سینا','یاسین','اشکان','عرفان','مبین','دانیال','سپهر','آبتین','نوید','سروش','مانی','ایلیا','متین','آراد','رهام','محمدطاها','امیرحسین','علی‌رضا','هومن','بهنام','میلاد','پویا','فرزاد','کامیار','بهراد','شروین','پارسا','سام','کیارش'];
- const roles=['کارشناس اداری','کارشناس مالی','کارشناس اجرایی','کارشناس آموزش','کارشناس مسابقات','مسئول پشتیبانی'];
- db.personnel=first.map((name,i)=>({id:'demo-person-'+String(i+1).padStart(3,'0'),code:'DEMO-'+String(i+1).padStart(3,'0'),name:name+' آزمایشی',gender:i%5===0?'زن':'مرد',fatherName:'اطلاعات محرمانه',maritalStatus:i%3===0?'مجرد':'متأهل',children:i%3===0?0:i%4,birthDate:'۱۳۷'+(i%10)+'/۰'+(i%9+1)+'/۱۵',education:['کارشناسی','کارشناسی ارشد','دیپلم'][i%3],birthPlace:'اطلاعات محرمانه',issuePlace:'اطلاعات محرمانه',identityBookNo:'اطلاعات محرمانه',nationalId:'اطلاعات محرمانه',job:'اطلاعات محرمانه',start:'۱۴۰'+(i%5)+'/۰'+(i%9+1)+'/۰۱',financialContractCode:['01','02','03'][i%3],financialContractType:['قرارداد مدت‌معین','قرارداد پروژه‌ای','همکاری پاره‌وقت'][i%3],workplace:'ساختمان فدراسیون',hasInsurance:i%4!==0,bankName:'اطلاعات محرمانه',accountNumber:'اطلاعات محرمانه',phone:'اطلاعات محرمانه',unit:'فدراسیون اسکواش',type:['تمام‌وقت','پاره‌وقت','پروژه‌ای'][i%3],status:'فعال',dailyBase:Math.round((4200000+(i%7)*175000)/50000)*50000,createdAt:new Date().toISOString()}));save();
-}
+
 const confidential='اطلاعات محرمانه';
+const monthNames=['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+const defaultPayItems=[
+ {id:'base',label:'حقوق پایه',kind:'earning',active:true,system:true},
+ {id:'housing',label:'حق مسکن',kind:'earning',active:true},
+ {id:'food',label:'بن خواربار',kind:'earning',active:true},
+ {id:'children',label:'حق اولاد',kind:'earning',active:true},
+ {id:'seniority',label:'پایه سنوات',kind:'earning',active:true},
+ {id:'overtime',label:'اضافه‌کاری',kind:'earning',active:true},
+ {id:'bonus',label:'پاداش',kind:'earning',active:true},
+ {id:'insurance',label:'سهم بیمه پرسنل',kind:'deduction',active:true},
+ {id:'tax',label:'مالیات حقوق',kind:'deduction',active:true},
+ {id:'other',label:'سایر کسورات',kind:'deduction',active:true}
+];
+if(!Array.isArray(db.payItems)||!db.payItems.length)db.payItems=defaultPayItems.map(x=>({...x}));
+if(!Array.isArray(db.customPersonnelFields))db.customPersonnelFields=[];
+if(!Array.isArray(db.payrollBatches))db.payrollBatches=[];
+function nextPersonCode(){let max=999;db.personnel.forEach(p=>{const m=String(p.code||'').match(/^[A-Z](\\d+)$/i);if(m)max=Math.max(max,Number(m[1]))});return 'A'+(max+1)}
+function seedPersonnel(){
+ if(db.personnel.length){
+  db.personnel.forEach((p,i)=>{if(!/^[A-Z]\\d{4,}$/i.test(p.code||'')||/^DEMO/i.test(p.code||''))p.code='A'+(1000+i);p.firstName=p.firstName||String(p.name||'پرسنل آزمایشی').replace(/ آزمایشی/g,'');p.lastName=p.lastName||'نمونه';p.name=(p.firstName+' '+p.lastName).trim();p.address=p.address||'تهران، خیابان نمونه، کوچه آزمایش، پلاک '+(10+i);p.bankName=p.bankName&&p.bankName!==confidential?p.bankName:'بانک نمونه';p.accountNumber=p.accountNumber&&p.accountNumber!==confidential?p.accountNumber:'TEST'+String(100000+i);p.iban=p.iban||'IR00TEST'+String(1000000000+i);p.accountOwner=p.accountOwner||p.name;p.phone=p.phone&&p.phone!==confidential?p.phone:'09'+String(120000000+i).slice(0,9);p.taxStatus=p.taxStatus||'مشمول مالیات';p.taxMethod=p.taxMethod||'پلکانی';p.taxRate=Number(p.taxRate||10);p.insuranceType=p.insuranceType||'تأمین اجتماعی';p.insuranceNo=p.insuranceNo||'INS-TEST-'+(1000+i);p.contractNo=p.contractNo||'CTR-TEST-'+(1000+i);p.contractStatus=p.contractStatus||'فعال و امضاشده';p.active=p.status!=='غیرفعال'&&p.status!=='پایان همکاری';});
+  return;
+ }
+ const first=['آرمان','پارسا','سامان','کیان','بردیا','ماهان','آریا','رادین','شایان','نیما','امیرعلی','طاها','مهراد','پویان','سینا','یاسین','اشکان','عرفان','مبین','دانیال','سپهر','آبتین','نوید','سروش','مانی','ایلیا','متین','آراد','رهام','محمدطاها','امیرحسین','علیرضا','هومن','بهنام','میلاد','پویا','فرزاد','کامیار','بهراد','شروین','پارسا','سام','کیارش'];
+ const last=['نمونه','آزمایشی','آزمون','فرضی','نمایشی'];
+ const roles=['کارشناس اداری','کارشناس مالی','کارشناس اجرایی','کارشناس آموزش','کارشناس مسابقات','مسئول پشتیبانی'];
+ db.personnel=first.map((name,i)=>{const firstName=name,lastName=last[i%last.length],fullName=firstName+' '+lastName;return {id:'demo-person-'+String(i+1).padStart(3,'0'),code:'A'+(1000+i),firstName,lastName,name:fullName,gender:i%5===0?'زن':'مرد',fatherName:'نام پدر آزمایشی '+(i+1),maritalStatus:i%3===0?'مجرد':'متأهل',children:i%3===0?0:i%4,birthDate:'1990-0'+(i%9+1)+'-15',education:['کارشناسی','کارشناسی ارشد','دیپلم'][i%3],birthPlace:'تهران',issuePlace:'تهران',identityBookNo:'TEST-'+(2000+i),nationalId:'000000'+String(1000+i),job:roles[i%roles.length],start:'2021-0'+(i%9+1)+'-01',financialContractCode:['01','02','03'][i%3],financialContractType:['قرارداد مدت‌معین','قرارداد پروژه‌ای','همکاری پاره‌وقت'][i%3],contractNo:'CTR-TEST-'+(1000+i),contractStart:'2025-01-01',contractEnd:'2026-12-29',contractAmount:180000000,contractStatus:'فعال و امضاشده',workplace:'ساختمان فدراسیون',hasInsurance:i%4!==0,insuranceType:'تأمین اجتماعی',insuranceNo:'INS-TEST-'+(1000+i),insuranceRate:7,bankName:['بانک نمونه','بانک آزمایشی'][i%2],accountNumber:'TEST'+String(100000+i),iban:'IR00TEST'+String(1000000000+i),accountOwner:fullName,address:'تهران، خیابان نمونه، کوچه آزمایش، پلاک '+(10+i),postalCode:'000000'+String(i).padStart(4,'0'),phone:'0912000'+String(1000+i),unit:'فدراسیون اسکواش',type:['تمام‌وقت','پاره‌وقت','پروژه‌ای'][i%3],status:'فعال',active:true,taxStatus:'مشمول مالیات',taxMethod:'پلکانی',taxRate:10,taxExemption:0,dailyBase:Math.round((4200000+(i%7)*175000)/50000)*50000,createdAt:new Date().toISOString()}});save();
+}
+function personName(p){return p.name||[p.firstName,p.lastName].filter(Boolean).join(' ')}
+function fillPersonForm(p){
+ const map={personId:'id',personCode:'code',personFirstName:'firstName',personLastName:'lastName',personFatherName:'fatherName',personGender:'gender',personMarital:'maritalStatus',personChildren:'children',personBirthDate:'birthDate',personBookNo:'identityBookNo',personNationalId:'nationalId',personBirthPlace:'birthPlace',personIssuePlace:'issuePlace',personEducation:'education',personPhone:'phone',personAddress:'address',personPostal:'postalCode',personUnit:'unit',personJob:'job',personWorkplace:'workplace',personStart:'start',personType:'type',personStatus:'status',personContractType:'financialContractType',personContractNo:'contractNo',personContractStart:'contractStart',personContractEnd:'contractEnd',personContractAmount:'contractAmount',personContractStatus:'contractStatus',personInsuranceNo:'insuranceNo',personInsuranceType:'insuranceType',personInsuranceRate:'insuranceRate',personTaxStatus:'taxStatus',personTaxMethod:'taxMethod',personTaxRate:'taxRate',personTaxExemption:'taxExemption',personBank:'bankName',personAccount:'accountNumber',personIban:'iban',personAccountOwner:'accountOwner',personNote:'note'};
+ Object.entries(map).forEach(([id,key])=>{if($(id))$(id).value=p?.[key]??''});
+ $('personInsurance').value=p?.hasInsurance===false?'no':'yes';
+}
+function clearPersonForm(){$('personnelForm').reset();$('personId').value='';$('personCode').value=nextPersonCode();$('personFormTitle').textContent='ثبت پرونده پرسنلی جدید';$('personInsurance').value='yes';}
+function customFieldsHtml(p){return (db.customPersonnelFields||[]).filter(f=>f.active!==false).map(f=>'<span>'+esc(f.label)+': <b>'+esc((p.customFields||{})[f.id]||'—')+'</b></span>').join('')}
+function renderCustomFields(){
+ $('customFieldsList').innerHTML=(db.customPersonnelFields||[]).map(f=>'<div class="field-row"><span>'+esc(f.label)+' · '+(f.type==='number'?'عددی':f.type==='date'?'تاریخ':'متنی')+' · '+(f.active===false?'غیرفعال':'فعال')+'</span><div class="field-actions"><button data-field-toggle="'+esc(f.id)+'">'+(f.active===false?'فعال‌سازی':'غیرفعال‌سازی')+'</button><button data-field-edit="'+esc(f.id)+'">ویرایش</button><button data-field-delete="'+esc(f.id)+'">حذف</button></div></div>').join('')||empty('هنوز آیتم سفارشی تعریف نشده است.');
+}
 function renderPersonnel(){
- const q=$('personSearch').value.trim().toLowerCase();
- const rows=db.personnel.filter(p=>(p.code+' '+p.name).toLowerCase().includes(q));
- $('personnelTable').innerHTML=table(['کد پرسنلی','نام نمایشی','جنسیت','وضعیت تأهل','تحصیلات','تاریخ شروع','بیمه','اطلاعات هویتی','سمت'],rows.map(p=>'<tr><td>'+esc(p.code)+'</td><td>'+esc(p.name)+'</td><td>'+esc(p.gender)+'</td><td>'+esc(p.maritalStatus)+'</td><td>'+esc(p.education)+'</td><td>'+esc(p.start)+'</td><td>'+(p.hasInsurance?'دارد':'ندارد')+'</td><td>'+confidential+'</td><td>'+confidential+'</td></tr>'));
- const options=db.personnel.map(p=>'<option value="'+esc(p.id)+'">'+esc(p.code+' · '+p.name)+'</option>').join('');
- $('payEmployee').innerHTML=options;$('profileEmployee').innerHTML=options;
+ const q=$('personSearch').value.trim().toLowerCase(),status=$('personStatusFilter').value;
+ const rows=db.personnel.filter(p=>(status==='all'||p.status===status)&&((p.code+' '+personName(p)+' '+p.unit).toLowerCase().includes(q)));
+ $('personCount').textContent=num(db.personnel.length)+' پرونده';
+ $('personnelTable').innerHTML=table(['کد پرسنلی','نام و نام خانوادگی','واحد / سمت','وضعیت','حساب بانکی','عملیات'],rows.map(p=>'<tr><td><b>'+esc(p.code)+'</b></td><td>'+esc(personName(p))+'</td><td>'+esc(p.unit||'—')+' / '+esc(p.job||'—')+'</td><td class="'+(p.status==='فعال'?'':'status-inactive')+'">'+esc(p.status||'فعال')+'</td><td>'+esc(p.bankName||'—')+' · '+esc(p.accountNumber||'—')+'</td><td><div class="person-actions"><button data-person-edit="'+esc(p.id)+'">ویرایش</button><button data-person-toggle="'+esc(p.id)+'">'+(p.status==='غیرفعال'?'فعال‌سازی':'غیرفعال‌سازی')+'</button><button data-person-delete="'+esc(p.id)+'">حذف</button></div></td></tr><tr><td colspan="6"><details class="person-row-details"><summary>مشاهده اطلاعات تکمیلی پرونده</summary><div class="person-detail"><span>نام پدر: <b>'+esc(p.fatherName||'—')+'</b></span><span>کد ملی: <b>'+esc(p.nationalId||'—')+'</b></span><span>شماره شناسنامه: <b>'+esc(p.identityBookNo||'—')+'</b></span><span>تلفن: <b>'+esc(p.phone||'—')+'</b></span><span>نشانی: <b>'+esc(p.address||'—')+'</b></span><span>کد پستی: <b>'+esc(p.postalCode||'—')+'</b></span><span>شماره شبا: <b>'+esc(p.iban||'—')+'</b></span><span>صاحب حساب: <b>'+esc(p.accountOwner||'—')+'</b></span><span>قرارداد: <b>'+esc(p.financialContractType||'—')+' · '+esc(p.contractNo||'—')+'</b></span><span>وضعیت بیمه: <b>'+(p.hasInsurance?'دارد':'ندارد')+' · '+esc(p.insuranceType||'')+'</b></span><span>مالیات: <b>'+esc(p.taxStatus||'—')+' · '+esc(p.taxMethod||'—')+' · '+num(p.taxRate||0)+'٪</b></span>'+customFieldsHtml(p)+'</div></details></td></tr>')));
+ const opts=db.personnel.map(p=>'<option value="'+esc(p.id)+'">'+esc(p.code+' · '+personName(p))+'</option>').join('');
+ $('payEmployee')&&($('payEmployee').innerHTML=opts);$('profileEmployee').innerHTML=opts;
+ renderCustomFields();
 }
 function renderPayroll(){
- $('payrollTable').innerHTML=table(['کد پرسنلی','نام نمایشی','سال','ماه','حقوق پایه','مزایا','کسورات','خالص پرداختی','عملیات'],db.payroll.slice().sort((a,b)=>(b.year+b.month).localeCompare(a.year+a.month)).map(p=>'<tr><td>'+esc(p.employeeCode)+'</td><td>'+esc(p.employeeName)+'</td><td>'+num(p.year)+'</td><td>'+esc(p.monthName)+'</td><td>'+money(p.base)+'</td><td>'+money(p.benefits)+'</td><td>'+money(p.deductions)+'</td><td><b>'+money(p.net)+'</b></td><td><button class="text-btn" data-slip="'+esc(p.id)+'">چاپ فیش</button></td></tr>'));
+ const rows=db.payrollBatches.slice().sort((a,b)=>(b.year+b.month).localeCompare(a.year+a.month));
+ $('payrollTable').innerHTML=table(['دوره','تعداد پرسنل','جمع ناخالص','جمع کسورات','خالص پرداختی','وضعیت','عملیات'],rows.map(b=>'<tr><td>'+num(b.year)+' · '+esc(monthNames[Number(b.month)-1])+'</td><td>'+num(b.rows.length)+'</td><td>'+money(b.gross)+'</td><td>'+money(b.deductions)+'</td><td><b>'+money(b.net)+'</b></td><td><span class="payroll-state">'+(b.status==='paid'?'پرداخت‌شده':b.status==='final'?'قطعی‌شده':'پیش‌نویس')+'</span></td><td><button class="text-btn" data-batch-open="'+esc(b.id)+'">مشاهده لیست</button> <button class="text-btn" data-batch-print="'+esc(b.id)+'">چاپ</button></td></tr>')));
 }
 function renderProfile(){
- const p=db.personnel.find(x=>x.id===$('profileEmployee').value)||db.personnel[0];
- if(!p){$('personProfile').innerHTML=empty('پرونده‌ای وجود ندارد.');return}
- const pays=db.payroll.filter(x=>x.employeeId===p.id).sort((a,b)=>(b.year+b.month).localeCompare(a.year+a.month));
- $('personProfile').innerHTML='<div class="profile-head"><div><span class="pill">'+esc(p.code)+'</span><h2>'+esc(p.name)+'</h2><p class="muted">'+confidential+'</p></div><div class="profile-total"><small>مجموع خالص پرداختی ثبت‌شده</small><strong>'+money(pays.reduce((a,x)=>a+x.net,0))+'</strong></div></div><div class="profile-details"><span>وضعیت همکاری: <b>'+esc(p.status)+'</b></span><span>واحد سازمانی: <b>'+esc(p.unit)+'</b></span><span>نوع قرارداد: <b>'+esc(p.financialContractType)+'</b></span><span>وضعیت بیمه: <b>'+(p.hasInsurance?'دارای بیمه':'فاقد بیمه')+'</b></span><span>شماره تماس: <b>'+confidential+'</b></span><span>شماره حساب: <b>'+confidential+'</b></span></div><h3>تاریخچه پرداخت</h3>'+table(['سال','ماه','خالص پرداختی'],pays.map(x=>'<tr><td>'+num(x.year)+'</td><td>'+esc(x.monthName)+'</td><td>'+money(x.net)+'</td></tr>'));
+ const p=db.personnel.find(x=>x.id===$('profileEmployee').value)||db.personnel[0];if(!p){$('personProfile').innerHTML=empty('پرونده‌ای وجود ندارد.');return}
+ const batches=db.payrollBatches.filter(b=>b.rows.some(r=>r.employeeId===p.id)&&b.status!=='draft').sort((a,b)=>(b.year+b.month).localeCompare(a.year+a.month));
+ const pays=batches.map(b=>b.rows.find(r=>r.employeeId===p.id));
+ $('personProfile').innerHTML='<div class="profile-head"><div><span class="pill">'+esc(p.code)+'</span><h2>'+esc(personName(p))+'</h2><p class="muted">'+esc(p.job||'')+' · '+esc(p.unit||'')+'</p></div><div class="profile-total"><small>مجموع خالص پرداختی قطعی</small><strong>'+money(pays.reduce((a,x)=>a+Number(x.net||0),0))+'</strong></div></div><div class="person-detail"><span>وضعیت همکاری: <b>'+esc(p.status)+'</b></span><span>نوع قرارداد: <b>'+esc(p.financialContractType||'—')+'</b></span><span>شماره قرارداد: <b>'+esc(p.contractNo||'—')+'</b></span><span>وضعیت بیمه: <b>'+(p.hasInsurance?'دارد':'ندارد')+'</b></span><span>وضعیت مالیاتی: <b>'+esc(p.taxStatus||'—')+'</b></span><span>روش مالیات: <b>'+esc(p.taxMethod||'—')+'</b></span><span>بانک: <b>'+esc(p.bankName||'—')+'</b></span><span>شماره حساب: <b>'+esc(p.accountNumber||'—')+'</b></span><span>نشانی: <b>'+esc(p.address||'—')+'</b></span></div><h3>سوابق حقوق و مزایای قطعی</h3>'+table(['دوره','خالص پرداختی','وضعیت'],batches.map(b=>{const r=b.rows.find(x=>x.employeeId===p.id);return '<tr><td>'+num(b.year)+' · '+monthNames[Number(b.month)-1]+'</td><td>'+money(r.net)+'</td><td>'+(b.status==='paid'?'پرداخت‌شده':'قطعی‌شده')+'</td></tr>'})) ;
 }
-function printSlip(id){
- const p=db.payroll.find(x=>x.id===id);if(!p)return;
- const w=window.open('','_blank','width=760,height=650');if(!w)return;
- w.document.write('<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8"><title>فیش حقوقی آزمایشی</title><style>body{font-family:Tahoma;padding:30px;color:#183d58}h2{margin-bottom:8px}table{width:100%;border-collapse:collapse;margin-top:20px}td{border:1px solid #ccd9e2;padding:12px}</style><h2>فیش حقوقی فدراسیون اسکواش</h2><p>کد پرسنلی: '+esc(p.employeeCode)+' · '+esc(p.employeeName)+'</p><p>دوره: '+num(p.year)+' / '+esc(p.monthName)+'</p><table><tr><td>حقوق پایه</td><td>'+money(p.base)+'</td></tr><tr><td>مزایا</td><td>'+money(p.benefits)+'</td></tr><tr><td>کسورات</td><td>'+money(p.deductions)+'</td></tr><tr><td><b>خالص پرداختی</b></td><td><b>'+money(p.net)+'</b></td></tr></table><p></p><script>window.onload=()=>window.print()<\/script></html>');w.document.close();
+function amountOf(row,itemId){return Number((row.values||{})[itemId]||0)}
+function calcRow(row,items){
+ let earnings=0,deductions=0;items.filter(x=>x.active!==false).forEach(it=>{const v=amountOf(row,it.id);if(it.kind==='deduction')deductions+=v;else earnings+=v});
+ return {gross:earnings,deductions,net:earnings-deductions};
 }
+let currentBatchId=null;
+function getBatch(){return db.payrollBatches.find(b=>b.id===currentBatchId)}
+function batchItems(){return db.payItems.filter(x=>x.active!==false)}
+function makeBatch(){
+ const year=String($('batchYear').value),month=$('batchMonth').value;
+ let b=db.payrollBatches.find(x=>String(x.year)===year&&x.month===month);
+ if(!b){b={id:id(),year,month,status:'draft',itemsSnapshot:batchItems().map(x=>({...x})),rows:[],createdAt:new Date().toISOString()};db.payrollBatches.push(b)}
+ currentBatchId=b.id;renderBatch();save();
+}
+function addPersonToBatch(b,p){
+ if(b.rows.some(r=>r.employeeId===p.id))return;
+ const vals={};b.itemsSnapshot.forEach(it=>{if(it.id==='base')vals[it.id]=Number(p.contractAmount||180000000);else if(it.id==='insurance')vals[it.id]=p.hasInsurance?Math.round(Number(p.contractAmount||180000000)*Number(p.insuranceRate||7)/100):0;else if(it.id==='tax')vals[it.id]=p.taxStatus==='معاف'?0:Math.round(Math.max(0,Number(p.contractAmount||180000000)-Number(p.taxExemption||0))*Number(p.taxRate||0)/100);else vals[it.id]=0});
+ b.rows.push({employeeId:p.id,employeeCode:p.code,employeeName:personName(p),job:p.job,bankName:p.bankName,accountNumber:p.accountNumber,iban:p.iban,contractNo:p.contractNo,insuranceStatus:p.hasInsurance?'دارد':'ندارد',taxStatus:p.taxStatus,values:vals});
+}
+function renderBatch(){
+ const b=getBatch();if(!b){$('batchTable').innerHTML=empty('برای شروع، سال و ماه را انتخاب و «بارگذاری / ایجاد لیست» را بزنید.');$('batchSummary').innerHTML='';return}
+ const items=b.itemsSnapshot,totals={gross:0,deductions:0,net:0};
+ const head=['کد','نام پرسنل',...items.map(x=>x.label),'ناخالص','کسورات','خالص'];
+ const body=b.rows.map((r,idx)=>{const c=calcRow(r,items);totals.gross+=c.gross;totals.deductions+=c.deductions;totals.net+=c.net;return '<tr><td>'+esc(r.employeeCode)+'</td><td>'+esc(r.employeeName)+'</td>'+items.map(it=>'<td><input class="batch-input" type="number" min="0" data-row="'+idx+'" data-item="'+esc(it.id)+'" value="'+amountOf(r,it.id)+'" '+(b.status!=='draft'?'disabled':'')+'></td>').join('')+'<td>'+money(c.gross)+'</td><td>'+money(c.deductions)+'</td><td><b>'+money(c.net)+'</b></td></tr>'});
+ b.gross=totals.gross;b.deductions=totals.deductions;b.net=totals.net;
+ $('batchTitle').textContent='لیست حقوق و مزایای '+monthNames[Number(b.month)-1]+' '+num(b.year);
+ $('batchStatus').textContent=b.status==='paid'?'پرداخت‌شده':b.status==='final'?'قطعی و تأییدشده':'پیش‌نویس قابل ویرایش';
+ $('batchTable').innerHTML=body.length?'<table class="batch-table"><thead><tr>'+head.map(x=>'<th>'+esc(x)+'</th>').join('')+'</tr></thead><tbody>'+body.join('')+'</tbody></table>':empty('هنوز پرسنلی به این لیست افزوده نشده است.');
+ $('batchSummary').innerHTML='<span>تعداد پرسنل: '+num(b.rows.length)+'</span><span>جمع ناخالص: '+money(totals.gross)+'</span><span>جمع کسورات: '+money(totals.deductions)+'</span><span>خالص قابل پرداخت: '+money(totals.net)+'</span>';
+ $('finalizeBatch').disabled=b.status!=='draft'||!b.rows.length;$('markBatchPaid').disabled=b.status!=='final';$('recalcBatch').disabled=b.status!=='draft';$('addAllEmployees').disabled=b.status!=='draft';
+}
+function batchSlipHtml(b,r){
+ const p=db.personnel.find(x=>x.id===r.employeeId)||{},items=b.itemsSnapshot;
+ const earnings=items.filter(x=>x.kind==='earning'&&amountOf(r,x.id)>0),deductions=items.filter(x=>x.kind==='deduction'&&amountOf(r,x.id)>0);
+ const lines=[...earnings.map(x=>[x.label,amountOf(r,x.id)]),...deductions.map(x=>[x.label,-amountOf(r,x.id)])];
+ const c=calcRow(r,items);
+ return '<article class="slip-sheet"><header><div class="slip-brand">فدراسیون اسکواش</div><div class="slip-title">فیش حقوق و مزایای ماهانه</div><div>دوره '+monthNames[Number(b.month)-1]+' '+num(b.year)+'</div></header><div class="slip-meta"><span>نام و نام خانوادگی: <b>'+esc(r.employeeName)+'</b></span><span>کد پرسنلی: <b>'+esc(r.employeeCode)+'</b></span><span>سمت: <b>'+esc(r.job||p.job||'—')+'</b></span><span>شماره قرارداد: <b>'+esc(r.contractNo||'—')+'</b></span><span>وضعیت بیمه: <b>'+esc(r.insuranceStatus||'—')+'</b></span><span>وضعیت مالیات: <b>'+esc(r.taxStatus||'—')+'</b></span></div><table><thead><tr><th>شرح آیتم</th><th>مبلغ (ریال)</th></tr></thead><tbody>'+lines.map(x=>'<tr><td>'+esc(x[0])+'</td><td>'+money(Math.abs(x[1]))+(x[1]<0?' (کسر)':'')+'</td></tr>').join('')+'<tr class="slip-total"><td>جمع ناخالص</td><td>'+money(c.gross)+'</td></tr><tr><td>جمع کسورات</td><td>'+money(c.deductions)+'</td></tr><tr class="slip-net"><td>خالص پرداختی</td><td>'+money(c.net)+'</td></tr></tbody></table><div class="slip-bank">بانک: '+esc(r.bankName||'—')+' · شماره حساب: '+esc(r.accountNumber||'—')+' · شبا: '+esc(r.iban||'—')+'</div><footer><span>مهر و امضای واحد مالی</span><span>امضای دریافت‌کننده</span></footer></article>';
+}
+function printHtml(title,content){
+ const w=window.open('','_blank','width=900,height=720');if(!w)return;
+ w.document.write('<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>'+esc(title)+'</title><style>@font-face{font-family:PortalFa;src:url("../../assets/fonts/Vazirmatn-Regular.woff2")}body{font-family:Tahoma,Arial,sans-serif;color:#203f55;padding:25px;background:#fff}.slip-sheet{max-width:820px;margin:0 auto 24px;padding:28px;border:1px solid #bdccd6;border-radius:12px;page-break-after:always}.slip-sheet header{text-align:center;padding-bottom:15px;border-bottom:3px solid #244f6c;margin-bottom:16px}.slip-brand{font-size:13px;color:#8a7049}.slip-title{font-size:22px;font-weight:bold;margin:5px}.slip-meta{display:grid;grid-template-columns:1fr 1fr;gap:9px 16px;padding:12px;background:#f2f6f8;border:1px solid #dce5eb;border-radius:8px;font-size:12px}.slip-sheet table{width:100%;border-collapse:collapse;margin:16px 0}.slip-sheet th,.slip-sheet td{border:1px solid #dce5eb;padding:10px;text-align:right}.slip-sheet th{background:#edf3f6}.slip-total{font-weight:bold;background:#f6f8f9}.slip-net{font-weight:bold;background:#eaf1f5;color:#173d59}.slip-bank{font-size:11px;padding:10px;background:#fafbfc;border:1px solid #e2e8ec}.slip-sheet footer{display:flex;justify-content:space-between;margin-top:42px;padding:0 10px;font-size:11px}@media print{body{padding:0}.slip-sheet{margin:0;border:1px solid #aebdca;break-after:page}}</style></head><body>'+content+'<script>window.onload=()=>window.print()<\\/script></body></html>');w.document.close();
+}
+function printBatch(b){if(!b||b.status==='draft'){alert('ابتدا لیست را قطعی کنید تا فیش رسمی صادر شود.');return}printHtml('فیش حقوقی',b.rows.map(r=>batchSlipHtml(b,r)).join(''))}
+function renderPayItems(){$('payItemsList').innerHTML=db.payItems.map(it=>'<div class="field-row"><span>'+esc(it.label)+' · '+(it.kind==='earning'?'پرداختی / مزایا':'کسورات')+' · '+(it.active===false?'غیرفعال':'فعال')+'</span><div class="field-actions"><button data-payitem-toggle="'+esc(it.id)+'">'+(it.active===false?'فعال‌سازی':'غیرفعال‌سازی')+'</button><button data-payitem-edit="'+esc(it.id)+'">ویرایش</button><button data-payitem-delete="'+esc(it.id)+'">حذف</button></div></div>').join('')}
 function bindPersonnel(){
- $('personSearch').addEventListener('input',renderPersonnel);
- $('profileEmployee').addEventListener('change',renderProfile);
- $('payBase').addEventListener('input',updatePayPreview);$('payBenefits').addEventListener('input',updatePayPreview);$('payDeductions').addEventListener('input',updatePayPreview);
- $('payrollForm').addEventListener('submit',e=>{e.preventDefault();const p=db.personnel.find(x=>x.id===$('payEmployee').value);if(!p)return;
- const year=String($('payYear').value),month=$('payMonth').value;
- if(db.payroll.some(x=>x.employeeId===p.id&&String(x.year)===year&&x.month===month)){$('payFeedback').textContent='برای این شخص در این ماه فیش ثبت شده است.';return}
- const base=Number($('payBase').value),benefits=Number($('payBenefits').value||0),deductions=Number($('payDeductions').value||0);
- if(base+benefits<deductions){$('payFeedback').textContent='کسورات نمی‌تواند از مجموع حقوق و مزایا بیشتر باشد.';return}
- const monthName=$('payMonth').selectedOptions[0].textContent,net=base+benefits-deductions;
- db.payroll.push({id:id(),employeeId:p.id,employeeCode:p.code,employeeName:p.name,year,month,monthName,base,benefits,deductions,net,note:$('payNote').value.trim(),createdAt:new Date().toISOString()});
- db.transactions.push({id:id(),federationId:FED,date:today(),type:'expense',category:'حقوق و دستمزد',costCenter:'ستاد فدراسیون',amount:net,description:'حقوق '+monthName+' '+year+' · '+p.code,ref:p.code,createdAt:new Date().toISOString()});
- save();e.target.reset();$('payYear').value=1405;$('payBase').value=180000000;$('payBenefits').value=0;$('payDeductions').value=0;$('payFeedback').textContent='فیش ثبت شد و هزینه آن به دفتر مالی افزوده شد.';updatePayPreview();render();renderPayroll();renderProfile();
+ $('personSearch').addEventListener('input',renderPersonnel);$('personStatusFilter').addEventListener('change',renderPersonnel);$('profileEmployee').addEventListener('change',renderProfile);
+ $('personReset').addEventListener('click',clearPersonForm);
+ $('personnelForm').addEventListener('submit',e=>{e.preventDefault();const editing=$('personId').value,existing=db.personnel.find(p=>p.id===editing),code=($('personCode').value.trim()||nextPersonCode()).toUpperCase();if(!/^[A-Z]\\d{4,}$/.test(code)){$('personFeedback').textContent='کد پرسنلی باید شامل یک حرف انگلیسی و حداقل چهار رقم باشد؛ مانند A1000.';return}if(db.personnel.some(p=>p.code===code&&p.id!==editing)){$('personFeedback').textContent='این کد پرسنلی قبلاً استفاده شده است.';return}
+ const get=id=>$(id).value.trim(),p={...(existing||{}),id:editing||id(),code,firstName:get('personFirstName'),lastName:get('personLastName'),name:get('personFirstName')+' '+get('personLastName'),fatherName:get('personFatherName'),gender:get('personGender'),maritalStatus:get('personMarital'),children:Number(get('personChildren')||0),birthDate:get('personBirthDate'),identityBookNo:get('personBookNo'),nationalId:get('personNationalId'),birthPlace:get('personBirthPlace'),issuePlace:get('personIssuePlace'),education:get('personEducation'),phone:get('personPhone'),address:get('personAddress'),postalCode:get('personPostal'),unit:get('personUnit'),job:get('personJob'),workplace:get('personWorkplace'),start:get('personStart'),type:get('personType'),status:get('personStatus'),active:get('personStatus')==='فعال',financialContractType:get('personContractType'),contractNo:get('personContractNo'),contractStart:get('personContractStart'),contractEnd:get('personContractEnd'),contractAmount:Number(get('personContractAmount')||0),contractStatus:get('personContractStatus'),hasInsurance:get('personInsurance')==='yes',insuranceNo:get('personInsuranceNo'),insuranceType:get('personInsuranceType'),insuranceRate:Number(get('personInsuranceRate')||0),taxStatus:get('personTaxStatus'),taxMethod:get('personTaxMethod'),taxRate:Number(get('personTaxRate')||0),taxExemption:Number(get('personTaxExemption')||0),bankName:get('personBank'),accountNumber:get('personAccount'),iban:get('personIban'),accountOwner:get('personAccountOwner'),note:get('personNote'),customFields:existing?.customFields||{},updatedAt:new Date().toISOString()};
+ if(existing)db.personnel=db.personnel.map(x=>x.id===editing?p:x);else db.personnel.push(p);save();clearPersonForm();$('personFeedback').textContent='پرونده '+code+' ذخیره شد.';renderPersonnel();renderPayroll();renderProfile();
  });
- document.addEventListener('click',e=>{const b=e.target.closest('[data-slip]');if(b)printSlip(b.dataset.slip)});
+ $('fieldForm').addEventListener('submit',e=>{e.preventDefault();db.customPersonnelFields.push({id:id(),label:$('fieldLabel').value.trim(),type:$('fieldType').value,active:true});save();e.target.reset();renderCustomFields()});
+ $('payItemForm').addEventListener('submit',e=>{e.preventDefault();db.payItems.push({id:id(),label:$('payItemLabel').value.trim(),kind:$('payItemKind').value,active:true});save();e.target.reset();renderPayItems()});
+ $('loadPayrollBatch').addEventListener('click',makeBatch);
+ $('addAllEmployees').addEventListener('click',()=>{const b=getBatch();if(!b||b.status!=='draft')return;db.personnel.filter(p=>p.status==='فعال'&&p.active!==false).forEach(p=>addPersonToBatch(b,p));save();renderBatch()});
+ $('recalcBatch').addEventListener('click',()=>{const b=getBatch();if(!b||b.status!=='draft')return;b.rows.forEach(r=>{const p=db.personnel.find(x=>x.id===r.employeeId);if(!p)return;b.itemsSnapshot.forEach(it=>{if(it.id==='insurance')r.values[it.id]=p.hasInsurance?Math.round(Number(r.values.base||0)*Number(p.insuranceRate||7)/100):0;if(it.id==='tax')r.values[it.id]=p.taxStatus==='معاف'?0:Math.round(Math.max(0,Number(r.values.base||0)-Number(p.taxExemption||0))*Number(p.taxRate||0)/100)})});renderBatch();save()});
+ $('finalizeBatch').addEventListener('click',()=>{const b=getBatch();if(!b||b.status!=='draft'||!b.rows.length)return;if(!confirm('پس از تأیید نهایی، لیست این ماه قفل می‌شود و مبنای گزارش‌ها و فیش‌های حقوقی خواهد بود. ادامه می‌دهید؟'))return;b.status='final';b.finalizedAt=new Date().toISOString();b.rows=b.rows.map(r=>({...r,values:{...r.values},snapshotAt:b.finalizedAt}));b.rows.forEach(r=>{const c=calcRow(r,b.itemsSnapshot);r.gross=c.gross;r.deductions=c.deductions;r.net=c.net});b.gross=sum(b.rows,'gross');b.deductions=sum(b.rows,'deductions');b.net=sum(b.rows,'net');save();renderBatch();renderPayroll()});
+ $('markBatchPaid').addEventListener('click',()=>{const b=getBatch();if(!b||b.status!=='final')return;if(!confirm('پرداخت لیست قطعی برای تمام پرسنل ثبت شود؟'))return;b.status='paid';b.paidAt=new Date().toISOString();b.rows.forEach(r=>{db.payroll.push({id:id(),batchId:b.id,employeeId:r.employeeId,employeeCode:r.employeeCode,employeeName:r.employeeName,year:b.year,month:b.month,monthName:monthNames[Number(b.month)-1],base:amountOf(r,'base'),benefits:calcRow(r,b.itemsSnapshot).gross-amountOf(r,'base'),deductions:r.deductions,net:r.net,status:'paid',createdAt:b.paidAt})});db.transactions.push({id:id(),federationId:FED,date:today(),type:'expense',category:'حقوق و مزایا',costCenter:'ستاد فدراسیون',amount:b.net,description:'پرداخت قطعی حقوق و مزایای '+monthNames[Number(b.month)-1]+' '+b.year,ref:'PAYROLL-'+b.year+'-'+b.month,createdAt:b.paidAt});save();renderBatch();renderPayroll();render()});
+ $('printBatch').addEventListener('click',()=>printBatch(getBatch()));
+ $('batchTable').addEventListener('change',e=>{const inp=e.target.closest('[data-row][data-item]'),b=getBatch();if(!inp||!b||b.status!=='draft')return;const row=b.rows[Number(inp.dataset.row)];row.values[inp.dataset.item]=Math.max(0,Number(inp.value||0));renderBatch();save()});
+ document.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.personEdit){const p=db.personnel.find(x=>x.id===b.dataset.personEdit);if(p){fillPersonForm(p);$('personFormTitle').textContent='ویرایش پرونده '+p.code;$('personnelForm').scrollIntoView({behavior:'smooth',block:'start'})}}
+  if(b.dataset.personToggle){const p=db.personnel.find(x=>x.id===b.dataset.personToggle);if(p){p.status=p.status==='غیرفعال'?'فعال':'غیرفعال';p.active=p.status==='فعال';save();renderPersonnel()}}
+  if(b.dataset.personDelete){const p=db.personnel.find(x=>x.id===b.dataset.personDelete);if(p&&confirm('پرونده '+personName(p)+' حذف شود؟ سوابق حقوق قطعی حفظ می‌شود.')){db.personnel=db.personnel.filter(x=>x.id!==p.id);save();renderPersonnel()}}
+  if(b.dataset.fieldToggle){const f=db.customPersonnelFields.find(x=>x.id===b.dataset.fieldToggle);if(f){f.active=f.active===false;save();renderCustomFields()}}
+  if(b.dataset.fieldEdit){const f=db.customPersonnelFields.find(x=>x.id===b.dataset.fieldEdit);if(f){const v=prompt('عنوان جدید آیتم',f.label);if(v&&v.trim()){f.label=v.trim();save();renderCustomFields()}}}
+  if(b.dataset.fieldDelete){const f=db.customPersonnelFields.find(x=>x.id===b.dataset.fieldDelete);if(f&&confirm('آیتم حذف شود؟ مقادیر ذخیره‌شده از پرونده‌ها نیز حذف می‌شود.')){db.customPersonnelFields=db.customPersonnelFields.filter(x=>x.id!==f.id);save();renderCustomFields()}}
+  if(b.dataset.payitemToggle){const it=db.payItems.find(x=>x.id===b.dataset.payitemToggle);if(it&&!it.system){it.active=it.active===false;save();renderPayItems()}}
+  if(b.dataset.payitemEdit){const it=db.payItems.find(x=>x.id===b.dataset.payitemEdit);if(it&&!it.system){const v=prompt('عنوان جدید آیتم',it.label);if(v&&v.trim()){it.label=v.trim();save();renderPayItems()}}}
+  if(b.dataset.payitemDelete){const it=db.payItems.find(x=>x.id===b.dataset.payitemDelete);if(it&&!it.system&&confirm('آیتم از لیست دوره‌های آینده حذف شود؟')){db.payItems=db.payItems.filter(x=>x.id!==it.id);save();renderPayItems()}}
+  if(b.dataset.batchOpen){const batch=db.payrollBatches.find(x=>x.id===b.dataset.batchOpen);if(batch){currentBatchId=batch.id;$('batchYear').value=batch.year;$('batchMonth').value=batch.month;renderBatch();setTab('payroll')}}
+  if(b.dataset.batchPrint){const batch=db.payrollBatches.find(x=>x.id===b.dataset.batchPrint);if(batch)printBatch(batch)}
+ });
+ $('payrollYearFilter').addEventListener('change',renderPayroll);
 }
-function updatePayPreview(){const n=Number($('payBase').value||0)+Number($('payBenefits').value||0)-Number($('payDeductions').value||0);$('payPreview').textContent='خالص پرداختی: '+money(n)}
-
-seedPersonnel();bindPersonnel();renderPersonnel();renderPayroll();
+function updatePayPreview(){}
+function bindOldControls(){
+ $('backup').addEventListener('click',backup);$('exportJson').addEventListener('click',backup);
+ $('exportTransactions').addEventListener('click',exportTransactions);$('exportBudgets').addEventListener('click',exportBudgets);$('exportDocs').addEventListener('click',exportDocs);$('reportCsv').addEventListener('click',exportTransactions);$('print').addEventListener('click',()=>window.print());
+ $('importBtn').addEventListener('click',()=>{const f=$('importFile').files[0];if(!f){$('importStatus').textContent='ابتدا فایل پشتیبان را انتخاب کنید.';return}const reader=new FileReader();reader.onload=()=>{try{const x=JSON.parse(reader.result);if(x.federationId!==FED||!Array.isArray(x.transactions)||!Array.isArray(x.budgets)||!Array.isArray(x.documents))throw new Error('invalid');if(!confirm('اطلاعات فعلی با اطلاعات فایل جایگزین شود؟'))return;db={...blank(),...x,payrollBatches:Array.isArray(x.payrollBatches)?x.payrollBatches:[],payItems:Array.isArray(x.payItems)?x.payItems:defaultPayItems,customPersonnelFields:Array.isArray(x.customPersonnelFields)?x.customPersonnelFields:[]};save();location.reload()}catch(e){$('importStatus').textContent='فایل انتخاب‌شده معتبر نیست یا متعلق به پرونده اسکواش نیست.'}};reader.readAsText(f)});
+}
+seedPersonnel();bindPersonnel();bindOldControls();renderPersonnel();renderPayroll();renderPayItems();clearPersonForm();
 if(!localStorage.getItem(KEY))save();$('storageState').textContent='ذخیره محلی در همین مرورگر';
-})();
