@@ -107,7 +107,7 @@
     "slug": "blind",
     "website": "https://blindsports.ir",
     "status": "fetch-failed",
-    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
+    "error": "<urlopen error timed out>",
     "directory_logo": "blind-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-2-150x150.png",
     "official_content_status": "collected",
@@ -484,13 +484,14 @@
     "slug": "hockey",
     "website": "https://hockeyfed.ir",
     "status": "fetch-failed",
-    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
+    "error": "<urlopen error timed out>",
     "directory_logo": "hockey-logo.jpg",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/haki_logo.jpg",
-    "official_content_status": "limited",
+    "official_content_status": "fetch-failed",
     "official_content_url": "https://hockeyfed.ir",
     "official_content_paragraphs": 0,
-    "official_content_sources": []
+    "official_content_sources": [],
+    "official_content_error": "<urlopen error timed out>"
   },
   {
     "name": "آمادگی جسمانی و تندرستی",
@@ -1124,13 +1125,14 @@
     "slug": "volleyball",
     "website": "https://iranvolleyball.com",
     "status": "fetch-failed",
-    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
+    "error": "<urlopen error timed out>",
     "directory_logo": "volleyball-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-6-150x150.png",
-    "official_content_status": "limited",
+    "official_content_status": "fetch-failed",
     "official_content_url": "https://iranvolleyball.com",
     "official_content_paragraphs": 0,
-    "official_content_sources": []
+    "official_content_sources": [],
+    "official_content_error": "<urlopen error timed out>"
   },
   {
     "name": "وزنه‌برداری",
