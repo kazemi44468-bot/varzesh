@@ -9,7 +9,7 @@
   {
     "name": "اسکواش",
     "short": "اسکواش",
-    "domain": "www.squashiran.ir",
+    "domain": "squashiran.ir",
     "slug": "squash",
     "description": "فدراسیون ملی اسکواش؛ مسئول توسعه زیرساخت و باشگاه‌ها، آموزش مربیان و داوران، لیگ‌ها، مسابقات ملی و آماده‌سازی تیم‌های ملی."
   },
@@ -44,7 +44,7 @@
   {
     "name": "بسکتبال",
     "short": "بسکتبال",
-    "domain": "www.iribf.ir",
+    "domain": "iribf.ir",
     "slug": "basketball",
     "description": "مسئول برنامه‌ریزی و توسعه بسکتبال، تیم‌های ملی، لیگ‌ها، داوران و مربیان در کشور است."
   },
@@ -107,7 +107,7 @@
   {
     "name": "تنیس روی میز",
     "short": "تنیس روی میز",
-    "domain": "www.irttf.ir",
+    "domain": "irttf.ir",
     "slug": "tabletennis",
     "description": "مسئول توسعه تنیس روی میز، لیگ‌ها و مسابقات ملی و پشتیبانی از ورزشکاران و مربیان این رشته است."
   },
@@ -170,7 +170,7 @@
   {
     "name": "شنا، شیرجه و واترپلو",
     "short": "شنا",
-    "domain": "iranswimming.ir",
+    "domain": "irsf.ir",
     "slug": "aquatics",
     "description": "متولی رشته‌های شنا، شیرجه و واترپلو و توسعه آموزش، مسابقات و تیم‌های ملی ورزش‌های آبی است."
   },
@@ -254,7 +254,7 @@
   {
     "name": "والیبال",
     "short": "والیبال",
-    "domain": "iranvolleyball.com",
+    "domain": "volleyball.ir",
     "slug": "volleyball",
     "description": "متولی والیبال سالنی و ساحلی، لیگ‌ها، تیم‌های ملی و توسعه مربیگری و داوری در کشور است."
   },
