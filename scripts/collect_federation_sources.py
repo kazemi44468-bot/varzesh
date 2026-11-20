@@ -113,6 +113,8 @@ def collect_bamorabi():
     manual={
       'sports-associations':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-20.png',
       'kurash':'https://kurash-ika.org/wp-content/uploads/2022/06/306380608_539153384878374_807882668608004300_n.jpg',
+      'muaythai':'https://iranmuaythai.com/en/images/stories/0--00000-000.jpg',
+      'mma':'https://immaf.org/wp-content/uploads/2020/02/Iran-IRMMAA_ICON-ONLY-289x205-1.png',
       'futsal':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-14-150x150.png',
       'para-athletics':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-33-150x150.png',
       'kungfu':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-51-150x150.png',
@@ -359,6 +361,7 @@ def main():
         row['official_content_status']=profile.get('status')
         row['official_content_url']=profile.get('website')
         row['official_content_paragraphs']=len(profile.get('paragraphs',[]))
+        row['official_content_sources']=profile.get('sources',[])
         if profile.get('error'):row['official_content_error']=profile['error']
     rp.write_text(json.dumps(sorted(by.values(),key=lambda x:x.get('slug','')),ensure_ascii=False,indent=2),encoding='utf-8')
     print('Bamorabi logos:',len(logo_report),'official content pages:',sum(x.get('status') in ('collected','limited') for x in profiles.values()),'/',len(DATA))
