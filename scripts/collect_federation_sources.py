@@ -233,17 +233,17 @@ class TextParser(HTMLParser):
             self.meta=a.get('content','')[:500]
         if t=='title':self.capture='title';self.buf=[]
         elif t in ('h1','h2','h3'):self.capture='heading';self.buf=[]
-        elif t=='p':self.capture='p';self.buf=[]
+        elif t in ('p','li'):self.capture='p';self.buf=[]
     def handle_data(self,d):
         if self.capture is not None and not self.skip:self.buf.append(d)
     def handle_endtag(self,t):
         if t in ('script','style','nav','footer','header'):
             self.skip=max(0,self.skip-1);return
-        if self.capture and ((self.capture=='title' and t=='title') or (self.capture=='heading' and t in ('h1','h2','h3')) or (self.capture=='p' and t=='p')):
+        if self.capture and ((self.capture=='title' and t=='title') or (self.capture=='heading' and t in ('h1','h2','h3')) or (self.capture=='p' and t in ('p','li'))):
             s=re.sub(r'\s+',' ',' '.join(self.buf)).strip()
             if self.capture=='title' and s:self.title=s[:180]
             elif self.capture=='heading' and s and len(s)>2:self.headings.append(s[:140])
-            elif self.capture=='p' and len(s)>=65 and s not in self.paragraphs:self.paragraphs.append(s[:650])
+            elif self.capture=='p' and len(s)>=25 and s not in self.paragraphs:self.paragraphs.append(s[:650])
             self.capture=None;self.buf=[]
 
 def fetch_profile(e):
@@ -377,7 +377,7 @@ def main():
         row=by.setdefault(slug,{'slug':slug})
         row['official_content_status']=profile.get('status')
         row['official_content_url']=profile.get('website')
-        row['official_content_paragraphs']=len(profile.get('paragraphs',[]))
+        row['official_content_paragraphs']=len(profile.get('about',[]))+len(profile.get('mission',[]))+len(profile.get('address',[]))
         row['official_content_sources']=profile.get('sources',[])
         if profile.get('error'):row['official_content_error']=profile['error']
     rp.write_text(json.dumps(sorted(by.values(),key=lambda x:x.get('slug','')),ensure_ascii=False,indent=2),encoding='utf-8')
