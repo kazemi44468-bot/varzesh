@@ -47,18 +47,27 @@ $('importBtn').addEventListener('click',()=>{const f=$('importFile').files[0];if
 const confidential='اطلاعات محرمانه';
 const monthNames=['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
 const defaultPayItems=[
- {id:'base',label:'حقوق پایه',kind:'earning',active:true,system:true},
- {id:'housing',label:'حق مسکن',kind:'earning',active:true},
- {id:'food',label:'بن خواربار',kind:'earning',active:true},
- {id:'children',label:'حق اولاد',kind:'earning',active:true},
- {id:'seniority',label:'پایه سنوات',kind:'earning',active:true},
- {id:'overtime',label:'اضافه‌کاری',kind:'earning',active:true},
- {id:'bonus',label:'پاداش',kind:'earning',active:true},
- {id:'insurance',label:'سهم بیمه پرسنل',kind:'deduction',active:true},
- {id:'tax',label:'مالیات حقوق',kind:'deduction',active:true},
- {id:'other',label:'سایر کسورات',kind:'deduction',active:true}
+{id:'daysWorked',label:'روز کارکرد',kind:'quantity',active:true,system:true},
+{id:'base',label:'حقوق مبنا',kind:'earning',taxable:true,active:true,system:true},
+{id:'seniority',label:'پایه سنوات',kind:'earning',taxable:true,active:true,system:true},
+{id:'overtimeRate',label:'نرخ اضافه‌کاری ماه',kind:'rate',active:true,system:true},
+{id:'overtimeHours',label:'ساعت اضافه‌کاری',kind:'quantity',active:true,system:true},
+{id:'overtimeAmount',label:'مبلغ اضافه‌کاری',kind:'earning',taxable:true,active:true,system:true},
+{id:'welfare',label:'رفاهیات',kind:'earning',taxable:false,active:true,system:true},
+{id:'essentialGoods',label:'کالای اساسی',kind:'earning',taxable:false,active:true,system:true},
+{id:'childrenCount',label:'تعداد اولاد',kind:'quantity',active:true,system:true},
+{id:'childAllowance',label:'حق اولاد',kind:'earning',taxable:true,active:true,system:true},
+{id:'housing',label:'مسکن',kind:'earning',taxable:false,active:true,system:true},
+{id:'jobAllowance',label:'حق جذب و فوق‌العاده شغل',kind:'earning',taxable:true,active:true,system:true},
+{id:'insurance',label:'بیمه سهم پرسنل (۷٪)',kind:'deduction',active:true,system:true},
+{id:'tax',label:'مالیات حقوق',kind:'deduction',active:true,system:true},
+{id:'otherPayments',label:'سایر پرداختی',kind:'earning',taxable:false,active:true},
+{id:'otherDeductions',label:'سایر کسورات',kind:'deduction',active:true},
+{id:'employerInsurance',label:'بیمه سهم کارفرما (۲۰٪)',kind:'employer',active:true,system:true},
+{id:'employerUnemployment',label:'بیمه بیکاری (۳٪)',kind:'employer',active:true,system:true}
 ];
 if(!Array.isArray(db.payItems)||!db.payItems.length)db.payItems=defaultPayItems.map(x=>({...x}));
+else defaultPayItems.forEach(d=>{if(!db.payItems.some(x=>x.id===d.id))db.payItems.push({...d})});
 if(!Array.isArray(db.customPersonnelFields))db.customPersonnelFields=[];
 if(!Array.isArray(db.payrollBatches))db.payrollBatches=[];
 function nextPersonCode(){let max=999;db.personnel.forEach(p=>{const m=String(p.code||'').match(/^[A-Z](\\d+)$/i);if(m)max=Math.max(max,Number(m[1]))});return 'A'+(max+1)}
@@ -114,19 +123,20 @@ function batchItems(){return db.payItems.filter(x=>x.active!==false)}
 function makeBatch(){
  const year=String($('batchYear').value),month=$('batchMonth').value;
  let b=db.payrollBatches.find(x=>String(x.year)===year&&x.month===month);
- if(!b){b={id:id(),year,month,status:'draft',itemsSnapshot:batchItems().map(x=>({...x})),rows:[],createdAt:new Date().toISOString()};db.payrollBatches.push(b)}
+ if(!b){const snapshot=batchItems().map(x=>({...x}));b={id:id(),year,month,status:'draft',itemsSnapshot:snapshot,rows:[],createdAt:new Date().toISOString()};const previous=db.payrollBatches.filter(x=>(Number(x.year)<Number(year)||(Number(x.year)===Number(year)&&Number(x.month)<Number(month)))).sort((a,c)=>(Number(c.year)*100+Number(c.month))-(Number(a.year)*100+Number(a.month)))[0];db.personnel.filter(p=>p.status==='فعال'&&p.active!==false).forEach(p=>{addPersonToBatch(b,p);const old=previous?.rows.find(r=>r.employeeId===p.id);if(old){const row=b.rows.find(r=>r.employeeId===p.id);snapshot.forEach(it=>{if(old.values&&Object.prototype.hasOwnProperty.call(old.values,it.id))row.values[it.id]=Number(old.values[it.id]||0)});row.values.daysWorked=monthWorkDays(month);row.values.childrenCount=Number(p.children||row.values.childrenCount||0);recalculateEmployeeValues(row,p,snapshot)}});db.payrollBatches.push(b)}
  currentBatchId=b.id;renderBatch();save();
 }
+function monthWorkDays(m){const n=Number(m);return n<=6?31:n<=11?30:29}
+function recalculateEmployeeValues(row,p,items){const v=row.values||(row.values={}),taxable=items.filter(x=>x.taxable&&x.kind==='earning').reduce((a,x)=>a+Number(v[x.id]||0),0);if(v.overtimeRate&&v.overtimeHours&&(!v.overtimeAmount||v.overtimeAuto))v.overtimeAmount=Math.round(Number(v.overtimeRate)*Number(v.overtimeHours));if(items.some(x=>x.id==='insurance'))v.insurance=p.hasInsurance?Math.round(taxable*Number(p.insuranceRate||7)/100):0;if(items.some(x=>x.id==='tax'))v.tax=p.taxStatus==='معاف'?0:Math.round(Math.max(0,taxable-Number(p.taxExemption||0))*Number(p.taxRate||10)/100);if(items.some(x=>x.id==='employerInsurance'))v.employerInsurance=p.hasInsurance?Math.round(taxable*20/100):0;if(items.some(x=>x.id==='employerUnemployment'))v.employerUnemployment=p.hasInsurance?Math.round(taxable*3/100):0;return row}
 function addPersonToBatch(b,p){
  if(b.rows.some(r=>r.employeeId===p.id))return;
- const vals={};b.itemsSnapshot.forEach(it=>{if(it.id==='base')vals[it.id]=Number(p.contractAmount||180000000);else if(it.id==='insurance')vals[it.id]=p.hasInsurance?Math.round(Number(p.contractAmount||180000000)*Number(p.insuranceRate||7)/100):0;else if(it.id==='tax')vals[it.id]=p.taxStatus==='معاف'?0:Math.round(Math.max(0,Number(p.contractAmount||180000000)-Number(p.taxExemption||0))*Number(p.taxRate||0)/100);else vals[it.id]=0});
- b.rows.push({employeeId:p.id,employeeCode:p.code,employeeName:personName(p),job:p.job,bankName:p.bankName,accountNumber:p.accountNumber,iban:p.iban,contractNo:p.contractNo,insuranceStatus:p.hasInsurance?'دارد':'ندارد',taxStatus:p.taxStatus,values:vals});
+ const vals={};b.itemsSnapshot.forEach(it=>{if(it.id==='base')vals[it.id]=Number(p.contractAmount||180000000);else if(it.id==='daysWorked')vals[it.id]=monthWorkDays(b.month);else if(it.id==='childrenCount')vals[it.id]=Number(p.children||0);else if(it.id==='overtimeRate')vals[it.id]=Number(p.overtimeRate||0);else vals[it.id]=0});const row={employeeId:p.id,employeeCode:p.code,employeeName:personName(p),job:p.job,bankName:p.bankName,accountNumber:p.accountNumber,iban:p.iban,contractNo:p.contractNo,insuranceStatus:p.hasInsurance?'دارد':'ندارد',taxStatus:p.taxStatus,values:vals};recalculateEmployeeValues(row,p,b.itemsSnapshot);b.rows.push(row);
 }
 function renderBatch(){
  const b=getBatch();if(!b){$('batchTable').innerHTML=empty('برای شروع، سال و ماه را انتخاب و «بارگذاری / ایجاد لیست» را بزنید.');$('batchSummary').innerHTML='';return}
  const items=b.itemsSnapshot,totals={gross:0,deductions:0,net:0};
- const head=['کد','نام پرسنل',...items.map(x=>x.label),'ناخالص','کسورات','خالص','فیش'];
- const body=b.rows.map((r,idx)=>{const c=calcRow(r,items);totals.gross+=c.gross;totals.deductions+=c.deductions;totals.net+=c.net;return '<tr><td>'+esc(r.employeeCode)+'</td><td>'+esc(r.employeeName)+'</td>'+items.map(it=>'<td><input class="batch-input" type="number" min="0" data-row="'+idx+'" data-item="'+esc(it.id)+'" value="'+amountOf(r,it.id)+'" '+(b.status!=='draft'?'disabled':'')+'></td>').join('')+'<td>'+money(c.gross)+'</td><td>'+money(c.deductions)+'</td><td><b>'+money(c.net)+'</b></td></tr>'});
+ const head=['کد','نام پرسنل',...items.map(x=>x.label),'جمع مشمول و غیرمشمول','جمع حقوق مشمول','جمع کسورات','قابل پرداخت','عملیات'];
+ const body=b.rows.map((r,idx)=>{const c=calcRow(r,items);totals.gross+=c.gross;totals.deductions+=c.deductions;totals.net+=c.net;return '<tr><td>'+esc(r.employeeCode)+'</td><td>'+esc(r.employeeName)+'</td>'+items.map(it=>'<td><input class="batch-input" type="number" min="0" data-row="'+idx+'" data-item="'+esc(it.id)+'" value="'+amountOf(r,it.id)+'" '+(b.status!=='draft'?'disabled':'')+'></td>').join('')+'<td>'+money(c.gross)+'</td><td>'+money(c.taxable)+'</td><td>'+money(c.deductions)+'</td><td><b>'+money(c.net)+'</b></td><td>'+(b.status==='draft'?'<button class="text-btn" data-row-remove="'+idx+'">حذف از لیست</button>':'<button class="text-btn" data-slip-row="'+esc(b.id)+':'+idx+'">چاپ فیش</button>')+'</td></tr>'});
  b.gross=totals.gross;b.deductions=totals.deductions;b.net=totals.net;
  $('batchTitle').textContent='لیست حقوق و مزایای '+monthNames[Number(b.month)-1]+' '+num(b.year);
  $('batchStatus').textContent=b.status==='paid'?'پرداخت‌شده':b.status==='final'?'قطعی و تأییدشده':'پیش‌نویس قابل ویرایش';
@@ -134,6 +144,7 @@ function renderBatch(){
  $('batchSummary').innerHTML='<span>تعداد پرسنل: '+num(b.rows.length)+'</span><span>جمع ناخالص: '+money(totals.gross)+'</span><span>جمع کسورات: '+money(totals.deductions)+'</span><span>خالص قابل پرداخت: '+money(totals.net)+'</span>';
  $('finalizeBatch').disabled=b.status!=='draft'||!b.rows.length;$('markBatchPaid').disabled=b.status!=='final';$('recalcBatch').disabled=b.status!=='draft';$('addAllEmployees').disabled=b.status!=='draft';
 }
+function renderIndividualEditor(){const b=getBatch();if(!$('payEmployee'))return;const current=$('payEmployee').value;const opts=db.personnel.filter(p=>p.status==='فعال'||(b&&b.rows.some(r=>r.employeeId===p.id))).map(p=>'<option value="'+esc(p.id)+'">'+esc(p.code+' · '+personName(p))+'</option>').join('');$('payEmployee').innerHTML='<option value="">انتخاب پرسنل</option>'+opts;if(db.personnel.some(p=>p.id===current))$('payEmployee').value=current;const p=db.personnel.find(x=>x.id===$('payEmployee').value),row=b?.rows.find(x=>x.employeeId===p?.id);$('individualPayrollFields').innerHTML=b?b.itemsSnapshot.map(it=>'<label>'+esc(it.label)+'<input type="number" min="0" step="1" data-individual-item="'+esc(it.id)+'" value="'+(row?amountOf(row,it.id):'')+'"></label>').join(''):'ابتدا دوره و لیست ماهانه را بارگذاری کنید.';$('saveIndividualPayroll').disabled=!b||b.status!=='draft'}
 function batchSlipHtml(b,r){
  const p=db.personnel.find(x=>x.id===r.employeeId)||{},items=b.itemsSnapshot;
  const earnings=items.filter(x=>x.kind==='earning'&&amountOf(r,x.id)>0),deductions=items.filter(x=>x.kind==='deduction'&&amountOf(r,x.id)>0);
