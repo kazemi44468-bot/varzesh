@@ -487,11 +487,10 @@
     "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
     "directory_logo": "hockey-logo.jpg",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/haki_logo.jpg",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "limited",
     "official_content_url": "https://hockeyfed.ir",
     "official_content_paragraphs": 0,
-    "official_content_sources": [],
-    "official_content_error": "<urlopen error timed out>"
+    "official_content_sources": []
   },
   {
     "name": "آمادگی جسمانی و تندرستی",
