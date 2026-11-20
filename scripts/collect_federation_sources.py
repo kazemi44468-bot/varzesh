@@ -285,8 +285,27 @@ def inject_profiles(profiles):
         slug=e['slug']; path=ROOT/'centers'/'federations'/(slug+'.html')
         if not path.exists():continue
         html=path.read_text(encoding='utf-8')
-        logo_file=next(iter(OUT.glob(slug+'-logo.*')),None)
-        if logo_file:html=html.replace(slug+'-logo.png',logo_file.name)
+        logo_files=sorted(OUT.glob(slug+'-logo.*'))
+        logo_file=logo_files[0] if logo_files else None
+        logo_tag=re.search(r'<img class="logo"[^>]*>',html)
+        if logo_tag:
+            if logo_file:
+                tag=re.sub(r'src="[^"]+"','src="../../assets/images/federations/'+logo_file.name+'"',logo_tag.group(0))
+                html=html.replace(logo_tag.group(0),tag)
+            else:
+                html=html.replace(logo_tag.group(0),'<div class="logo-placeholder">نشان '+esc(e.get('short',e['name']))+'</div>')
+                if '.logo-placeholder' not in html:
+                    html=html.replace('.media .logo{','.media .logo-placeholder{grid-column:1/-1;min-height:76px;display:grid;place-items:center;background:#fff;color:#6b8292;border:1px solid #e1e8ed;border-radius:8px;font-size:11px}.media .logo{')
+        photo_files=sorted(OUT.glob(slug+'-photo-*'))
+        for i in range(1,3):
+            pattern=r'<img src="[^"]*'+re.escape(slug)+r'-photo-'+str(i)+r'\\.[^"]*"[^>]*>'
+            match=re.search(pattern,html)
+            if match:
+                if i<=len(photo_files):
+                    tag=re.sub(r'src="[^"]+"','src="../../assets/images/federations/'+photo_files[i-1].name+'"',match.group(0))
+                    html=html[:match.start()]+tag+html[match.end():]
+                else:
+                    html=html[:match.start()]+html[match.end():]
         prof=profiles.get(slug)
         if not prof or prof.get('status') not in ('collected','limited'):
             path.write_text(html,encoding='utf-8')
