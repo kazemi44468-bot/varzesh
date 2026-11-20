@@ -60,10 +60,15 @@
     "logo_found": false,
     "directory_logo": "badminton-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-21.png",
-    "official_content_status": "limited",
+    "official_content_status": "collected",
     "official_content_url": "https://iranbadminton.org",
-    "official_content_paragraphs": 0,
-    "official_content_sources": []
+    "official_content_paragraphs": 1,
+    "official_content_sources": [
+      {
+        "url": "https://iranbadminton.org/site/contact",
+        "title": "فدراسیون بدمینتون جمهوری اسلامی ایران | تماس با ما"
+      }
+    ]
   },
   {
     "name": "بسکتبال",
@@ -132,7 +137,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-23-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://iranaiba.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 5,
     "official_content_sources": [
       {
         "url": "https://iranaiba.ir/AboutUs",
@@ -191,7 +196,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-46-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://msfi.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 5,
     "official_content_sources": [
       {
         "url": "https://msfi.ir/AboutUs",
@@ -211,7 +216,7 @@
     "error": "<urlopen error [Errno 111] Connection refused>",
     "official_content_status": "collected",
     "official_content_url": "http://ifsafed.com",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 1,
     "official_content_sources": [
       {
         "url": "http://ifsafed.com/Item.aspx?id=22014",
@@ -248,19 +253,19 @@
     "name": "ورزش ناشنوایان",
     "slug": "deaf",
     "website": "https://dsf.ir",
-    "status": "fetch-failed",
-    "error": "The read operation timed out",
+    "logo": "deaf-logo.jpg",
+    "photos": [
+      "deaf-photo-1.png",
+      "deaf-photo-2.png"
+    ],
+    "logo_found": true,
     "directory_logo": "deaf-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-3-150x150.png",
-    "official_content_status": "collected",
+    "official_content_status": "fetch-failed",
     "official_content_url": "https://dsf.ir",
     "official_content_paragraphs": 0,
-    "official_content_sources": [
-      {
-        "url": "https://www.dsf.ir/%d8%ad%d8%b6%d9%88%d8%b1-%d8%b1%d8%a6%db%8c%d8%b3-%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86-%d8%aa%d9%86%db%8c%d8%b3-%d8%b1%d9%88%db%8c-%d9%85%db%8c%d8%b2-%d8%af%d8%b1-%d9%81%d8%af%d8%b1%d8%a7/",
-        "title": "حضور رئیس فدراسیون تنیس روی میز در فدراسیون ورزش‌های ناشنوایان/ گفت‌وگو درباره توسعه پینگ پنگ ناشنوایان – فدراسیون ورزش های ناشنوایان"
-      }
-    ]
+    "official_content_sources": [],
+    "official_content_error": "HTTP Error 503: Service Unavailable"
   },
   {
     "name": "سوارکاری",
@@ -276,7 +281,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-15-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://feiri.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 7,
     "official_content_sources": [
       {
         "url": "https://feiri.ir/contact/",
@@ -317,7 +322,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-42-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://irfnc.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 6,
     "official_content_sources": [
       {
         "url": "https://irfnc.ir#",
@@ -347,7 +352,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-14-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://the-ffiri.com",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 5,
     "official_content_sources": [
       {
         "url": "https://the-ffiri.com/fa/about",
@@ -373,7 +378,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-14-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://the-ffiri.com",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 5,
     "official_content_sources": [
       {
         "url": "https://the-ffiri.com/fa/about",
@@ -428,10 +433,15 @@
     "logo_found": true,
     "directory_logo": "handball-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/logo-handball.png",
-    "official_content_status": "limited",
+    "official_content_status": "collected",
     "official_content_url": "https://irihf.ir",
-    "official_content_paragraphs": 0,
-    "official_content_sources": []
+    "official_content_paragraphs": 1,
+    "official_content_sources": [
+      {
+        "url": "https://irihf.ir/contact",
+        "title": "تماس با ما"
+      }
+    ]
   },
   {
     "name": "هاکی",
@@ -460,11 +470,15 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2026/09/amaadegik.jpg",
     "official_content_status": "collected",
     "official_content_url": "https://iranpffw.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 2,
     "official_content_sources": [
       {
         "url": "https://www.iranpffw.ir/fa/iranpffw/aboutus-%d8%af%d8%b1%d8%a8%d8%a7%d8%b1%d9%87-%d9%85%d8%a7",
         "title": "درباره ما"
+      },
+      {
+        "url": "https://www.iranpffw.ir/fa/contactus",
+        "title": "تماس با ما | فدراسیون آمادگی جسمانی و تندرستی جمهوری اسلامی ایران"
       },
       {
         "url": "https://iranpffw.ir#ctl00_cphFooterPanel_ctl00",
@@ -634,7 +648,12 @@
     "official_content_status": "limited",
     "official_content_url": "https://irisfd.ir",
     "official_content_paragraphs": 0,
-    "official_content_sources": []
+    "official_content_sources": [
+      {
+        "url": "https://irisfd.ir/%d8%aa%d9%85%d8%a7%d8%b3-%d8%a8%d8%a7-%d9%85%d8%a7/",
+        "title": "تماس با ما - فدراسیون ورزش های جانبازان و توان‌یابان"
+      }
+    ]
   },
   {
     "name": "پارا دوومیدانی",
@@ -678,7 +697,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-7-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://isfaf.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 1,
     "official_content_sources": [
       {
         "url": "https://isfaf.ir/contact",
@@ -715,7 +734,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-25-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://roostasport.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 2,
     "official_content_sources": [
       {
         "url": "https://roostasport.ir#",
@@ -724,6 +743,10 @@
       {
         "url": "https://roostasport.ir/aboutus",
         "title": "درباره ما"
+      },
+      {
+        "url": "https://roostasport.ir/contactus",
+        "title": "تماس با ما"
       }
     ]
   },
@@ -811,7 +834,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/skate99.png",
     "official_content_status": "collected",
     "official_content_url": "https://iranskating.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 6,
     "official_content_sources": [
       {
         "url": "https://iranskating.ir/%d8%aa%d9%85%d8%a7%d8%b3-%d8%a8%d8%a7-%d9%85%d8%a7/",
@@ -833,7 +856,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-19.png",
     "official_content_status": "collected",
     "official_content_url": "http://skifed.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 6,
     "official_content_sources": [
       {
         "url": "http://skifed.ir#",
@@ -888,7 +911,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-20.png",
     "official_content_status": "collected",
     "official_content_url": "http://ifsafed.com",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 1,
     "official_content_sources": [
       {
         "url": "http://ifsafed.com/Item.aspx?id=22014",
@@ -940,7 +963,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-18.png",
     "official_content_status": "collected",
     "official_content_url": "https://squashiran.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 2,
     "official_content_sources": [
       {
         "url": "https://squashiran.ir/%d8%aa%d9%85%d8%a7%d8%b3-%d8%a8%d8%a7-%d9%85%d8%a7/",
@@ -1009,7 +1032,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-40-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://irtriathlon.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 1,
     "official_content_sources": [
       {
         "url": "https://irtriathlon.ir/aboutus",
@@ -1035,7 +1058,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-36-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://iusf.saorg.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 7,
     "official_content_sources": [
       {
         "url": "https://iusf.saorg.ir/portal/home/?265995/%D9%81%D8%AF%D8%B1%D8%A7%D8%B3%DB%8C%D9%88%D9%86-%D9%88%D8%B1%D8%B2%D8%B4%DB%8C",
@@ -1075,7 +1098,12 @@
     "official_content_status": "limited",
     "official_content_url": "https://iwfir.ir",
     "official_content_paragraphs": 0,
-    "official_content_sources": []
+    "official_content_sources": [
+      {
+        "url": "https://iwfir.ir/%d8%a7%d8%b1%d8%aa%d8%a8%d8%a7%d8%b7-%d8%a8%d8%a7-%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86-%d9%88%d8%b2%d9%86%d9%87-%d8%a8%d8%b1%d8%af%d8%a7%d8%b1%db%8c/",
+        "title": "ارتباط با فدراسیون وزنه برداری – فدراسیون وزنه برداری جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "ورزش‌های اسلامی زنان",
@@ -1145,7 +1173,7 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/logo-fipz-1-125x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://izsf.ch",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 2,
     "official_content_sources": [
       {
         "url": "https://izsf.ch/fa/contact-us",
