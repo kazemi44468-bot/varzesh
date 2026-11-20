@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173d59">
+<meta name="description" content="مرکز متمرکز خدمات مالی فدراسیون‌های ورزشی">
+<title>مرکز خدمات مالی | پورتال ورزش</title>
+<link rel="stylesheet" href="finance.css">
+</head>
+<body>
+<header class="topbar"><div class="shell topbar-in"><a class="brand" href="../../index.html">پورتال ورزش <span>مرکز خدمات مالی</span></a><div class="top-actions"><span class="local-tag">نسخه محلی و آزمایشی</span><button id="logoutBtn" class="btn btn-light hidden">خروج از محیط</button></div></div></header>
+<main class="shell">
+<section id="entry" class="entry">
+  <div class="entry-copy"><div class="eyebrow">سامانه تخصصی پشتیبانی مالی</div><h1>مرکز خدمات مالی فدراسیون‌ها</h1><p>ثبت و سامان‌دهی بودجه، درآمد، هزینه، اسناد و گزارش‌های مالی در یک ساختار متمرکز؛ با پرونده مستقل برای هر فدراسیون و نمای مدیریتی تجمیعی.</p>
+    <div class="entry-points"><span>پرونده مالی مستقل</span><span>ثبت اسناد و تراکنش‌ها</span><span>گزارش مدیریتی و دوره‌ای</span></div>
+  </div>
+  <form id="entryForm" class="entry-panel">
+    <h2>ورود به محیط کاری</h2><p class="muted">برای مشاهده نسخه محلی، نوع دسترسی و فدراسیون را انتخاب کنید.</p>
+    <label>نوع دسترسی<select id="roleSelect"><option value="treasurer">خزانه‌دار فدراسیون</option><option value="admin">مدیریت مرکزی پورتال</option></select></label>
+    <label id="federationField">فدراسیون<select id="federationSelect"></select></label>
+    <div class="notice">این نسخه برای بررسی گردش‌کار و اجرای محلی است. انتخاب نقش در این نسخه احراز هویت واقعی نیست و نباید برای اطلاعات مالی محرمانه یا عملیاتی استفاده شود.</div>
+    <button class="btn btn-primary btn-block" type="submit">ورود به مرکز خدمات مالی</button>
+  </form>
+</section>
+
+<section id="workspace" class="hidden">
+  <div class="workspace-head"><div><div class="eyebrow" id="roleCaption">محیط خزانه‌داری</div><h1 id="workspaceTitle">پرونده مالی فدراسیون</h1><p id="workspaceSub" class="muted"></p></div><div class="head-tools"><button id="exportBtn" class="btn btn-outline">دریافت نسخه پشتیبان</button><button id="printBtn" class="btn btn-outline">چاپ گزارش</button></div></div>
+  <nav class="tabs" aria-label="بخش‌های مرکز مالی"><button class="tab active" data-view="overview">نمای کلی</button><button class="tab" data-view="transactions">درآمد و هزینه</button><button class="tab" data-view="budget">بودجه و اعتبارات</button><button class="tab" data-view="documents">اسناد و فاکتورها</button><button class="tab" data-view="reports">گزارش‌ها</button><button class="tab admin-only hidden" data-view="access">ساختار فدراسیون‌ها</button></nav>
+
+  <section class="view" id="view-overview">
+    <div class="metrics" id="metrics"></div>
+    <div class="panel-grid">
+      <article class="panel"><div class="panel-head"><h2>آخرین گردش‌های مالی</h2><button class="text-btn" data-goto="transactions">مشاهده همه</button></div><div id="recentList" class="table-wrap"></div></article>
+      <article class="panel"><div class="panel-head"><h2>وضعیت پرونده مالی</h2></div><div id="statusSummary" class="status-list"></div></article>
+    </div>
+    <article class="panel note-panel"><h2>چارچوب استفاده</h2><p>اطلاعات هر فدراسیون در پرونده مستقل نگهداری می‌شود. در نسخه نهایی، خزانه‌دار فقط به پرونده فدراسیون منتسب به خود دسترسی خواهد داشت و مدیریت مرکزی گزارش‌های تجمیعی و وضعیت همه فدراسیون‌ها را مشاهده می‌کند.</p></article>
+  </section>
+
+  <section class="view hidden" id="view-transactions">
+    <div class="section-head"><div><h2>ثبت درآمد و هزینه</h2><p class="muted">هر رویداد مالی را با تاریخ، دسته‌بندی و شرح قابل پیگیری ثبت کنید.</p></div></div>
+    <form id="transactionForm" class="form-panel">
+      <div class="form-grid">
+        <label>نوع رویداد<select id="txType"><option value="expense">هزینه</option><option value="income">درآمد</option></select></label>
+        <label>تاریخ<input id="txDate" type="date" required></label>
+        <label>دسته‌بندی<select id="txCategory"><option>هزینه جاری</option><option>حقوق و دستمزد</option><option>اردو و اعزام</option><option>مسابقات و رویدادها</option><option>تجهیزات</option><option>درآمد حمایت مالی</option><option>درآمد تبلیغات</option><option>کمک و اعتبار دریافتی</option><option>سایر</option></select></label>
+        <label>مبلغ (ریال)<input id="txAmount" type="number" min="1" step="1" placeholder="مبلغ به ریال" required></label>
+        <label class="wide">شرح و توضیحات<input id="txDescription" maxlength="180" placeholder="شرح مختصر و قابل پیگیری" required></label>
+        <label>شماره سند / پیوست<input id="txRef" maxlength="60" placeholder="اختیاری"></label>
+      </div>
+      <button class="btn btn-primary" type="submit">ثبت رویداد مالی</button><span id="txFeedback" class="feedback" aria-live="polite"></span>
+    </form>
+    <article class="panel"><div class="panel-head"><h2>دفتر گردش مالی</h2><div class="inline-tools"><select id="txFilter"><option value="all">همه رویدادها</option><option value="income">درآمدها</option><option value="expense">هزینه‌ها</option></select><button id="csvBtn" class="btn btn-small btn-outline">خروجی CSV</button></div></div><div id="transactionTable" class="table-wrap"></div></article>
+  </section>
+
+  <section class="view hidden" id="view-budget">
+    <div class="section-head"><div><h2>بودجه و اعتبارات</h2><p class="muted">اعتبار مصوب را در کنار عملکرد واقعی و مانده قابل استفاده کنترل کنید.</p></div></div>
+    <form id="budgetForm" class="form-panel compact-form"><div class="form-grid">
+      <label>سال مالی<input id="budgetYear" type="number" min="1400" max="1500" required></label>
+      <label>عنوان ردیف بودجه<input id="budgetTitle" maxlength="100" placeholder="مثلاً پشتیبانی تیم‌های ملی" required></label>
+      <label>اعتبار مصوب (ریال)<input id="budgetAmount" type="number" min="0" required></label>
+      <label>توضیح<input id="budgetNote" maxlength="160" placeholder="اختیاری"></label>
+    </div><button class="btn btn-primary" type="submit">افزودن ردیف بودجه</button></form>
+    <div id="budgetSummary" class="metrics metrics-three"></div>
+    <article class="panel"><h2>ردیف‌های بودجه</h2><div id="budgetTable" class="table-wrap"></div></article>
+  </section>
+
+  <section class="view hidden" id="view-documents">
+    <div class="section-head"><div><h2>اسناد و فاکتورها</h2><p class="muted">ثبت مشخصات اسناد مالی و اتصال آن‌ها به گردش‌های مالی.</p></div></div>
+    <form id="documentForm" class="form-panel"><div class="form-grid">
+      <label>نوع سند<select id="docType"><option>فاکتور خرید</option><option>قرارداد</option><option>صورت‌وضعیت</option><option>رسید پرداخت</option><option>سند دریافت</option><option>سایر</option></select></label>
+      <label>شماره سند<input id="docNumber" maxlength="70" required></label>
+      <label>تاریخ سند<input id="docDate" type="date" required></label>
+      <label>مبلغ (ریال)<input id="docAmount" type="number" min="0" required></label>
+      <label class="wide">شرح سند<input id="docDescription" maxlength="180" required></label>
+    </div><button class="btn btn-primary" type="submit">ثبت مشخصات سند</button></form>
+    <article class="panel"><h2>فهرست اسناد ثبت‌شده</h2><div id="documentTable" class="table-wrap"></div></article>
+    <p class="subtle">در این نسخه فقط مشخصات اسناد ذخیره می‌شود؛ بارگذاری امن فایل، امضای دیجیتال و گردش تأیید باید در نسخه متصل به سرور پیاده‌سازی شود.</p>
+  </section>
+
+  <section class="view hidden" id="view-reports">
+    <div class="section-head"><div><h2>گزارش‌های مالی</h2><p class="muted">گزارش عملکرد بر اساس پرونده فعال یا نمای تجمیعی مدیریت مرکزی.</p></div><button id="reportCsvBtn" class="btn btn-outline">دریافت گزارش CSV</button></div>
+    <div class="metrics" id="reportMetrics"></div>
+    <article class="panel"><h2>خلاصه عملکرد فدراسیون‌ها</h2><div id="federationReport" class="table-wrap"></div></article>
+    <article class="panel"><h2>ترکیب هزینه‌ها</h2><div id="categoryReport" class="category-report"></div></article>
+  </section>
+
+  <section class="view hidden" id="view-access">
+    <div class="section-head"><div><h2>ساختار پرونده‌های مستقل</h2><p class="muted">فهرست فدراسیون‌ها و وضعیت اطلاعات ثبت‌شده در هر پرونده.</p></div></div>
+    <article class="panel"><div id="accessTable" class="table-wrap"></div></article>
+    <div class="notice">تعریف حساب خزانه‌دار، انتساب کاربر به فدراسیون، بازیابی رمز، ثبت رخدادهای ورود و کنترل مجوزها در نسخه نهایی باید سمت سرور انجام شود.</div>
+  </section>
+</section>
+<footer class="footer">پورتال ورزش · مرکز خدمات مالی · محیط آزمایشی محلی</footer>
+</main>
+<script src="finance.js"></script>
+</body></html>
