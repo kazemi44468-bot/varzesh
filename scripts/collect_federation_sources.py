@@ -347,7 +347,7 @@ def inject_profiles(profiles):
         if not sections:
             sections.append('<section class="panel"><h2>معرفی و درباره ما</h2><p>متن قابل استناد از بخش معرفی یا درباره‌ما در پایگاه رسمی این مجموعه در دسترس نبود؛ برای اطلاعات معتبر به پایگاه رسمی مراجعه کنید.</p></section>')
         content_block='<div class="actions">'+official+'</div><div class="cols"><div>'+''.join(sections)+'</div></div>'
-        html=re.sub(r'<div class="actions">.*?</div><div class="cols">.*?</aside></div></main>',content_block+'</main>',html,flags=re.S)
+        html=re.sub(r'<(?:nav|div) class="actions">.*?</(?:nav|div)><div class="cols">.*?</aside></div></main>',content_block+'</main>',html,flags=re.S)
         # Remove stale generic facts and unsupported headings left by older page versions.
         path.write_text(html,encoding='utf-8')
 
