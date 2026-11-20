@@ -70,6 +70,7 @@ if(!Array.isArray(db.payItems)||!db.payItems.length)db.payItems=defaultPayItems.
 else {defaultPayItems.forEach(d=>{if(!db.payItems.some(x=>x.id===d.id))db.payItems.push({...d})});['children','food','overtime','bonus','other'].forEach(k=>{const legacy=db.payItems.find(x=>x.id===k);if(legacy)legacy.active=false})}
 if(!Array.isArray(db.customPersonnelFields))db.customPersonnelFields=[];
 if(!Array.isArray(db.payrollBatches))db.payrollBatches=[];
+db.payrollBatches.filter(b=>b.status==='draft').forEach(b=>{if(!Array.isArray(b.itemsSnapshot))b.itemsSnapshot=batchItems();const map={children:'childAllowance',food:'essentialGoods',overtime:'overtimeAmount',bonus:'otherPayments',other:'otherDeductions'};b.rows.forEach(r=>{r.values=r.values||{};Object.entries(map).forEach(([oldId,newId])=>{if(Number(r.values[newId]||0)===0&&Number(r.values[oldId]||0)>0)r.values[newId]=Number(r.values[oldId])})});['children','food','overtime','bonus','other'].forEach(oldId=>{b.itemsSnapshot.forEach(it=>{if(it.id===oldId)it.active=false})});batchItems().forEach(it=>{if(!b.itemsSnapshot.some(x=>x.id===it.id))b.itemsSnapshot.push({...it})})});
 function nextPersonCode(){let max=999;db.personnel.forEach(p=>{const m=String(p.code||'').match(/^[A-Z](\\d+)$/i);if(m)max=Math.max(max,Number(m[1]))});return 'A'+(max+1)}
 function seedPersonnel(){
  if(db.personnel.length){
