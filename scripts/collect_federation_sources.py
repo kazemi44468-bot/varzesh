@@ -263,36 +263,41 @@ def fetch_profile(e):
         first=TextParser();first.feed(body.decode('utf-8','ignore'))
         links=LinkParser();links.feed(body.decode('utf-8','ignore'))
         host=urlparse(homepage).netloc.lower().replace('www.','')
-        include=('درباره','معرفی','تاریخچه','ساختار','چارت','کمیته','هیئت','اهداف','رسالت','فدراسیون','about','history','organization','structure','committee','federation','mission')
-        exclude=('news','خبر','اخبار','article','post','event','رویداد','gallery','گالری','category','tag','search')
+        about_terms=('درباره','معرفی','about','who-we-are','about-us')
+        contact_terms=('تماس','ارتباط','نشانی','آدرس','contact','address')
         candidates=[]
         for href,label in links.links:
             full=urljoin(homepage,href)
             parsed=urlparse(full)
             if parsed.scheme not in ('http','https') or parsed.netloc.lower().replace('www.','')!=host:continue
             key=(label+' '+parsed.path).lower()
-            if any(x in key for x in exclude):continue
-            if any(x in key for x in include) and full.rstrip('/')!=homepage.rstrip('/') and full not in candidates:candidates.append(full)
-        pages=[(homepage,first)]
-        for url in candidates[:4]:
+            if any(x in key for x in ('news','خبر','اخبار','article','post','event','رویداد','gallery','گالری','category','tag','search')):continue
+            kind='about' if any(x in key for x in about_terms) else ('contact' if any(x in key for x in contact_terms) else '')
+            if kind and full.rstrip('/')!=homepage.rstrip('/') and all(x[0]!=full for x in candidates):
+                candidates.append((full,kind))
+        pages=[]
+        for url,kind in candidates[:5]:
             try:
-                ct,raw=get(url,limit=1600000,timeout=6)
+                ct,raw=get(url,limit=1600000,timeout=7)
                 if 'html' not in ct:continue
                 p=TextParser();p.feed(raw.decode('utf-8','ignore'))
-                if p.paragraphs or p.headings:pages.append((url,p))
+                if p.paragraphs:pages.append((url,kind,p))
             except Exception:continue
-        paragraphs=[];headings=[];sources=[]
-        for url,p in pages[1:]+pages[:1]:
-            sources.append({'url':url,'title':p.title or url})
+        about=[]; missions=[]; addresses=[]; sources=[]
+        for url,kind,p in pages:
+            sources.append({'url':url,'title':p.title or ('درباره ما' if kind=='about' else 'تماس با ما')})
             for para in p.paragraphs:
-                if para not in paragraphs:paragraphs.append(para)
-            for heading in p.headings:
-                if heading not in headings:headings.append(heading)
+                n=norm(para)
+                if any(x in n for x in ('نشانی','آدرس','ادرس','address','تماس با','تلفن','تهران خیابان','استان تهران')):
+                    if para not in addresses:addresses.append(para)
+                elif any(x in n for x in ('ماموریت','رسالت','اهداف','هدف اصلی','mission','our purpose')):
+                    if para not in missions:missions.append(para)
+                elif kind=='about' and para not in about:
+                    about.append(para)
         return e['slug'],{
-            'website':homepage,'title':first.title,'description':first.meta,
-            'headings':headings[:18],'paragraphs':paragraphs[:12],
-            'sources':sources[:5],
-            'status':'collected' if (paragraphs or first.meta) else 'limited'
+            'website':homepage,'about':about[:5],'mission':missions[:3],
+            'address':addresses[:2],'sources':sources[:5],
+            'status':'collected' if (about or missions or addresses) else 'limited'
         }
     except Exception as ex:
         return e['slug'],{'website':homepage,'status':'fetch-failed','error':str(ex)[:160]}
@@ -315,38 +320,35 @@ def inject_profiles(profiles):
             else:
                 pieces.append('<div class="logo-placeholder">نشان '+esc(e.get('short',e['name']))+'</div>')
                 html=html.replace('.media .logo{','.media .logo-placeholder{grid-column:1/-1;min-height:76px;display:grid;place-items:center;background:#fff;color:#6b8292;border:1px solid #e1e8ed;border-radius:8px;font-size:11px}.media .logo{')
-            for i,photo in enumerate(photo_files[:2],1):
-                pieces.append('<img src="../../assets/images/federations/'+photo.name+'" alt="تصویر فعالیت '+esc(e.get('short',e['name']))+'" loading="lazy">')
-            html=html[:media.start()]+'<div class="media">' + ''.join(pieces) + '</div>'+html[media.end():]
-        official_url=('https://'+e['domain'].strip('/')) if e.get('domain') else ''
-        action=re.search(r'<a class="action" href="[^"]*" target="_blank" rel="noopener">[^<]*</a>',html)
-        if action and official_url:
-            html=html[:action.start()]+'<a class="action" href="'+esc(official_url)+'" target="_blank" rel="noopener">پایگاه اینترنتی فدراسیون</a>'+html[action.end():]
-        elif action:
-            html=html[:action.start()]+'<span class="action secondary">نشانی رسمی نیازمند تأیید</span>'+html[action.end():]
-        prof=profiles.get(slug)
-        if not prof or prof.get('status') not in ('collected','limited'):
-            path.write_text(html,encoding='utf-8')
-            continue
-        # Replace the generic placeholder panels with concise material actually found on the official site.
-        items=[]
-        desc=prof.get('description','').strip()
-        if desc:items.append('<p>'+esc(desc)+'</p>')
-        for para in prof.get('paragraphs',[])[:7]:
-            items.append('<p>'+esc(para)+'</p>')
-        if not items:
-            path.write_text(html,encoding='utf-8')
-            continue
-        heads=prof.get('headings',[])
-        topics='<ul class="list">'+''.join('<li>'+esc(x)+'</li>' for x in heads[:12])+'</ul>' if heads else '<p>در صفحه اصلی منبع، فهرست موضوعات تفصیلی قابل استخراج نبود.</p>'
-        source_url=prof.get('website','')
-        source_links=''.join('<li><a href="'+esc(x.get('url',''))+'" target="_blank" rel="noopener">'+esc(x.get('title') or 'صفحه مرجع')+'</a></li>' for x in prof.get('sources',[]) if x.get('url'))
-        source_list='<ul class="list">'+source_links+'</ul>' if source_links else ''
-        content_block='<div class="cols"><div><section class="panel"><h2>معرفی و اطلاعات منتشرشده در پایگاه رسمی</h2>'+''.join(items)+'</section><section class="panel"><h2>بخش‌ها و موضوعات قابل دسترسی</h2>'+topics+'</section></div><aside><section class="panel"><h2>منابع اطلاعات</h2><p>مطالب این پرونده از صفحات عمومی وب‌سایت معرفی‌شده برای این مجموعه گردآوری شده‌اند. برای دریافت آخرین اطلاعیه‌ها و اسناد، به مرجع اصلی مراجعه کنید.</p><p><a href="'+esc(source_url)+'" target="_blank" rel="noopener">ورود به پایگاه اینترنتی</a></p>'+source_list+'<div class="facts"><div class="fact"><b>عنوان صفحه اصلی</b><span>'+esc(prof.get('title') or e['name'])+'</span></div><div class="fact"><b>صفحات مرجع</b><span>'+str(len(prof.get('sources',[])))+' صفحه</span></div></div></section></aside></div>'
-        html=re.sub(r'<div class="cols">.*?</aside></div></main>',content_block+'</main>',html,flags=re.S)
-        m=re.search(r'<a class="action" href="[^"]*" target="_blank" rel="noopener">',html)
-        if m and source_url:
-            html=html[:m.start()]+'<a class="action" href="'+esc(source_url)+'" target="_blank" rel="noopener">'+html[m.end():]
+            for photo in photo_files[:2]:
+                pieces.append('<img src="../../assets/images/federations/'+photo.name+'" alt="تصویر '+esc(e.get('short',e['name']))+'" loading="lazy">')
+            html=html[:media.start()]+'<div class="media">'+''.join(pieces)+'</div>'+html[media.end():]
+        prof=profiles.get(slug,{})
+        about=prof.get('about',[])[:3]
+        mission=prof.get('mission',[])[:2]
+        addresses=prof.get('address',[])[:1]
+        # The hero uses only a short extract from the official About page; no generated description.
+        hero_para=''
+        if about:
+            hero_para='<p>'+esc(about[0])+'</p>'
+        html=re.sub(r'(<div class="hero-in">.*?<h1>.*?</h1>)\s*<p>.*?</p>',lambda m:m.group(1)+hero_para,html,count=1,flags=re.S)
+        sections=[]
+        if about:
+            sections.append('<section class="panel"><h2>درباره ما</h2>'+''.join('<p>'+esc(x)+'</p>' for x in about)+'</section>')
+        if mission:
+            sections.append('<section class="panel"><h2>مأموریت</h2>'+''.join('<p>'+esc(x)+'</p>' for x in mission)+'</section>')
+        if addresses:
+            sections.append('<section class="panel"><h2>نشانی و راه‌های ارتباطی</h2>'+''.join('<p>'+esc(x)+'</p>' for x in addresses)+'</section>')
+        source_links=''.join('<li><a href="'+esc(x.get('url',''))+'" target="_blank" rel="noopener">'+esc(x.get('title') or 'صفحه رسمی')+'</a></li>' for x in prof.get('sources',[]) if x.get('url'))
+        official_url=prof.get('website') or (('https://'+e['domain'].strip('/')) if e.get('domain') else '')
+        official='<a class="action" href="'+esc(official_url)+'" target="_blank" rel="noopener">ورود به پایگاه رسمی</a>' if official_url else '<span class="action secondary">نشانی رسمی تأیید نشده</span>'
+        if source_links:
+            sections.append('<section class="panel"><h2>صفحات رسمی منبع</h2><ul class="list">'+source_links+'</ul></section>')
+        if not sections:
+            sections.append('<section class="panel"><h2>معرفی و درباره ما</h2><p>متن قابل استناد از بخش معرفی یا درباره‌ما در پایگاه رسمی این مجموعه در دسترس نبود؛ برای اطلاعات معتبر به پایگاه رسمی مراجعه کنید.</p></section>')
+        content_block='<div class="actions">'+official+'</div><div class="cols"><div>'+''.join(sections)+'</div></div>'
+        html=re.sub(r'<div class="actions">.*?</div><div class="cols">.*?</aside></div></main>',content_block+'</main>',html,flags=re.S)
+        # Remove stale generic facts and unsupported headings left by older page versions.
         path.write_text(html,encoding='utf-8')
 
 def esc(s):
