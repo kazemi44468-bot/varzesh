@@ -53,7 +53,7 @@ button,input,select{font:inherit}
 .fed-card:hover{border-color:#a9bbc8;box-shadow:0 8px 22px #1e405511;transform:translateY(-2px)}
 .card-head{display:flex;align-items:center;gap:11px;min-height:54px;margin-bottom:8px}
 .crest{width:51px;height:51px;flex:0 0 51px;border:1px solid #e2e8ed;border-radius:7px;background:#f8fafb;display:grid;place-items:center;overflow:hidden}
-.crest img{display:block;width:100%;height:100%;object-fit:contain;padding:4px}
+.crest img{display:block;width:100%;height:100%;object-fit:contain;padding:4px}.crest img[data-slug="sailing"]{object-fit:cover;object-position:right center;padding:0}
 .crest-fallback{font-size:10px;font-weight:700;color:#6d8799;text-align:center;line-height:1.5;padding:3px}
 .fed-title{font-size:12px;line-height:1.8;font-weight:700;color:#24465e}
 .fed-subtitle{font-size:9px;color:#8998a3;margin-top:1px}
@@ -114,7 +114,7 @@ function render(){
  grid.innerHTML=rows.map(f=>{
   const [name,short,domain,slug,desc]=f;
   const logoBase='../assets/images/federations/'+slug+'-logo';
-  const logo='<img src="'+logoBase+'.png" data-base="'+logoBase+'" data-short="'+short+'" alt="نشان '+name+'" onerror="logoFallback(this)">';
+  const logo='<img src="'+logoBase+'.png" data-base="'+logoBase+'" data-short="'+short+'" data-slug="'+slug+'" alt="نشان '+name+'" onerror="logoFallback(this)">';
   const site=domain?'<a class="site-link" href="https://'+domain+'" target="_blank" rel="noopener noreferrer">پایگاه اینترنتی ↗</a>':'<span class="site-link disabled">پیوند ثبت نشده</span>';
   return '<article class="fed-card"><div class="card-head"><div class="crest">'+logo+'</div><div><div class="fed-title">'+name+'</div><div class="fed-subtitle">پرونده تخصصی مجموعه</div></div></div><p class="fed-desc">'+desc+'</p><a class="detail-link" href="federations/'+slug+'.html"><span>مشاهده معرفی و اطلاعات</span><span>←</span></a><div class="card-foot"><span class="domain">'+(domain||'نشانی نیازمند بررسی')+'</span>'+site+'</div><span class="status '+(domain?'available':'')+'">'+(domain?'دارای نشانی ثبت‌شده':'نشانی رسمی ثبت نشده')+'</span></article>';
  }).join('');
