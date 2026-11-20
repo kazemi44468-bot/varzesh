@@ -404,7 +404,7 @@ def inject_profiles(profiles):
         if not sections:
             sections.append('<section class="panel"><h2>معرفی فدراسیون</h2><p>برای آشنایی با ساختار، فعالیت‌ها و اطلاعات به‌روز این فدراسیون، درگاه رسمی آن را مشاهده کنید.</p></section>')
         content_block='<div class="actions">'+official+'</div><div class="cols"><div>'+''.join(sections)+'</div></div>'
-        html=re.sub(r'<(?:nav|div) class="actions">.*?</(?:nav|div)><div class="cols">.*?</aside></div></main>',content_block+'</main>',html,flags=re.S)
+        html=re.sub(r'(<main\\b[^>]*class="[^"]*\\bcontent\\b[^"]*"[^>]*>).*?</main>',lambda m:m.group(1)+content_block+'</main>',html,count=1,flags=re.S)
         # Remove stale generic facts and unsupported headings left by older page versions.
         path.write_text(html,encoding='utf-8')
 
