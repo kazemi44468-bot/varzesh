@@ -106,7 +106,7 @@ def collect_bamorabi():
         e=match_item(rec['name'])
         if not e or e['slug'] in seen:continue
         seen.add(e['slug'])
-        if rec['website']:
+        if rec['website'] and not e.get('domain'):
             host=urlparse(rec['website']).netloc.lower()
             if host:e['domain']=host
         if rec['logo_url']:logo_sources[e['slug']]=(e,rec['logo_url'])
@@ -285,7 +285,7 @@ def inject_profiles(profiles):
         slug=e['slug']; path=ROOT/'centers'/'federations'/(slug+'.html')
         if not path.exists():continue
         html=path.read_text(encoding='utf-8')
-        logo_files=sorted(OUT.glob(slug+'-logo.*'))
+        logo_files=sorted(OUT.glob(slug+'-logo.*'),key=lambda p:{'.png':0,'.jpg':1,'.webp':2,'.gif':3}.get(p.suffix.lower(),9))
         logo_file=logo_files[0] if logo_files else None
         logo_tag=re.search(r'<img class="logo"[^>]*>',html)
         if logo_tag:
@@ -362,5 +362,5 @@ def main():
     rp.write_text(json.dumps(sorted(by.values(),key=lambda x:x.get('slug','')),ensure_ascii=False,indent=2),encoding='utf-8')
     print('Bamorabi logos:',len(logo_report),'official content pages:',sum(x.get('status') in ('collected','limited') for x in profiles.values()),'/',len(DATA))
 
-# Collect and normalize verified federation marks and official source profiles.
+# Collect official-source pages and normalize local federation marks and photos.
 if __name__=='__main__':main()
