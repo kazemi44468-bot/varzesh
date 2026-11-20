@@ -280,7 +280,7 @@ def fetch_profile(e):
     homepage=''; last=''
     for url in ['https://'+domain,'http://'+domain]:
         try:
-            ct,body=get(url,limit=2600000,timeout=16)
+            ct,body=get(url,limit=2600000,timeout=12)
             if 'html' in ct:
                 homepage=url
                 break
@@ -305,9 +305,9 @@ def fetch_profile(e):
             if kind and full.rstrip('/')!=homepage.rstrip('/') and all(x[0]!=full for x in candidates):
                 candidates.append((full,kind))
         pages=[]
-        for url,kind in candidates[:8]:
+        for url,kind in candidates[:6]:
             try:
-                ct,raw=get(url,limit=2200000,timeout=14)
+                ct,raw=get(url,limit=2200000,timeout=10)
                 if 'html' not in ct:continue
                 p=TextParser();p.feed(raw.decode('utf-8','ignore'))
                 if p.paragraphs or p.meta:pages.append((url,kind,p))
@@ -415,7 +415,7 @@ def main():
     logo_report=collect_bamorabi()
     # Pull content from the official homepages; network failures are retained in the report.
     profiles={}
-    with ThreadPoolExecutor(max_workers=10) as pool:
+    with ThreadPoolExecutor(max_workers=14) as pool:
         futures=[pool.submit(fetch_profile,e) for e in DATA]
         for f in as_completed(futures):
             slug,profile=f.result();profiles[slug]=profile
