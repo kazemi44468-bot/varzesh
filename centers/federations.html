@@ -48,7 +48,7 @@ button,input,select{font:inherit}
 .search-icon{position:absolute;right:14px;top:12px;color:#8193a0;font-size:17px}
 .filter{height:45px;border:1px solid #d4dfe6;border-radius:8px;padding:0 12px;background:#fff;color:#3d5c72;font-size:11px;outline:none}
 .result-count{font-size:10px;color:#7b8c98;white-space:nowrap}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.fed-card{min-height:220px}.card-head{align-items:flex-start}.fed-card .detail-link{margin-top:auto}
 .fed-card{min-width:0;display:flex;flex-direction:column;background:#fff;border:1px solid #dce5eb;border-radius:10px;padding:14px 15px 12px;transition:border-color .18s,box-shadow .18s,transform .18s}
 .fed-card:hover{border-color:#a9bbc8;box-shadow:0 9px 24px #1e405511;transform:translateY(-2px)}
 .card-head{display:flex;align-items:center;gap:11px;min-height:54px;margin-bottom:8px}
@@ -57,7 +57,7 @@ button,input,select{font:inherit}
 .crest-fallback{font-size:10px;font-weight:700;color:#6d8799;text-align:center;line-height:1.5;padding:3px}
 .fed-title{font-size:12px;line-height:1.8;font-weight:700;color:#24465e}
 .fed-subtitle{font-size:9px;color:#8998a3;margin-top:1px}
-.fed-desc{display:none}
+.fed-desc{display:block;font-size:10px;line-height:2.1;color:#6c8090;margin:0 0 12px;min-height:62px}
 .detail-link{display:flex;justify-content:space-between;align-items:center;width:100%;border:1px solid #d7e1e8;border-radius:6px;padding:9px 11px;color:#315d79;background:#f8fafb;font-size:10px;font-weight:700;cursor:pointer;text-align:right;transition:.18s}.detail-link:hover{background:#eef3f6;border-color:#b8c8d3}
 
 .card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;padding-top:8px;border-top:1px solid #edf1f3}
@@ -90,7 +90,7 @@ button,input,select{font:inherit}
 <div class="hero-meta"><div class="stat"><strong id="total">۶۶</strong><span>پرونده تخصصی</span></div></div>
 </div></section>
 <main class="container main">
-<div class="intro-row"><div><div class="section-title">فهرست فدراسیون‌های ورزشی</div><div class="section-sub">برای مشاهده معرفی، اطلاعات دفتر مرکزی و راه‌های ارتباطی هر فدراسیون، پرونده آن را باز کنید.</div></div></div>
+<div class="intro-row"><div><div class="section-title">فهرست فدراسیون‌های ورزشی</div><div class="section-sub">هر پرونده شامل معرفی حوزه فعالیت، راه ارتباطی و پیوند مستقیم وب‌سایت فدراسیون است.</div></div></div>
 <div class="toolbar">
 <label class="search"><input id="search" type="search" placeholder="جست‌وجوی نام فدراسیون، انجمن یا رشته..." autocomplete="off" aria-label="جست‌وجوی مجموعه‌های ورزشی"></label>
 <select class="filter" id="filter" aria-label="فیلتر مجموعه‌ها"><option value="all">تمام مجموعه‌ها</option><option value="has">دارای وب‌سایت ثبت‌شده</option><option value="missing">فاقد وب‌سایت ثبت‌شده</option></select>
@@ -182,11 +182,11 @@ function render(){
  const q=search.value.trim().toLocaleLowerCase('fa'),mode=filter.value;
  const rows=federations.filter(f=>(!q||f.join(' ').toLocaleLowerCase('fa').includes(q))&&(mode==='all'||(mode==='has'?!!f[2]:!f[2])));
  grid.innerHTML=rows.map(f=>{
-  const [name,short,domain,slug]=f;
+  const [name,short,domain,slug,description]=f;
   const logoBase='../assets/images/federations/'+slug+'-logo';
   const logo='<img src="'+logoBase+'.png" data-base="'+logoBase+'" data-short="'+short+'" data-slug="'+slug+'" alt="نشان '+name+'" onerror="logoFallback(this)">';
   const site=domain?'<a class="site-link" href="https://'+domain+'" target="_blank" rel="noopener noreferrer">وب‌سایت رسمی</a>':'<span class="site-link disabled">وب‌سایت ثبت نشده</span>';
-  return '<article class="fed-card"><div class="card-head"><div class="crest">'+logo+'</div><div><div class="fed-title">'+name+'</div><div class="fed-subtitle">اطلاعات و درگاه رسمی</div></div></div><button class="detail-link" type="button" data-profile="'+slug+'" data-name="'+name+'" data-domain="'+domain+'"><span>مشاهده معرفی در همین صفحه</span><span>بازکردن</span></button><div class="card-foot"><span class="domain">'+(domain||'پیوند رسمی ثبت نشده')+'</span>'+site+'</div></article>';
+  return '<article class="fed-card"><div class="card-head"><div class="crest">'+logo+'</div><div><div class="fed-title">'+name+'</div><div class="fed-subtitle">معرفی و راه‌های ارتباطی</div></div></div><p class="fed-desc">'+(description||'معرفی و اطلاعات این مجموعه ورزشی را در پرونده اختصاصی مشاهده کنید.')+'</p><button class="detail-link" type="button" data-profile="'+slug+'" data-name="'+name+'" data-domain="'+domain+'"><span>مشاهده معرفی در همین صفحه</span><span>بازکردن</span></button><div class="card-foot"><span class="domain">'+(domain||'پیوند رسمی ثبت نشده')+'</span>'+site+'</div></article>';
  }).join('');
  count.textContent=faNumber(rows.length)+' مجموعه';
  empty.style.display=rows.length?'none':'block';grid.style.display=rows.length?'grid':'none';
