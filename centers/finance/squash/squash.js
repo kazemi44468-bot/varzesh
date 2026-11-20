@@ -147,6 +147,18 @@ function renderBatch(){
  $('finalizeBatch').disabled=b.status!=='draft'||!b.rows.length;$('markBatchPaid').disabled=b.status!=='final';$('recalcBatch').disabled=b.status!=='draft';$('addAllEmployees').disabled=b.status!=='draft';
 }
 function renderIndividualEditor(){const b=getBatch();if(!$('payEmployee'))return;const current=$('payEmployee').value;const opts=db.personnel.filter(p=>p.status==='فعال'||(b&&b.rows.some(r=>r.employeeId===p.id))).map(p=>'<option value="'+esc(p.id)+'">'+esc(p.code+' · '+personName(p))+'</option>').join('');$('payEmployee').innerHTML='<option value="">انتخاب پرسنل</option>'+opts;if(db.personnel.some(p=>p.id===current))$('payEmployee').value=current;const p=db.personnel.find(x=>x.id===$('payEmployee').value),row=b?.rows.find(x=>x.employeeId===p?.id);$('individualPayrollFields').innerHTML=b?b.itemsSnapshot.map(it=>'<label>'+esc(it.label)+'<input type="number" min="0" step="1" data-individual-item="'+esc(it.id)+'" value="'+(row?amountOf(row,it.id):'')+'"></label>').join(''):'ابتدا دوره و لیست ماهانه را بارگذاری کنید.';$('saveIndividualPayroll').disabled=!b||b.status!=='draft'}
+function amountInWords(value){
+ const units=['','هزار','میلیون','میلیارد','تریلیون'];
+ const ones=['','یک','دو','سه','چهار','پنج','شش','هفت','هشت','نه'];
+ const teens=['ده','یازده','دوازده','سیزده','چهارده','پانزده','شانزده','هفده','هجده','نوزده'];
+ const tens=['','','بیست','سی','چهل','پنجاه','شصت','هفتاد','هشتاد','نود'];
+ const hundreds=['','یکصد','دویست','سیصد','چهارصد','پانصد','ششصد','هفتصد','هشتصد','نهصد'];
+ const under100=n=>n<10?ones[n]:n<20?teens[n-10]:n<100?[tens[Math.floor(n/10)],ones[n%10]].filter(Boolean).join(' و '):[hundreds[Math.floor(n/100)],under100(n%100)].filter(Boolean).join(' و ');
+ let n=Math.abs(Math.round(Number(value)||0));if(!n)return 'صفر ریال';
+ const parts=[];let i=0;
+ while(n>0&&i<units.length){const g=n%1000;if(g)parts.unshift([under100(g),units[i]].filter(Boolean).join(' '));n=Math.floor(n/1000);i++}
+ return (Number(value)<0?'منفی ':'')+parts.join(' و ')+' ریال';
+}
 function batchSlipHtml(b,r){
  const p=db.personnel.find(x=>x.id===r.employeeId)||{},items=b.itemsSnapshot;
  const earnings=items.filter(x=>x.kind==='earning'&&amountOf(r,x.id)>0);
