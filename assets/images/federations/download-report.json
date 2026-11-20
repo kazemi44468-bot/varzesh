@@ -11,7 +11,7 @@
     "official_content_url": "https://irsf.ir",
     "official_content_paragraphs": 0,
     "official_content_sources": [],
-    "official_content_error": "HTTP Error 504: Gateway Time-out"
+    "official_content_error": "timed out"
   },
   {
     "name": "تیراندازی با کمان",
@@ -100,7 +100,7 @@
     "official_content_url": "https://bbfir.ir",
     "official_content_paragraphs": 0,
     "official_content_sources": [],
-    "official_content_error": "HTTP Error 504: Gateway Time-out"
+    "official_content_error": "The read operation timed out"
   },
   {
     "name": "پاراتیراندازی و ورزش نابینایان و کم‌بینایان",
@@ -125,7 +125,7 @@
     "slug": "bodybuilding",
     "website": "https://iranbbf.ir",
     "status": "fetch-failed",
-    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
+    "error": "<urlopen error timed out>",
     "directory_logo": "bodybuilding-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/fed_badansazi-150x150.png",
     "official_content_status": "limited",
@@ -606,10 +606,6 @@
       {
         "url": "https://lifesaving.ir/contact",
         "title": "تماس با فدراسیون نجات غریق و غواصی ایران"
-      },
-      {
-        "url": "https://lifesaving.ir/boards",
-        "title": "تماس با هیئت‌های استانی نجات غریق و غواصی"
       },
       {
         "url": "https://lifesaving.ir",
