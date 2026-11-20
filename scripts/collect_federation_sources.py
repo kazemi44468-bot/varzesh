@@ -191,6 +191,19 @@ def collect_bamorabi():
         index_path.write_text(html,encoding='utf-8')
     return report
 
+class LinkParser(HTMLParser):
+    def __init__(self):
+        super().__init__(); self.links=[]; self.href=''; self.text=[]
+    def handle_starttag(self,t,attrs):
+        if t=='a':
+            a=dict(attrs); self.href=a.get('href',''); self.text=[]
+    def handle_data(self,d):
+        if self.href:self.text.append(d)
+    def handle_endtag(self,t):
+        if t=='a' and self.href:
+            self.links.append((self.href,' '.join(self.text).strip()))
+            self.href=''; self.text=[]
+
 class TextParser(HTMLParser):
     def __init__(self):
         super().__init__(); self.title=''; self.meta=''; self.headings=[]; self.paragraphs=[]
