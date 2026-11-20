@@ -225,26 +225,54 @@ class TextParser(HTMLParser):
     def __init__(self):
         super().__init__(); self.title=''; self.meta=''; self.headings=[]; self.paragraphs=[]
         self.capture=None; self.buf=[]; self.skip=0
+        self.container_stack=[]; self.container_buf=None
+        self.void={'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
     def handle_starttag(self,t,attrs):
         a=dict(attrs)
-        if t in ('script','style','nav','footer','header'): self.skip+=1
+        if self.container_buf is not None and t not in self.void:
+            self.container_stack.append(t)
+        if t in ('script','style','nav','footer','header','noscript','svg','form'):
+            self.skip+=1
         if self.skip:return
-        if t=='meta' and a.get('name','').lower() in ('description','og:description'):
-            self.meta=a.get('content','')[:500]
+        meta_name=(a.get('name') or a.get('property') or '').lower()
+        if t=='meta' and meta_name in ('description','og:description','twitter:description'):
+            value=re.sub(r'\\s+',' ',a.get('content','')).strip()
+            if len(value)>35 and len(value)>len(self.meta):self.meta=value[:900]
+        if t in ('div','section','article','main') and self.container_buf is None:
+            marker=(a.get('class','')+' '+a.get('id','')).lower()
+            if re.search(r'about|intro|entry-content|article-body|page-content|main-content|content-body|description|mission|about-us',marker):
+                self.container_buf=[]; self.container_stack=[t]
         if t=='title':self.capture='title';self.buf=[]
-        elif t in ('h1','h2','h3'):self.capture='heading';self.buf=[]
+        elif t in ('h1','h2','h3','h4'):self.capture='heading';self.buf=[]
         elif t in ('p','li'):self.capture='p';self.buf=[]
     def handle_data(self,d):
         if self.capture is not None and not self.skip:self.buf.append(d)
+        if self.container_buf is not None and not self.skip:self.container_buf.append(d)
+    def _clean(self,items,limit=1200):
+        s=re.sub(r'\\s+',' ',' '.join(items)).strip()
+        s=re.sub(r'\\s+([،؛:.!?])',r'\\1',s)
+        return s[:limit]
     def handle_endtag(self,t):
-        if t in ('script','style','nav','footer','header'):
-            self.skip=max(0,self.skip-1);return
-        if self.capture and ((self.capture=='title' and t=='title') or (self.capture=='heading' and t in ('h1','h2','h3')) or (self.capture=='p' and t in ('p','li'))):
-            s=re.sub(r'\s+',' ',' '.join(self.buf)).strip()
-            if self.capture=='title' and s:self.title=s[:180]
-            elif self.capture=='heading' and s and len(s)>2:self.headings.append(s[:140])
-            elif self.capture=='p' and len(s)>=25 and s not in self.paragraphs:self.paragraphs.append(s[:650])
+        if t in ('script','style','nav','footer','header','noscript','svg','form'):
+            self.skip=max(0,self.skip-1)
+            return
+        if self.capture and ((self.capture=='title' and t=='title') or (self.capture=='heading' and t in ('h1','h2','h3','h4')) or (self.capture=='p' and t in ('p','li'))):
+            s=self._clean(self.buf,1200)
+            if self.capture=='title' and s:self.title=s[:220]
+            elif self.capture=='heading' and s and len(s)>2:self.headings.append(s[:160])
+            elif self.capture=='p' and len(s)>=25 and s not in self.paragraphs:self.paragraphs.append(s)
             self.capture=None;self.buf=[]
+        if self.container_buf is not None and self.container_stack:
+            if self.container_stack[-1]==t:self.container_stack.pop()
+            else:
+                for idx in range(len(self.container_stack)-1,-1,-1):
+                    if self.container_stack[idx]==t:
+                        self.container_stack=self.container_stack[:idx]
+                        break
+            if not self.container_stack:
+                s=self._clean(self.container_buf,7000)
+                if len(s)>=90 and s not in self.paragraphs:self.paragraphs.append(s)
+                self.container_buf=None
 
 def fetch_profile(e):
     domain=(e.get('domain') or '').strip()
@@ -252,18 +280,19 @@ def fetch_profile(e):
     homepage=''; last=''
     for url in ['https://'+domain,'http://'+domain]:
         try:
-            ct,body=get(url,limit=2200000,timeout=8)
+            ct,body=get(url,limit=2600000,timeout=16)
             if 'html' in ct:
                 homepage=url
                 break
-        except Exception as ex:last=str(ex)[:160]
+        except Exception as ex:last=str(ex)[:180]
     if not homepage:return e['slug'],{'website':'https://'+domain,'status':'fetch-failed','error':last}
     try:
-        ct,body=get(homepage,limit=2200000,timeout=8)
-        first=TextParser();first.feed(body.decode('utf-8','ignore'))
-        links=LinkParser();links.feed(body.decode('utf-8','ignore'))
+        ct,body=get(homepage,limit=2600000,timeout=16)
+        home_html=body.decode('utf-8','ignore')
+        first=TextParser();first.feed(home_html)
+        links=LinkParser();links.feed(home_html)
         host=urlparse(homepage).netloc.lower().replace('www.','')
-        about_terms=('درباره','معرفی','about','who-we-are','about-us')
+        about_terms=('درباره','معرفی','شناخت','رسالت','ماموریت','mission','about','who-we-are','about-us','profile')
         contact_terms=('تماس','ارتباط','نشانی','آدرس','contact','address')
         candidates=[]
         for href,label in links.links:
@@ -271,36 +300,64 @@ def fetch_profile(e):
             parsed=urlparse(full)
             if parsed.scheme not in ('http','https') or parsed.netloc.lower().replace('www.','')!=host:continue
             key=(label+' '+parsed.path).lower()
-            if any(x in key for x in ('news','خبر','اخبار','article','post','event','رویداد','gallery','گالری','category','tag','search')):continue
+            if any(x in key for x in ('news','خبر','اخبار','article','post','event','رویداد','gallery','گالری','category','tag','search','login','register')):continue
             kind='about' if any(x in key for x in about_terms) else ('contact' if any(x in key for x in contact_terms) else '')
             if kind and full.rstrip('/')!=homepage.rstrip('/') and all(x[0]!=full for x in candidates):
                 candidates.append((full,kind))
         pages=[]
-        for url,kind in candidates[:5]:
+        for url,kind in candidates[:8]:
             try:
-                ct,raw=get(url,limit=1600000,timeout=7)
+                ct,raw=get(url,limit=2200000,timeout=14)
                 if 'html' not in ct:continue
                 p=TextParser();p.feed(raw.decode('utf-8','ignore'))
-                if p.paragraphs:pages.append((url,kind,p))
+                if p.paragraphs or p.meta:pages.append((url,kind,p))
             except Exception:continue
         about=[]; missions=[]; addresses=[]; sources=[]
+        def add_unique(target,value):
+            value=re.sub(r'\\s+',' ',value).strip()
+            if len(value)<28:return
+            n=norm(value)
+            if not n or any(n in norm(old) or norm(old) in n for old in target):return
+            target.append(value[:1500])
         for url,kind,p in pages:
-            sources.append({'url':url,'title':p.title or ('درباره ما' if kind=='about' else 'تماس با ما')})
+            sources.append({'url':url,'title':p.title or ('معرفی رسمی' if kind=='about' else 'اطلاعات تماس')})
             for para in p.paragraphs:
                 n=norm(para)
-                if any(x in n for x in ('نشانی','آدرس','ادرس','address','تماس با','تلفن','تهران خیابان','استان تهران')):
-                    if para not in addresses:addresses.append(para)
-                elif any(x in n for x in ('ماموریت','رسالت','اهداف','هدف اصلی','mission','our purpose')):
-                    if para not in missions:missions.append(para)
-                elif kind=='about' and para not in about:
-                    about.append(para)
+                if any(x in n for x in ('نشانی','آدرس','ادرس','address','تماس با','تلفن','تهران خیابان','استان تهران','کد پستی','پست الکترونیک')):
+                    add_unique(addresses,para)
+                elif any(x in n for x in ('ماموریت','رسالت','اهداف','هدف اصلی','mission','our purpose','چشم انداز','چشم انداز')):
+                    add_unique(missions,para)
+                elif kind=='about':
+                    add_unique(about,para)
+            if kind=='about' and not any(x in p.title.lower() for x in ('خبر','news')):
+                if p.meta:add_unique(about,p.meta)
+        # When the official site has no separate About link, use only its own editorial
+        # introduction block or official meta description; never synthesize a profile.
+        if not about and not missions:
+            headings=' '.join(first.headings).lower()
+            if any(x in headings for x in ('درباره','معرفی','about','رسالت','ماموریت')):
+                for para in first.paragraphs[:8]:
+                    n=norm(para)
+                    if not any(x in n for x in ('اخبار','خبر','نتایج','گالری','رویداد','news','login')):
+                        add_unique(about,para)
+                if about:sources.append({'url':homepage,'title':first.title or 'معرفی رسمی در پایگاه فدراسیون'})
+            if not about and first.meta:
+                add_unique(about,first.meta)
+                if about:sources.append({'url':homepage,'title':first.title or 'معرفی پایگاه رسمی'})
+        if not addresses:
+            for url,kind,p in pages:
+                if kind=='contact':
+                    for para in p.paragraphs:
+                        if any(x in norm(para) for x in ('تلفن','نشانی','آدرس','address','ایمیل','email','تهران','خیابان','پست الکترونیک')):
+                            add_unique(addresses,para)
+        status='collected' if (about or missions or addresses) else 'limited'
         return e['slug'],{
-            'website':homepage,'about':about[:5],'mission':missions[:3],
-            'address':addresses[:2],'sources':sources[:5],
-            'status':'collected' if (about or missions or addresses) else 'limited'
+            'website':homepage,'about':about[:8],'mission':missions[:4],
+            'address':addresses[:4],'sources':sources[:8],
+            'status':status
         }
     except Exception as ex:
-        return e['slug'],{'website':homepage,'status':'fetch-failed','error':str(ex)[:160]}
+        return e['slug'],{'website':homepage,'status':'fetch-failed','error':str(ex)[:180]}
 
 def inject_profiles(profiles):
     for e in DATA:
@@ -324,9 +381,9 @@ def inject_profiles(profiles):
                 pieces.append('<img src="../../assets/images/federations/'+photo.name+'" alt="تصویر '+esc(e.get('short',e['name']))+'" loading="lazy">')
             html=html[:media.start()]+'<div class="media">'+''.join(pieces)+'</div>'+html[media.end():]
         prof=profiles.get(slug,{})
-        about=prof.get('about',[])[:3]
-        mission=prof.get('mission',[])[:2]
-        addresses=prof.get('address',[])[:1]
+        about=prof.get('about',[])[:8]
+        mission=prof.get('mission',[])[:4]
+        addresses=prof.get('address',[])[:4]
         # The hero uses only a short extract from the official About page; no generated description.
         hero_para=''
         if about:
@@ -334,7 +391,7 @@ def inject_profiles(profiles):
         html=re.sub(r'(<div class="hero-in">.*?<h1>.*?</h1>)\s*<p>.*?</p>',lambda m:m.group(1)+hero_para,html,count=1,flags=re.S)
         sections=[]
         if about:
-            sections.append('<section class="panel"><h2>درباره ما</h2>'+''.join('<p>'+esc(x)+'</p>' for x in about)+'</section>')
+            sections.append('<section class="panel"><h2>معرفی فدراسیون</h2>'+''.join('<p>'+esc(x)+'</p>' for x in about)+'</section>')
         if mission:
             sections.append('<section class="panel"><h2>مأموریت</h2>'+''.join('<p>'+esc(x)+'</p>' for x in mission)+'</section>')
         if addresses:
@@ -343,9 +400,9 @@ def inject_profiles(profiles):
         official_url=prof.get('website') or (('https://'+e['domain'].strip('/')) if e.get('domain') else '')
         official='<a class="action" href="'+esc(official_url)+'" target="_blank" rel="noopener">ورود به پایگاه رسمی</a>' if official_url else '<span class="action secondary">نشانی رسمی تأیید نشده</span>'
         if source_links:
-            sections.append('<section class="panel"><h2>صفحات رسمی منبع</h2><ul class="list">'+source_links+'</ul></section>')
+            sections.append('<section class="panel"><h2>پیوندهای رسمی و منابع</h2><ul class="list">'+source_links+'</ul></section>')
         if not sections:
-            sections.append('<section class="panel"><h2>معرفی و درباره ما</h2><p>متن قابل استناد از بخش معرفی یا درباره‌ما در پایگاه رسمی این مجموعه در دسترس نبود؛ برای اطلاعات معتبر به پایگاه رسمی مراجعه کنید.</p></section>')
+            sections.append('<section class="panel"><h2>معرفی فدراسیون</h2><p>برای آشنایی با ساختار، فعالیت‌ها و اطلاعات به‌روز این فدراسیون، درگاه رسمی آن را مشاهده کنید.</p></section>')
         content_block='<div class="actions">'+official+'</div><div class="cols"><div>'+''.join(sections)+'</div></div>'
         html=re.sub(r'<(?:nav|div) class="actions">.*?</(?:nav|div)><div class="cols">.*?</aside></div></main>',content_block+'</main>',html,flags=re.S)
         # Remove stale generic facts and unsupported headings left by older page versions.
