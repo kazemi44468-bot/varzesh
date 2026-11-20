@@ -2,7 +2,7 @@
 const $=id=>document.getElementById(id), FED='FED-SQUASH', SCHEMA=2, KEY='varzeshportal.finance.federation.squash.v1', ACCESS_CODE='124000';
 const blank=()=>({schemaVersion:SCHEMA,federationId:FED,federationName:'اسکواش',updatedAt:new Date().toISOString(),transactions:[],budgets:[],documents:[],personnel:[],payroll:[]});
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return x&&x.federationId===FED?{...blank(),...x,schemaVersion:SCHEMA,personnel:Array.isArray(x.personnel)?x.personnel:[],payroll:Array.isArray(x.payroll)?x.payroll:[]}:blank()}catch(e){return blank()}}
-let db=load(),view='home',mode='treasurer';
+let db=load(),view='home';
 function save(){db.updatedAt=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(db));$('storageState').textContent='ذخیره شد · '+new Date(db.updatedAt).toLocaleString('fa-IR')}
 const num=n=>new Intl.NumberFormat('fa-IR').format(Math.round(Number(n)||0)),money=n=>num(n)+' ریال',today=()=>new Date().toISOString().slice(0,10);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -33,8 +33,7 @@ function exportBudgets(){csvFile('squash-budgets.csv',['شناسه','شناسه 
 function exportDocs(){csvFile('squash-documents.csv',['شناسه','شناسه فدراسیون','نوع','شماره','تاریخ','مبلغ ریال','وضعیت','شرح'],db.documents.map(x=>[x.id,FED,x.type,x.number,x.date,x.amount,x.status,x.description]))}
 function backup(){download('squash-finance-backup.json',JSON.stringify(db,null,2),'application/json;charset=utf-8')}
 function id(){return 'sq-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8)}
-$('loginForm').addEventListener('submit',e=>{e.preventDefault();$('loginError').textContent='';if($('accessPassword').value!==ACCESS_CODE){$('loginError').textContent='رمز ورود صحیح نیست.';return}mode=$('mode').value;$('roleText').textContent=mode==='admin'?'نمای مدیریتی نمونه · فقط پرونده اسکواش':'محیط خزانه‌داری فدراسیون اسکواش';$('login').classList.add('hidden');$('app').classList.remove('hidden');$('logout').classList.remove('hidden');render();renderPersonnel();renderPayroll();renderProfile();setTab('home')});
-$('logout').addEventListener('click',()=>{$('app').classList.add('hidden');$('login').classList.remove('hidden');$('logout').classList.add('hidden')});
+$('loginForm').addEventListener('submit',e=>{e.preventDefault();$('loginError').textContent='';if($('accessPassword').value!==ACCESS_CODE){$('loginError').textContent='رمز ورود صحیح نیست.';return}$('roleText').textContent='پرونده مالی اختصاصی فدراسیون اسکواش';$('login').classList.add('hidden');$('app').classList.remove('hidden');render();renderPersonnel();renderPayroll();renderProfile();setTab('home')});
 document.querySelectorAll('.tab').forEach(x=>x.addEventListener('click',()=>{setTab(x.dataset.tab);if(x.dataset.tab==='personnel')renderPersonnel();if(x.dataset.tab==='payroll')renderPayroll();if(x.dataset.tab==='profile')renderProfile()}));document.querySelectorAll('[data-open]').forEach(x=>x.addEventListener('click',()=>setTab(x.dataset.open)));
 $('date').value=today();$('docDate').value=today();
 $('txForm').addEventListener('submit',e=>{e.preventDefault();db.transactions.push({id:id(),federationId:FED,date:$('date').value,type:$('type').value,category:$('category').value,costCenter:$('costCenter').value,amount:Number($('amount').value),description:$('description').value.trim(),ref:$('ref').value.trim(),createdAt:new Date().toISOString()});save();e.target.reset();$('date').value=today();$('feedback').textContent='رویداد مالی ثبت شد.';render()});
@@ -70,7 +69,7 @@ function renderProfile(){
 function printSlip(id){
  const p=db.payroll.find(x=>x.id===id);if(!p)return;
  const w=window.open('','_blank','width=760,height=650');if(!w)return;
- w.document.write('<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8"><title>فیش حقوقی آزمایشی</title><style>body{font-family:Tahoma;padding:30px;color:#183d58}h2{margin-bottom:8px}table{width:100%;border-collapse:collapse;margin-top:20px}td{border:1px solid #ccd9e2;padding:12px}</style><h2>فیش حقوقی آزمایشی فدراسیون اسکواش</h2><p>کد پرسنلی: '+esc(p.employeeCode)+' · '+esc(p.employeeName)+'</p><p>دوره: '+num(p.year)+' / '+esc(p.monthName)+'</p><table><tr><td>حقوق پایه</td><td>'+money(p.base)+'</td></tr><tr><td>مزایا</td><td>'+money(p.benefits)+'</td></tr><tr><td>کسورات</td><td>'+money(p.deductions)+'</td></tr><tr><td><b>خالص پرداختی</b></td><td><b>'+money(p.net)+'</b></td></tr></table><p>این فیش صرفاً داده آزمایشی است.</p><script>window.onload=()=>window.print()<\/script></html>');w.document.close();
+ w.document.write('<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8"><title>فیش حقوقی آزمایشی</title><style>body{font-family:Tahoma;padding:30px;color:#183d58}h2{margin-bottom:8px}table{width:100%;border-collapse:collapse;margin-top:20px}td{border:1px solid #ccd9e2;padding:12px}</style><h2>فیش حقوقی فدراسیون اسکواش</h2><p>کد پرسنلی: '+esc(p.employeeCode)+' · '+esc(p.employeeName)+'</p><p>دوره: '+num(p.year)+' / '+esc(p.monthName)+'</p><table><tr><td>حقوق پایه</td><td>'+money(p.base)+'</td></tr><tr><td>مزایا</td><td>'+money(p.benefits)+'</td></tr><tr><td>کسورات</td><td>'+money(p.deductions)+'</td></tr><tr><td><b>خالص پرداختی</b></td><td><b>'+money(p.net)+'</b></td></tr></table><p></p><script>window.onload=()=>window.print()<\/script></html>');w.document.close();
 }
 function bindPersonnel(){
  $('personSearch').addEventListener('input',renderPersonnel);
@@ -83,7 +82,7 @@ function bindPersonnel(){
  if(base+benefits<deductions){$('payFeedback').textContent='کسورات نمی‌تواند از مجموع حقوق و مزایا بیشتر باشد.';return}
  const monthName=$('payMonth').selectedOptions[0].textContent,net=base+benefits-deductions;
  db.payroll.push({id:id(),employeeId:p.id,employeeCode:p.code,employeeName:p.name,year,month,monthName,base,benefits,deductions,net,note:$('payNote').value.trim(),createdAt:new Date().toISOString()});
- db.transactions.push({id:id(),federationId:FED,date:today(),type:'expense',category:'حقوق و دستمزد',costCenter:'ستاد فدراسیون',amount:net,description:'حقوق آزمایشی '+monthName+' '+year+' · '+p.code,ref:p.code,createdAt:new Date().toISOString()});
+ db.transactions.push({id:id(),federationId:FED,date:today(),type:'expense',category:'حقوق و دستمزد',costCenter:'ستاد فدراسیون',amount:net,description:'حقوق '+monthName+' '+year+' · '+p.code,ref:p.code,createdAt:new Date().toISOString()});
  save();e.target.reset();$('payYear').value=1405;$('payBase').value=180000000;$('payBenefits').value=0;$('payDeductions').value=0;$('payFeedback').textContent='فیش ثبت شد و هزینه آن به دفتر مالی افزوده شد.';updatePayPreview();render();renderPayroll();renderProfile();
  });
  document.addEventListener('click',e=>{const b=e.target.closest('[data-slip]');if(b)printSlip(b.dataset.slip)});
