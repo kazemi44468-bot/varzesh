@@ -3,14 +3,39 @@
     "name": "شنا، شیرجه و واترپلو",
     "slug": "aquatics",
     "website": "https://irsf.ir",
-    "status": "fetch-failed",
-    "error": "The read operation timed out",
+    "logo": "aquatics-logo.png",
+    "photos": [
+      "aquatics-photo-1.jpg",
+      "aquatics-photo-2.jpg"
+    ],
+    "logo_found": true,
     "directory_logo": "aquatics-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-43-150x150.png",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://irsf.ir",
-    "official_content_paragraphs": 0,
-    "official_content_error": "timed out"
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://irsf.ir/%da%a9%d8%b3%d8%a8-%d8%b4%d8%b4-%da%a9%d8%b1%d8%b3%db%8c-%d8%af%d8%b1-%da%a9%d9%86%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86-%d9%88%d8%b1%d8%b2%d8%b4%d9%87%d8%a7%db%8c-%d8%a2%d8%a8/",
+        "title": "کسب شش کرسی در کنفدراسیون ورزش‌های آبی آسیا توسط نمایندگان ایران – فدراسیون شنا، شیرجه و واترپلو جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://irsf.ir/%d8%b4%d9%87%d9%86%d8%a7%d9%85-%d9%86%d8%b8%d8%b1%d9%be%d9%88%d8%b1-%d8%b3%d8%b1%d9%be%d8%b1%d8%b3%d8%aa-%da%a9%d9%85%db%8c%d8%aa%d9%87-%d8%b4%db%8c%d8%b1%d8%ac%d9%87-%d9%81%d8%af%d8%b1%d8%a7%d8%b3/",
+        "title": "شهنام نظرپور سرپرست کمیته شیرجه فدراسیون ورزش‌های آبی شد – فدراسیون شنا، شیرجه و واترپلو جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://irsf.ir/%d8%ad%d8%b6%d9%88%d8%b1-%d8%b1%d8%a6%db%8c%d8%b3-%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86-%d9%88%d8%b1%d8%b2%d8%b4%d9%87%d8%a7%db%8c-%d8%a2%d8%a8%db%8c-%d9%88-%d9%85%d8%b3%d8%a6/",
+        "title": "حضور رئیس فدراسیون ورزش‌های آبی و مسئول کمیته واترپلو فدراسیون در جمع واترپلوئیست‌های یزد؛تأکید بر آینده روشن واترپلوی استان – فدراسیون شنا، شیرجه و واترپلو جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://irsf.ir/%d9%86%d8%b4%d8%b3%d8%aa-%da%a9%d9%85%db%8c%d8%aa%d9%87-%d9%81%d9%86%db%8c-%d8%a8%d8%a7-%d9%85%d8%b1%d8%a8%db%8c%d8%a7%d9%86-%d9%85%d9%86%d8%aa%d8%ae%d8%a8-%d8%b4%d9%86%d8%a7%d8%9b%d8%b3%d8%a7%d8%b2/",
+        "title": "نشست کمیته فنی با مربیان منتخب شنا؛سازماندهی جدید تیم‌های ملی مشخص می‌شود/ برنامه ریزی فدراسیون برای موفقیت در بازی‌های آسیایی ۲۰۳۰ – فدراسیون شنا، شیرجه و واترپلو جمهوری اسلامی ای"
+      },
+      {
+        "url": "https://irsf.ir",
+        "title": "فدراسیون شنا، شیرجه و واترپلو جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "تیراندازی با کمان",
@@ -26,7 +51,29 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-32-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://iran-archery.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://iran-archery.ir#",
+        "title": "فدراسیون تیراندازی با کمان"
+      },
+      {
+        "url": "https://iran-archery.ir/%da%a9%d9%85%db%8c%d8%aa%d9%87-%d9%87%d8%a7/",
+        "title": "کمیته ها – فدراسیون تیراندازی با کمان"
+      },
+      {
+        "url": "https://iran-archery.ir/%d8%a8%d8%a7%d8%b2%d8%af%db%8c%d8%af-%d8%af%d8%a8%db%8c%d8%b1-%d8%b4%d9%88%d8%b1%d8%a7%db%8c-%d8%b9%d8%a7%d9%84%db%8c-%d8%a7%d9%86%d9%82%d9%84%d8%a7%d8%a8-%d9%81%d8%b1%d9%87%d9%86%da%af%db%8c-%d9%88/",
+        "title": "بازدید دبیر شورای عالی انقلاب فرهنگی و معاونان وزارت ورزش و جوانان از فدراسیون تیراندازی با کمان – فدراسیون تیراندازی با کمان"
+      },
+      {
+        "url": "https://iran-archery.ir/%d8%ad%d8%b6%d9%88%d8%b1-%d8%af%da%a9%d8%aa%d8%b1-%d8%b4%d8%b9%d8%a8%d8%a7%d9%86%db%8c-%d8%a8%d9%87%d8%a7%d8%b1-%d9%88-%d9%85%d8%af%db%8c%d8%b1%d8%a7%d9%86-%d9%88-%da%a9%d8%a7%d8%b1%d9%85%d9%86%d8%af/",
+        "title": "حضور دکتر شعبانی بهار و مدیران و کارمندان فدراسیون تیراندازی باکمان در مراسم اجتماع جامعه ورزش در میدان انقلاب – فدراسیون تیراندازی با کمان"
+      },
+      {
+        "url": "https://iran-archery.ir",
+        "title": "فدراسیون تیراندازی با کمان"
+      }
+    ]
   },
   {
     "name": "دوومیدانی",
@@ -38,7 +85,17 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-37-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "http://iranathletics.ir",
-    "official_content_paragraphs": 4
+    "official_content_paragraphs": 4,
+    "official_content_sources": [
+      {
+        "url": "http://iranathletics.ir#",
+        "title": "فدراسیون دو و میدانی جمهوری اسلامی ایران www.IranAthletics.ir"
+      },
+      {
+        "url": "http://iranathletics.ir",
+        "title": "فدراسیون دو و میدانی جمهوری اسلامی ایران www.IranAthletics.ir"
+      }
+    ]
   },
   {
     "name": "بدمینتون",
@@ -54,7 +111,17 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-21.png",
     "official_content_status": "collected",
     "official_content_url": "https://iranbadminton.org",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://iranbadminton.org/site/calendar",
+        "title": "فدراسیون بدمینتون جمهوری اسلامی ایران |"
+      },
+      {
+        "url": "https://iranbadminton.org",
+        "title": "فدراسیون بدمینتون جمهوری اسلامی ایران | خانه"
+      }
+    ]
   },
   {
     "name": "بسکتبال",
@@ -66,7 +133,25 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-22-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://iribf.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://iribf.ir#",
+        "title": "فدراسیون بسکتبال جمهوری اسلامی ایران www.IRIBF.ir"
+      },
+      {
+        "url": "https://iribf.ir/Personel/All?id=1",
+        "title": "فدراسیون بسکتبال جمهوری اسلامی ایران www.IRIBF.ir"
+      },
+      {
+        "url": "https://iribf.ir/Personel/All?id=2",
+        "title": "فدراسیون بسکتبال جمهوری اسلامی ایران www.IRIBF.ir"
+      },
+      {
+        "url": "https://iribf.ir",
+        "title": "فدراسیون بسکتبال جمهوری اسلامی ایران www.IRIBF.ir"
+      }
+    ]
   },
   {
     "name": "بولینگ و بیلیارد",
@@ -79,6 +164,7 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://bbfir.ir",
     "official_content_paragraphs": 0,
+    "official_content_sources": [],
     "official_content_error": "The read operation timed out"
   },
   {
@@ -91,7 +177,29 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-2-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://blindsports.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://blindsports.ir#",
+        "title": "فدراسیون ورزشهای نابینایان و کم بینایان جمهوری اسلامی ایران www.blindsports.ir"
+      },
+      {
+        "url": "https://blindsports.ir/Personel/All?id=1",
+        "title": "فدراسیون ورزشهای نابینایان و کم بینایان جمهوری اسلامی ایران www.blindsports.ir"
+      },
+      {
+        "url": "https://blindsports.ir/Personel/All?id=3",
+        "title": "فدراسیون ورزشهای نابینایان و کم بینایان جمهوری اسلامی ایران www.blindsports.ir"
+      },
+      {
+        "url": "https://blindsports.ir/Personel/All?id=2",
+        "title": "فدراسیون ورزشهای نابینایان و کم بینایان جمهوری اسلامی ایران www.blindsports.ir"
+      },
+      {
+        "url": "https://blindsports.ir",
+        "title": "فدراسیون ورزشهای نابینایان و کم بینایان جمهوری اسلامی ایران www.blindsports.ir"
+      }
+    ]
   },
   {
     "name": "بدنسازی و پرورش اندام",
@@ -103,7 +211,25 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/fed_badansazi-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://iranbbf.ir",
-    "official_content_paragraphs": 6
+    "official_content_paragraphs": 6,
+    "official_content_sources": [
+      {
+        "url": "https://iranbbf.ir#",
+        "title": "فدراسیون بدنسازی و پرورش اندام جمهوری اسلامی ایران www.Iranbbf.ir"
+      },
+      {
+        "url": "https://iranbbf.ir/Personel/All?id=1",
+        "title": "فدراسیون بدنسازی و پرورش اندام جمهوری اسلامی ایران www.Iranbbf.ir"
+      },
+      {
+        "url": "https://iranbbf.ir/Personel/All?id=2",
+        "title": "فدراسیون بدنسازی و پرورش اندام جمهوری اسلامی ایران www.Iranbbf.ir"
+      },
+      {
+        "url": "https://iranbbf.ir",
+        "title": "فدراسیون بدنسازی و پرورش اندام جمهوری اسلامی ایران www.Iranbbf.ir"
+      }
+    ]
   },
   {
     "name": "بوکس",
@@ -119,7 +245,17 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-23-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://iranaiba.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://iranaiba.ir/AboutUs",
+        "title": "درباره فدراسیون کوهنوردی - فدراسیون بوکس جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iranaiba.ir",
+        "title": "صفحه اصلی - فدراسیون بوکس جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "قایقرانی",
@@ -133,7 +269,17 @@
     "logo_found": true,
     "official_content_status": "limited",
     "official_content_url": "https://icf.ir",
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "official_content_sources": [
+      {
+        "url": "https://www.icf.ir/federations-authorities/",
+        "title": "مسئولین فدراسیون"
+      },
+      {
+        "url": "https://icf.ir",
+        "title": "فدراسیون قایقرانی ایران"
+      }
+    ]
   },
   {
     "name": "شطرنج",
@@ -145,7 +291,25 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-41-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "http://ircf.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "http://ircf.ir#",
+        "title": "فدراسیون شطرنج جمهوری اسلامی ایران www.ircf.ir"
+      },
+      {
+        "url": "http://ircf.ir/PhotoReport/dpic?id=7&ts=14050829091514321",
+        "title": "قدردانی فدراسیون شطرنج از امدادگران هلال احمر"
+      },
+      {
+        "url": "http://ircf.ir#7",
+        "title": "فدراسیون شطرنج جمهوری اسلامی ایران www.ircf.ir"
+      },
+      {
+        "url": "http://ircf.ir",
+        "title": "فدراسیون شطرنج جمهوری اسلامی ایران www.ircf.ir"
+      }
+    ]
   },
   {
     "name": "کوه‌نوردی و صعودهای ورزشی",
@@ -161,7 +325,17 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-46-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://msfi.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://msfi.ir/AboutUs",
+        "title": "درباره فدراسیون کوهنوردی - فدراسیون کوهنوردی و صعودهای ورزشی جمهوری اسلامی ایران | I. R. Iran Mountaineering & Sport Climbing Federation"
+      },
+      {
+        "url": "https://msfi.ir",
+        "title": "صفحه اصلی - فدراسیون کوهنوردی و صعودهای ورزشی جمهوری اسلامی ایران | I. R. Iran Mountaineering & Sport Climbing Federation"
+      }
+    ]
   },
   {
     "name": "کریکت",
@@ -172,6 +346,7 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://cricketiran.com",
     "official_content_paragraphs": 0,
+    "official_content_sources": [],
     "official_content_error": "<urlopen error [Errno -2] Name or service not known>"
   },
   {
@@ -188,7 +363,29 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-38-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://cfi.ir",
-    "official_content_paragraphs": 1
+    "official_content_paragraphs": 1,
+    "official_content_sources": [
+      {
+        "url": "https://cfi.ir#",
+        "title": "- فدراسیون دوچرخه سواری جمهوری اسلامی ایران Cycling Federation of Iran"
+      },
+      {
+        "url": "https://cfi.ir/%d8%a7%d8%b9%d8%b6%d8%a7%db%8c-%d9%87%db%8c%d8%a7%d8%aa-%d8%b1%d8%a6%db%8c%d8%b3%d9%87/",
+        "title": "چارت سازمانی - فدراسیون دوچرخه سواری جمهوری اسلامی ایران Cycling Federation of Iran"
+      },
+      {
+        "url": "https://cfi.ir/%d8%a7%d8%b9%d8%b6%d8%a7%db%8c-%d9%87%db%8c%d8%a7%d8%aa-%d8%b1%d8%a6%db%8c%d8%b3%d9%87/%d8%b1%d8%b2%d9%88%d9%85%d9%87-%d8%b1%d8%a6%db%8c%d8%b3/",
+        "title": "رزومه رئیس فدراسیون - فدراسیون دوچرخه سواری جمهوری اسلامی ایران Cycling Federation of Iran"
+      },
+      {
+        "url": "https://cfi.ir/%d8%aa%d8%a7%d8%b1%db%8c%d8%ae%da%86%d9%87-%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86/",
+        "title": "تاریخچه فدراسیون - فدراسیون دوچرخه سواری جمهوری اسلامی ایران Cycling Federation of Iran"
+      },
+      {
+        "url": "https://cfi.ir",
+        "title": "- فدراسیون دوچرخه سواری جمهوری اسلامی ایران Cycling Federation of Iran"
+      }
+    ]
   },
   {
     "name": "ورزش ناشنوایان",
@@ -204,7 +401,29 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-3-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://dsf.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://www.dsf.ir/about/",
+        "title": "درباره ما – فدراسیون ورزش های ناشنوایان"
+      },
+      {
+        "url": "https://www.dsf.ir/%da%a9%d8%a7%d8%b8%d9%85%db%8c-%d9%85%d8%b3%d8%a6%d9%88%d9%84-%da%a9%d9%85%db%8c%d8%aa%d9%87-%d8%a7%d9%85%d9%88%d8%b1-%d8%a7%d8%b3%d8%aa%d8%a7%d9%86%d9%87%d8%a7%db%8c-%d9%81%d8%af%d8%b1%d8%a7/",
+        "title": "کاظمی مسئول کمیته امور استان‌های فدراسیون ورزش‌های ناشنوایان شد – فدراسیون ورزش های ناشنوایان"
+      },
+      {
+        "url": "https://www.dsf.ir/%d8%b1%d8%a7%d9%87%d8%a7%d9%86%d8%af%d8%a7%d8%b2%db%8c-%d8%b3%d8%a7%d9%85%d8%a7%d9%86%d9%87-%d9%87%d9%88%d8%b4%d9%85%d9%86%d8%af-%d8%af%d8%b1-%d8%af%d8%b3%d8%aa%d9%88%d8%b1-%da%a9%d8%a7%d8%b1/",
+        "title": "راه‌اندازی سامانه هوشمند در دستور کار فدراسیون ورزش‌های ناشنوایان – فدراسیون ورزش های ناشنوایان"
+      },
+      {
+        "url": "https://www.dsf.ir/author/pour-mohammad/",
+        "title": "روابط عمومی فدراسیون پور محمد – فدراسیون ورزش های ناشنوایان"
+      },
+      {
+        "url": "https://dsf.ir",
+        "title": "فدراسیون ورزش های ناشنوایان"
+      }
+    ]
   },
   {
     "name": "سوارکاری",
@@ -220,7 +439,29 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-15-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://feiri.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://feiri.ir#",
+        "title": "فدراسیون سوار کاری"
+      },
+      {
+        "url": "https://feiri.ir/%d9%85%d8%b9%d8%b1%d9%81%db%8c-%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86-%d8%b3%d9%88%d8%a7%d8%b1%da%a9%d8%a7%d8%b1%db%8c/%d9%87%db%8c%d8%a6%d8%aa-%d8%b1%d8%a6%db%8c%d8%b3%d9%87/",
+        "title": "فدراسیون سوار کاری"
+      },
+      {
+        "url": "https://feiri.ir/%d9%85%d8%b9%d8%b1%d9%81%db%8c-%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86-%d8%b3%d9%88%d8%a7%d8%b1%da%a9%d8%a7%d8%b1%db%8c/%d8%a7%d8%b3%d8%a7%d8%b3%d9%86%d8%a7%d9%85%d9%87-%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86/",
+        "title": "فدراسیون سوار کاری"
+      },
+      {
+        "url": "https://feiri.ir/%d9%85%d8%b9%d8%b1%d9%81%db%8c-%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86-%d8%b3%d9%88%d8%a7%d8%b1%da%a9%d8%a7%d8%b1%db%8c/%d8%b3%d9%86%d8%af-%d8%b1%d8%a7%d9%87%d8%a8%d8%b1%d8%af%db%8c-%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86/",
+        "title": "فدراسیون سوار کاری"
+      },
+      {
+        "url": "https://feiri.ir",
+        "title": "فدراسیون سوار کاری"
+      }
+    ]
   },
   {
     "name": "ورزش‌های الکترونیک",
@@ -230,7 +471,13 @@
     "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
     "official_content_status": "limited",
     "official_content_url": "http://esports.ir",
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "official_content_sources": [
+      {
+        "url": "http://esports.ir",
+        "title": "http://esports.ir"
+      }
+    ]
   },
   {
     "name": "شمشیربازی",
@@ -246,7 +493,29 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-42-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://irfnc.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://irfnc.ir/2026/11/11/%d8%a7%d8%b7%d9%84%d8%a7%d8%b9%db%8c%d9%87-%d8%ab%d8%a8%d8%aa-%d9%86%d8%a7%d9%85-%d8%a7%d8%b2-%d8%af%d8%a7%d9%88%d8%b7%d9%84%d8%a8%d8%a7%d9%86-%d8%a7%d8%ad%d8%b1%d8%a7%d8%b2-%d9%be%d8%b3%d8%aa-%d8%b1/",
+        "title": "اطلاعیه ثبت نام از داوطلبان احراز پست ریاست و اعضای هیأت رئیسه فدراسیون شمشیربازی – فدراسیون شمشیر بازی"
+      },
+      {
+        "url": "https://irfnc.ir#",
+        "title": "فدراسیون شمشیر بازی"
+      },
+      {
+        "url": "https://irfnc.ir/2026/10/07/%d8%aa%d8%a3%da%a9%db%8c%d8%af-%d8%af%d8%a8%db%8c%d8%b1-%d8%b4%d9%88%d8%b1%d8%a7%db%8c-%d8%b9%d8%a7%d9%84%db%8c-%d8%a7%d9%86%d9%82%d9%84%d8%a7%d8%a8-%d9%81%d8%b1%d9%87%d9%86%da%af%db%8c-%d8%a8%d8%b1/",
+        "title": "تأکید دبیر شورای عالی انقلاب فرهنگی بر حمایت از ورزشکاران در دیدار با رئیس فدراسیون شمشیربازی – فدراسیون شمشیر بازی"
+      },
+      {
+        "url": "https://irfnc.ir/2026/11/08/%d9%85%d8%b3%d8%a6%d9%88%d9%84-%d8%a7%d8%b3%d9%84%d8%ad%d9%87-%d9%81%d9%84%d9%88%d8%b1%d9%87-%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86-%d8%b4%d9%85%d8%b4%db%8c%d8%b1%d8%a8%d8%a7%d8%b2/",
+        "title": "‍ مسئول اسلحه فلوره فدراسیون شمشیربازی منصوب شد – فدراسیون شمشیر بازی"
+      },
+      {
+        "url": "https://irfnc.ir",
+        "title": "فدراسیون شمشیر بازی"
+      }
+    ]
   },
   {
     "name": "فوتبال",
@@ -262,7 +531,21 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-14-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://the-ffiri.com",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://the-ffiri.com/fa/committees",
+        "title": "کمیته ها"
+      },
+      {
+        "url": "https://the-ffiri.com/fa/about",
+        "title": "درباره ما"
+      },
+      {
+        "url": "https://the-ffiri.com",
+        "title": "فدراسیون فوتبال جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "فوتسال و فوتبال ساحلی",
@@ -278,7 +561,21 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-14-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://the-ffiri.com",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://the-ffiri.com/fa/committees",
+        "title": "کمیته ها"
+      },
+      {
+        "url": "https://the-ffiri.com/fa/about",
+        "title": "درباره ما"
+      },
+      {
+        "url": "https://the-ffiri.com",
+        "title": "فدراسیون فوتبال جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "گلف",
@@ -291,6 +588,7 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://irangolfed.ir",
     "official_content_paragraphs": 0,
+    "official_content_sources": [],
     "official_content_error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
   },
   {
@@ -307,7 +605,25 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-39-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://gymnastic.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://gymnastic.ir#",
+        "title": "فدراسیون ژیمناستیک - فدراسیون ژیمناسیک"
+      },
+      {
+        "url": "https://gymnastic.ir/%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86-%da%98%db%8c%d9%85%d9%86%d8%a7%d8%b3%d8%aa%db%8c%da%a9-%d8%a8%d9%87-%d8%af%d9%86%d8%a8%d8%a7%d9%84-%d8%a8%d9%87%d8%b1%d9%87%da%af%db%8c%d8%b1/",
+        "title": "فدراسیون ژیمناستیک به دنبال بهره‌گیری تخصصی از هوش مصنوعی - فدراسیون ژیمناسیک"
+      },
+      {
+        "url": "https://gymnastic.ir/%d8%aa%d8%a8%d8%b1%db%8c%da%a9-%d8%a7%d8%aa%d8%ad%d8%a7%d8%af%db%8c%d9%87-%da%98%db%8c%d9%85%d9%86%d8%a7%d8%b3%d8%aa%db%8c%da%a9-%d8%a2%d8%b3%db%8c%d8%a7-%d8%af%d8%b1-%d9%be%db%8c-%d8%a7%d9%86%d8%aa/",
+        "title": "اتحادیه ژیمناستیک آسیا ریاست خناری‌نژاد را تبریک گفت؛ بازتاب انتخاب رئیس جدید فدراسیون ایران در سایت AGU - فدراسیون ژیمناسیک"
+      },
+      {
+        "url": "https://gymnastic.ir",
+        "title": "فدراسیون ژیمناستیک - فدراسیون ژیمناسیک"
+      }
+    ]
   },
   {
     "name": "هندبال",
@@ -323,7 +639,29 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/logo-handball.png",
     "official_content_status": "collected",
     "official_content_url": "https://irihf.ir",
-    "official_content_paragraphs": 4
+    "official_content_paragraphs": 4,
+    "official_content_sources": [
+      {
+        "url": "https://irihf.ir#",
+        "title": "صفحه اصلی | فدراسیون هندبال"
+      },
+      {
+        "url": "https://irihf.ir/federation/committees",
+        "title": "کمیته‌ها | فدراسیون هندبال"
+      },
+      {
+        "url": "https://irihf.ir/federation/history/board-of-directors",
+        "title": "هیئت مدیره | فدراسیون هندبال"
+      },
+      {
+        "url": "https://irihf.ir/federation/calendar",
+        "title": "تقویم | فدراسیون هندبال"
+      },
+      {
+        "url": "https://irihf.ir",
+        "title": "صفحه اصلی | فدراسیون هندبال"
+      }
+    ]
   },
   {
     "name": "هاکی",
@@ -333,10 +671,31 @@
     "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
     "directory_logo": "hockey-logo.jpg",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/haki_logo.jpg",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://hockeyfed.ir",
-    "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error timed out>"
+    "official_content_paragraphs": 10,
+    "official_content_sources": [
+      {
+        "url": "https://hockeyfed.ir#",
+        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.HockeyFed.ir"
+      },
+      {
+        "url": "https://hockeyfed.ir/Personel/All?id=1",
+        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.hockeyfed.ir"
+      },
+      {
+        "url": "https://hockeyfed.ir/Personel/All?id=3",
+        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.hockeyfed.ir"
+      },
+      {
+        "url": "https://hockeyfed.ir/PhotoReport/dpic?id=44&ts=14050829091501747",
+        "title": "مهدی احمدی با کسب ۱۱ رای اعضا مجمع برای مدت ۴سال رییس هیئت هاکی استان گلستان شد."
+      },
+      {
+        "url": "https://hockeyfed.ir",
+        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.HockeyFed.ir"
+      }
+    ]
   },
   {
     "name": "آمادگی جسمانی و تندرستی",
@@ -352,7 +711,29 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2026/09/amaadegik.jpg",
     "official_content_status": "collected",
     "official_content_url": "https://iranpffw.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://www.iranpffw.ir/fa/iranpffw-https-www-iranpffw-ir-fa-home",
+        "title": "فدراسیون | فدراسیون آمادگی جسمانی و تندرستی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://www.iranpffw.ir/fa/iranpffw/aboutus-%d8%af%d8%b1%d8%a8%d8%a7%d8%b1%d9%87-%d9%85%d8%a7",
+        "title": "درباره ما"
+      },
+      {
+        "url": "https://www.iranpffw.ir/fa/committees",
+        "title": "کمیته ها | فدراسیون آمادگی جسمانی و تندرستی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://www.iranpffw.ir/fa/committees/jesmaniparsi",
+        "title": "آمادگی جسمانی پارسی | فدراسیون آمادگی جسمانی و تندرستی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iranpffw.ir",
+        "title": "فدراسیون آمادگی جسمانی و تندرستی جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "جودو",
@@ -362,21 +743,36 @@
     "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1147)>",
     "directory_logo": "judo-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-34-150x150.png",
-    "official_content_status": "fetch-failed",
-    "official_content_url": "http://irijf.ir",
-    "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error timed out>"
+    "official_content_status": "collected",
+    "official_content_url": "https://irijf.ir",
+    "official_content_paragraphs": 9,
+    "official_content_sources": [
+      {
+        "url": "https://irijf.ir#",
+        "title": "فدراسیون جودو جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://irijf.ir/Personel/All?id=1",
+        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.hockeyfed.ir"
+      },
+      {
+        "url": "https://irijf.ir/Personel/All?id=2",
+        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.hockeyfed.ir"
+      },
+      {
+        "url": "https://irijf.ir",
+        "title": "فدراسیون جودو جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "جوجیتسو",
     "slug": "jujitsu",
-    "website": "https://ju-jitsu.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error [Errno -2] Name or service not known>",
-    "official_content_status": "fetch-failed",
-    "official_content_url": "https://ju-jitsu.ir",
+    "status": "no-domain",
+    "official_content_status": "no-official-domain",
+    "official_content_url": null,
     "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error [Errno -2] Name or service not known>"
+    "official_content_sources": []
   },
   {
     "name": "کبدی",
@@ -389,6 +785,7 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://irankabaddi.ir",
     "official_content_paragraphs": 0,
+    "official_content_sources": [],
     "official_content_error": "HTTP Error 500: Internal Server Error"
   },
   {
@@ -402,7 +799,13 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/IranKarate-150x150.png",
     "official_content_status": "limited",
     "official_content_url": "https://ikf.ir",
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "official_content_sources": [
+      {
+        "url": "https://ikf.ir",
+        "title": "https://ikf.ir"
+      }
+    ]
   },
   {
     "name": "فدراسیون کونگ‌فو و هنرهای رزمی",
@@ -415,6 +818,7 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://ikmaf.ir",
     "official_content_paragraphs": 0,
+    "official_content_sources": [],
     "official_content_error": "timed out"
   },
   {
@@ -428,6 +832,7 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://kurash.ir",
     "official_content_paragraphs": 0,
+    "official_content_sources": [],
     "official_content_error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
   },
   {
@@ -444,28 +849,54 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-5-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://lifesaving.ir",
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "official_content_sources": [
+      {
+        "url": "https://lifesaving.ir",
+        "title": "پایگاه خبری نجات غریق و غواصی ایران"
+      }
+    ]
   },
   {
     "name": "انجمن‌های ورزش‌های رزمی",
     "slug": "martialarts",
     "website": "https://irmaaf.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error _ssl.c:1129: The handshake operation timed out>",
+    "logo": "martialarts-logo.png",
+    "photos": [
+      "martialarts-photo-1.jpg",
+      "martialarts-photo-2.jpg"
+    ],
+    "logo_found": true,
     "directory_logo": "martialarts-logo.gif",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2026/09/fed_anjoman.gif",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://irmaaf.ir",
-    "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error _ssl.c:1129: The handshake operation timed out>"
+    "official_content_paragraphs": 9,
+    "official_content_sources": [
+      {
+        "url": "https://irmaaf.ir#",
+        "title": "فدراسیون انجمن ورزش های رزمی ایران"
+      },
+      {
+        "url": "https://irmaaf.ir/history",
+        "title": "فدراسیون انجمن ورزش های رزمی ایران"
+      },
+      {
+        "url": "https://irmaaf.ir",
+        "title": "فدراسیون انجمن ورزش های رزمی ایران"
+      }
+    ]
   },
   {
     "name": "هنرهای رزمی ترکیبی (MMA)",
     "slug": "mma",
     "status": "no-domain",
+    "directory_logo": "mma-logo.webp",
+    "directory_logo_source": "https://immaf.org/wp-content/uploads/2020/02/Iran-IRMMAA_ICON-ONLY-289x205-1.png",
     "official_content_status": "no-official-domain",
     "official_content_url": null,
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "official_content_sources": []
   },
   {
     "name": "موتورسواری و اتومبیل‌رانی",
@@ -477,18 +908,40 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-1-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://mafiri.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://mafiri.ir#",
+        "title": "فدراسیون موتورسواری و اتومبیل رانی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://mafiri.ir/Personel/All?id=1",
+        "title": "فدراسیون موتورسواری و اتومبیلرانی جمهوری اسلامی ایران www.mafiri.ir"
+      },
+      {
+        "url": "https://mafiri.ir",
+        "title": "فدراسیون موتورسواری و اتومبیل رانی جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "موی‌تای",
     "slug": "muaythai",
-    "website": "https://muaythai.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error [Errno -5] No address associated with hostname>",
-    "official_content_status": "fetch-failed",
-    "official_content_url": "https://muaythai.ir",
+    "website": "https://iranmuaythai.com",
+    "logo": null,
+    "photos": [],
+    "logo_found": false,
+    "directory_logo": "muaythai-logo.jpg",
+    "directory_logo_source": "https://iranmuaythai.com/en/images/stories/0--00000-000.jpg",
+    "official_content_status": "limited",
+    "official_content_url": "https://iranmuaythai.com",
     "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error [Errno -5] No address associated with hostname>"
+    "official_content_sources": [
+      {
+        "url": "https://iranmuaythai.com",
+        "title": "https://iranmuaythai.com"
+      }
+    ]
   },
   {
     "name": "پاراوزنه‌برداری و ورزش‌های جانبازان و توان‌یابان",
@@ -504,7 +957,29 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-33-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://irisfd.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://irisfd.ir/%d9%85%d8%b5%d8%b7%d9%81%d9%88%db%8c-%d8%a7%d8%b3%d8%aa%d9%82%d8%a8%d8%a7%d9%84-%da%86%d8%b4%d9%85%da%af%db%8c%d8%b1-%d8%a7%d8%b2-%d8%a7%d8%b3%d8%aa%d8%b9%d8%af%d8%a7%d8%af%db%8c%d8%a7%d8%a8%db%8c/",
+        "title": "مصطفوی: استقبال چشمگیر از استعدادیابی پارالمپیکی؛ ثبت‌نام ۳۵۰۰ نفر در سامانه فدراسیون - فدراسیون ورزش های جانبازان و توان‌یابان"
+      },
+      {
+        "url": "https://irisfd.ir/%d8%a8%d8%b1%da%af%d8%b2%d8%a7%d8%b1%db%8c-%d9%85%d8%b1%d8%a7%d8%b3%d9%85-%d9%85%d8%b9%d8%a7%d8%b1%d9%81%d9%87-%d9%88-%d8%a7%d9%87%d8%af%d8%a7%db%8c-%d8%ad%da%a9%d9%85-%d8%b1%d9%88%d8%b3%d8%a7%db%8c/",
+        "title": "برگزاری مراسم معارفه و اهدای حکم روسای هیئت های ورزش‌های جانبازان و توان‌یابان استان قزوین و قم با حضور دکتر کوهپایه‌زاده - فدراسیون ورزش های جانبازان و توان‌یابان"
+      },
+      {
+        "url": "https://irisfd.ir/%da%a9%d8%b9%d8%a8%db%8c%d8%b2%d8%a7%d8%af%d9%87-%d8%b7%d8%b1%d8%ad-%d9%85%d9%84%db%8c-%d9%87%d9%85%d8%a7%d9%85-%d8%a8%d9%87%d8%ae%d9%88%d8%a8%db%8c-%d8%af%d8%b1-%d9%81%d8%af%d8%b1/",
+        "title": "کعبی‌زاده: طرح ملی همام به‌خوبی در فدراسیون ورزش‌های جانبازان و توان‌یابان اجرایی شده است - فدراسیون ورزش های جانبازان و توان‌یابان"
+      },
+      {
+        "url": "https://irisfd.ir/%d9%be%db%8c%d8%a7%d9%85-%d8%b1%d8%a6%db%8c%d8%b3-%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86-%d9%88%d8%b1%d8%b2%d8%b4%d9%87%d8%a7%db%8c-%d8%ac%d8%a7%d9%86%d8%a8%d8%a7%d8%b2%d8%a7%d9%86/",
+        "title": "پیام رئیس فدراسیون ورزش‌های جانبازان و توان‌یابان به مناسبت افتخارآفرینی ورزشکاران ایران در بازی‌های پاراآسیایی ناگویا - فدراسیون ورزش های جانبازان و توان‌یابان"
+      },
+      {
+        "url": "https://irisfd.ir",
+        "title": "خانه - فدراسیون ورزش های جانبازان و توان‌یابان"
+      }
+    ]
   },
   {
     "name": "پارا دوومیدانی",
@@ -517,6 +992,7 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://irisfd.com",
     "official_content_paragraphs": 0,
+    "official_content_sources": [],
     "official_content_error": "<urlopen error [Errno -2] Name or service not known>"
   },
   {
@@ -530,6 +1006,7 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://iranpolo.ir",
     "official_content_paragraphs": 0,
+    "official_content_sources": [],
     "official_content_error": "HTTP Error 502: Bad Gateway"
   },
   {
@@ -546,7 +1023,21 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-7-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://isfaf.ir",
-    "official_content_paragraphs": 11
+    "official_content_paragraphs": 11,
+    "official_content_sources": [
+      {
+        "url": "https://isfaf.ir/Account/Provinceregister",
+        "title": "ثبت نام مسئولان هیئت های استانی"
+      },
+      {
+        "url": "https://isfaf.ir/Account/Provincelogin",
+        "title": "ورود به پنل کاربری"
+      },
+      {
+        "url": "https://isfaf.ir",
+        "title": "وب سایت رسمی فدراسیون ورزش های همگانی"
+      }
+    ]
   },
   {
     "name": "روئینگ",
@@ -556,7 +1047,13 @@
     "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
     "official_content_status": "collected",
     "official_content_url": "https://rowing.ir",
-    "official_content_paragraphs": 4
+    "official_content_paragraphs": 4,
+    "official_content_sources": [
+      {
+        "url": "https://rowing.ir",
+        "title": "Web Server's Default Page"
+      }
+    ]
   },
   {
     "name": "ورزش‌های روستایی، عشایری و بازی‌های بومی‌محلی",
@@ -572,7 +1069,29 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-25-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://roostasport.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://roostasport.ir#",
+        "title": "فدراسیون ورزش روستایی ، عشایری و بازی های بومی محلی"
+      },
+      {
+        "url": "https://roostasport.ir/structure?structureTypeId=1",
+        "title": "اعضای هیئت رئیسه"
+      },
+      {
+        "url": "https://roostasport.ir/structure?structureTypeId=2",
+        "title": "کمیته های اجرایی"
+      },
+      {
+        "url": "https://roostasport.ir/structure?structureTypeId=3",
+        "title": "هیئت های استانی"
+      },
+      {
+        "url": "https://roostasport.ir",
+        "title": "فدراسیون ورزش روستایی ، عشایری و بازی های بومی محلی"
+      }
+    ]
   },
   {
     "name": "بادبانی",
@@ -582,15 +1101,25 @@
     "error": "<urlopen error [Errno 111] Connection refused>",
     "official_content_status": "limited",
     "official_content_url": "http://sailing.ir",
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "official_content_sources": [
+      {
+        "url": "http://sailing.ir",
+        "title": "http://sailing.ir"
+      }
+    ]
   },
   {
     "name": "ساواته",
     "slug": "savate",
-    "status": "no-domain",
-    "official_content_status": "no-official-domain",
-    "official_content_url": null,
-    "official_content_paragraphs": 0
+    "website": "https://iraniansavateassociation.blogfa.com",
+    "status": "fetch-failed",
+    "error": "HTTP Error 403: Forbidden",
+    "official_content_status": "fetch-failed",
+    "official_content_url": "https://iraniansavateassociation.blogfa.com",
+    "official_content_paragraphs": 0,
+    "official_content_sources": [],
+    "official_content_error": "HTTP Error 403: Forbidden"
   },
   {
     "name": "ورزش دانش‌آموزی",
@@ -603,6 +1132,7 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://irisf.medu.gov.ir",
     "official_content_paragraphs": 0,
+    "official_content_sources": [],
     "official_content_error": "<urlopen error timed out>"
   },
   {
@@ -611,19 +1141,22 @@
     "status": "no-domain",
     "official_content_status": "no-official-domain",
     "official_content_url": null,
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "official_content_sources": []
   },
   {
     "name": "تیراندازی",
     "slug": "shooting",
     "website": "https://irissf.ir",
     "status": "fetch-failed",
-    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
+    "error": "<urlopen error [Errno -5] No address associated with hostname>",
     "directory_logo": "shooting-logo.gif",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/tirnadazi95-150x150.gif",
-    "official_content_status": "collected",
+    "official_content_status": "fetch-failed",
     "official_content_url": "https://irissf.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 0,
+    "official_content_sources": [],
+    "official_content_error": "<urlopen error [Errno -5] No address associated with hostname>"
   },
   {
     "name": "اسکیت",
@@ -639,7 +1172,17 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/skate99.png",
     "official_content_status": "collected",
     "official_content_url": "https://iranskating.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://iranskating.ir/%d9%85%d8%b9%d8%b1%d9%81%db%8c-%d9%86%d9%81%d8%b1%d8%a7%d8%aa-%d8%a8%d8%b1%d8%aa%d8%b1-%d9%85%d8%b3%d8%a7%d8%a8%d9%82%d8%a7%d8%aa-%d9%85%d9%86%d8%b7%d9%82%d9%87%d8%a7%db%8c-%d8%a7%d8%b3%da%a9/",
+        "title": "معرفی نفرات برتر مسابقات منطقه‌ای اسکیت کراس در خراسان شمالی – فدراسیون اسکیت ایران"
+      },
+      {
+        "url": "https://iranskating.ir",
+        "title": "فدراسیون اسکیت ایران – سایت خبری اسکیت"
+      }
+    ]
   },
   {
     "name": "اسکی و ورزش‌های زمستانی",
@@ -651,7 +1194,25 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-19.png",
     "official_content_status": "collected",
     "official_content_url": "http://skifed.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "http://skifed.ir#",
+        "title": "فدراسیون اسکی و ورزشهای زمستانی جمهوری اسلامی ایران www.SKIFED.ir"
+      },
+      {
+        "url": "http://skifed.ir/Personel/All?id=1",
+        "title": "فدراسیون اسکی و ورزشهای زمستانی جمهوری اسلامی ایران www.SKIFED.ir"
+      },
+      {
+        "url": "http://skifed.ir/Personel/All?id=2",
+        "title": "فدراسیون اسکی و ورزشهای زمستانی جمهوری اسلامی ایران www.SKIFED.ir"
+      },
+      {
+        "url": "http://skifed.ir",
+        "title": "فدراسیون اسکی و ورزشهای زمستانی جمهوری اسلامی ایران www.SKIFED.ir"
+      }
+    ]
   },
   {
     "name": "ورزش بیماران خاص و پیوند اعضا",
@@ -667,18 +1228,45 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-26-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://sptfiran.ir",
-    "official_content_paragraphs": 11
+    "official_content_paragraphs": 11,
+    "official_content_sources": [
+      {
+        "url": "https://sptfiran.ir/board",
+        "title": "اعضای هیئت رئیسه — فدراسیون ورزش بیماران خاص و پیوند اعضا"
+      },
+      {
+        "url": "https://sptfiran.ir/provinces",
+        "title": "استان‌ها — فدراسیون ورزش بیماران خاص و پیوند اعضا"
+      },
+      {
+        "url": "https://sptfiran.ir#",
+        "title": "فدراسیون ورزش بیماران خاص و پیوند اعضا"
+      },
+      {
+        "url": "https://sptfiran.ir",
+        "title": "فدراسیون ورزش بیماران خاص و پیوند اعضا"
+      }
+    ]
   },
   {
     "name": "المپیک ویژه",
     "slug": "special-olympics",
-    "website": "https://specialolympics.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error [Errno -2] Name or service not known>",
-    "official_content_status": "fetch-failed",
-    "official_content_url": "https://specialolympics.ir",
-    "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error [Errno -2] Name or service not known>"
+    "website": "https://specialolympicsiran.com",
+    "logo": null,
+    "photos": [
+      "special-olympics-photo-1.jpg",
+      "special-olympics-photo-2.jpg"
+    ],
+    "logo_found": false,
+    "official_content_status": "collected",
+    "official_content_url": "https://specialolympicsiran.com",
+    "official_content_paragraphs": 9,
+    "official_content_sources": [
+      {
+        "url": "https://specialolympicsiran.com",
+        "title": "خانه"
+      }
+    ]
   },
   {
     "name": "فدراسیون انجمن‌های ورزشی",
@@ -690,7 +1278,29 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-20.png",
     "official_content_status": "collected",
     "official_content_url": "http://ifsafed.com",
-    "official_content_paragraphs": 1
+    "official_content_paragraphs": 1,
+    "official_content_sources": [
+      {
+        "url": "http://ifsafed.com/Item.aspx?id=21234",
+        "title": "فدراسیون انجمنهای ورزشی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "http://ifsafed.com/Item.aspx?id=21385",
+        "title": "فدراسیون انجمنهای ورزشی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "http://ifsafed.com/Item.aspx?id=20819",
+        "title": "فدراسیون انجمنهای ورزشی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "http://ifsafed.com/Item.aspx?id=20815",
+        "title": "فدراسیون انجمنهای ورزشی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "http://ifsafed.com",
+        "title": "فدراسیون انجمنهای ورزشی جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "پزشکی ورزشی",
@@ -706,7 +1316,17 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-28-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://ifsm.ir",
-    "official_content_paragraphs": 8
+    "official_content_paragraphs": 8,
+    "official_content_sources": [
+      {
+        "url": "https://ifsm.ir/photo/68725/%D9%85%D8%AC%D9%85%D8%B9-%D8%B9%D9%85%D9%88%D9%85%DB%8C-%D9%81%D8%AF%D8%B1%D8%A7%D8%B3%DB%8C%D9%88%D9%86-%D9%BE%D8%B2%D8%B4%DA%A9%DB%8C-%D9%88%D8%B1%D8%B2%D8%B4%DB%8C",
+        "title": "مجمع عمومی فدراسیون پزشکی ورزشی - پایگاه اطلاع رسانی، خبر، تحلیلی پزشکی ورزشی ایران"
+      },
+      {
+        "url": "https://ifsm.ir",
+        "title": "پایگاه اطلاع رسانی، خبر، تحلیلی پزشکی ورزشی ایران"
+      }
+    ]
   },
   {
     "name": "اسکواش",
@@ -722,7 +1342,29 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-18.png",
     "official_content_status": "collected",
     "official_content_url": "https://squashiran.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://squashiran.ir#",
+        "title": "فدراسیون اسکواش جمهوری اسلامی ایران – www.squashiran.ir"
+      },
+      {
+        "url": "https://squashiran.ir/%d8%aa%d8%a7%d8%b1%db%8c%d8%ae%da%86%d9%87/",
+        "title": "تاریخچه – فدراسیون اسکواش جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://squashiran.ir/%d8%b1%d9%88%d8%b3%d8%a7%db%8c-%da%a9%d9%85%db%8c%d8%aa%d9%87%d9%87%d8%a7/",
+        "title": "روسای کمیته‌ها – فدراسیون اسکواش جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://squashiran.ir/%d8%aa%d8%a7%d8%b1%db%8c%d8%ae%da%86%d9%87-%d9%84%db%8c%da%af/",
+        "title": "تاریخچه لیگ – فدراسیون اسکواش جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://squashiran.ir",
+        "title": "فدراسیون اسکواش جمهوری اسلامی ایران – www.squashiran.ir"
+      }
+    ]
   },
   {
     "name": "تنیس روی میز",
@@ -734,7 +1376,25 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-29-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://irttf.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://irttf.ir#",
+        "title": "فدراسیون تنیس روی میز جمهوری اسلامی ایران www.irttf.ir"
+      },
+      {
+        "url": "https://irttf.ir/Personel/All?id=1",
+        "title": "فدراسیون تنیس روی میز جمهوری اسلامی ایران www.irttf.ir"
+      },
+      {
+        "url": "https://irttf.ir/Personel/All?id=2",
+        "title": "فدراسیون تنیس روی میز جمهوری اسلامی ایران www.irttf.ir"
+      },
+      {
+        "url": "https://irttf.ir",
+        "title": "فدراسیون تنیس روی میز جمهوری اسلامی ایران www.irttf.ir"
+      }
+    ]
   },
   {
     "name": "تکواندو",
@@ -746,7 +1406,13 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-16-150x150.png",
     "official_content_status": "limited",
     "official_content_url": "http://iritf.org.ir",
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "official_content_sources": [
+      {
+        "url": "http://iritf.org.ir",
+        "title": "www.Taekwondo.ir"
+      }
+    ]
   },
   {
     "name": "تنیس",
@@ -762,7 +1428,29 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-30-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://iritf.ir",
-    "official_content_paragraphs": 1
+    "official_content_paragraphs": 1,
+    "official_content_sources": [
+      {
+        "url": "https://iritf.ir/forms/%d8%a7%d9%87%d9%85-%d9%86%da%a9%d8%a7%d8%aa-%d8%a2%db%8c%db%8c%d9%86-%d9%86%d8%a7%d9%85%d9%87-%d8%a7%d9%86%d8%b6%d8%a8%d8%a7%d8%b7%db%8c-%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86-%d8%aa%d9%86/",
+        "title": "اهم نکات آیین نامه انضباطی فدراسیون تنیس – فدراسیون تنیس جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iritf.ir/calendar/",
+        "title": "تقویم مسابقات – فدراسیون تنیس جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iritf.ir/%da%a9%d9%85%db%8c%d8%aa%d9%87-%d8%a7%d9%86%d8%b6%d8%a8%d8%a7%d8%b7%db%8c/%d8%af%d8%b1%d8%ae%d9%88%d8%a7%d8%b3%d8%aa-%d8%a8%d8%af%d9%88%db%8c-%da%a9%d9%85%db%8c%d8%aa%d9%87-%d8%a7%d9%86%d8%b6%d8%a8%d8%a7%d8%b7%db%8c/",
+        "title": "درخواست بدوی کمیته انضباطی – فدراسیون تنیس جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iritf.ir/%da%a9%d9%85%db%8c%d8%aa%d9%87-%d8%a7%d9%86%d8%b6%d8%a8%d8%a7%d8%b7%db%8c/%d9%81%d8%b1%d9%85-%d8%af%d8%b1%d8%ae%d9%88%d8%a7%d8%b3%d8%aa-%d8%aa%d8%ac%d8%af%db%8c%d8%af%d9%86%d8%b8%d8%b1-%da%a9%d9%85%db%8c%d8%aa%d9%87-%d8%a7%d9%86%d8%b6%d8%a8%d8%a7%d8%b7%db%8c/",
+        "title": "فرم درخواست تجدیدنظر کمیته انضباطی – فدراسیون تنیس جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iritf.ir",
+        "title": "فدراسیون تنیس جمهوری اسلامی ایران – فدراسیون تنیس جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "ورزش‌های سه‌گانه",
@@ -778,7 +1466,21 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-40-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://irtriathlon.ir",
-    "official_content_paragraphs": 3
+    "official_content_paragraphs": 3,
+    "official_content_sources": [
+      {
+        "url": "https://irtriathlon.ir/aboutus",
+        "title": "سامانه ملی فدراسیون ترای‌اتلون"
+      },
+      {
+        "url": "https://irtriathlon.ir/aboutus?tab=contact-us",
+        "title": "سامانه ملی فدراسیون ترای‌اتلون"
+      },
+      {
+        "url": "https://irtriathlon.ir",
+        "title": "سامانه ملی فدراسیون ترای‌اتلون"
+      }
+    ]
   },
   {
     "name": "ورزش‌های دانشگاهی",
@@ -794,7 +1496,25 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-36-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://iusf.saorg.ir",
-    "official_content_paragraphs": 12
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://iusf.saorg.ir/portal/home/?265995/%D9%81%D8%AF%D8%B1%D8%A7%D8%B3%DB%8C%D9%88%D9%86-%D9%88%D8%B1%D8%B2%D8%B4%DB%8C",
+        "title": "فدراسیون ورزشی | فدراسیون ورزشی"
+      },
+      {
+        "url": "https://iusf.saorg.ir/portal/home/?267789/%D8%B3%D8%A7%D8%AE%D8%AA%D8%A7%D8%B1-%D9%81%D8%AF%D8%B1%D8%A7%D8%B3%DB%8C%D9%88%D9%86",
+        "title": "فدراسیون ورزشی | ساختار فدراسیون"
+      },
+      {
+        "url": "https://iusf.saorg.ir/portal/home/?267966/%D9%87%DB%8C%D8%A6%D8%AA-%D8%B1%D8%A6%DB%8C%D8%B3%D9%87",
+        "title": "هیئت رئیسه فدراسیون ورزشهای دانشگاهی"
+      },
+      {
+        "url": "https://iusf.saorg.ir",
+        "title": "فدراسیون ورزشی | صفحه اصلی"
+      }
+    ]
   },
   {
     "name": "والیبال",
@@ -806,7 +1526,13 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-6-150x150.png",
     "official_content_status": "limited",
     "official_content_url": "https://iranvolleyball.com",
-    "official_content_paragraphs": 0
+    "official_content_paragraphs": 0,
+    "official_content_sources": [
+      {
+        "url": "https://iranvolleyball.com",
+        "title": "Plesk Obsidian 18.0.81"
+      }
+    ]
   },
   {
     "name": "وزنه‌برداری",
@@ -822,7 +1548,21 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-8-150x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://iwfir.ir",
-    "official_content_paragraphs": 8
+    "official_content_paragraphs": 8,
+    "official_content_sources": [
+      {
+        "url": "https://iwfir.ir#",
+        "title": "فدراسیون وزنه برداری جمهوری اسلامی ایران – نماد افتخار و اقتدار ایران"
+      },
+      {
+        "url": "https://iwfir.ir/%d8%aa%d8%a7%d8%b1%db%8c%d8%ae%da%86%d9%87-%d9%88%d8%b2%d9%86%d9%87-%d8%a8%d8%b1%d8%af%d8%a7%d8%b1%db%8c/",
+        "title": "تاریخچه وزنه برداری – فدراسیون وزنه برداری جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iwfir.ir",
+        "title": "فدراسیون وزنه برداری جمهوری اسلامی ایران – نماد افتخار و اقتدار ایران"
+      }
+    ]
   },
   {
     "name": "ورزش‌های اسلامی زنان",
@@ -833,6 +1573,7 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://sport.ir",
     "official_content_paragraphs": 0,
+    "official_content_sources": [],
     "official_content_error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
   },
   {
@@ -846,6 +1587,7 @@
     "official_content_status": "fetch-failed",
     "official_content_url": "https://fawsi.mcls.gov.ir",
     "official_content_paragraphs": 0,
+    "official_content_sources": [],
     "official_content_error": "<urlopen error timed out>"
   },
   {
@@ -862,20 +1604,63 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/koshti_fed-150x150.gif",
     "official_content_status": "collected",
     "official_content_url": "https://iawf.ir",
-    "official_content_paragraphs": 6
+    "official_content_paragraphs": 6,
+    "official_content_sources": [
+      {
+        "url": "https://iawf.ir#",
+        "title": "فدراسیون کشتی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iawf.ir/Content/ContentList.aspx?CatID=1013",
+        "title": "فدراسیون کشتی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iawf.ir/Content/ContentList.aspx?CatID=1026",
+        "title": "فدراسیون کشتی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iawf.ir/Content/ContentList.aspx?CatID=3026",
+        "title": "فدراسیون کشتی جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iawf.ir",
+        "title": "فدراسیون کشتی جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "ووشو",
     "slug": "wushu",
     "website": "https://iranwushufed.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error _ssl.c:1129: The handshake operation timed out>",
+    "logo": "wushu-logo.png",
+    "photos": [
+      "wushu-photo-1.jpg",
+      "wushu-photo-2.jpg"
+    ],
+    "logo_found": true,
     "directory_logo": "wushu-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-9-150x150.png",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://iranwushufed.ir",
-    "official_content_paragraphs": 0,
-    "official_content_error": "<urlopen error _ssl.c:1129: The handshake operation timed out>"
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://iranwushufed.ir#",
+        "title": "فدراسیون ووشو جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iranwushufed.ir/history",
+        "title": "فدراسیون ووشو جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iranwushufed.ir/president-of-federation",
+        "title": "فدراسیون ووشو جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iranwushufed.ir",
+        "title": "فدراسیون ووشو جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "پهلوانی و زورخانه‌ای",
@@ -891,6 +1676,16 @@
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/logo-fipz-1-125x150.png",
     "official_content_status": "collected",
     "official_content_url": "https://izsf.ch",
-    "official_content_paragraphs": 8
+    "official_content_paragraphs": 8,
+    "official_content_sources": [
+      {
+        "url": "https://izsf.ch/fa/executive-board/",
+        "title": "هیئت اجرایی"
+      },
+      {
+        "url": "https://izsf.ch",
+        "title": "فدراسیون جهانی ورزش های زورخانه ای و کشتی پهلوانی"
+      }
+    ]
   }
 ]
