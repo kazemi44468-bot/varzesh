@@ -86,19 +86,19 @@ button,input,select{font:inherit}
 <nav class="head-links"><a class="head-link" href="../index.html">صفحه نخست</a><a class="head-link" href="../centers/governance.html">راهبری ورزش</a></nav>
 </div></header>
 <section class="hero"><div class="container hero-inner">
-<div class="hero-copy"><div class="eyebrow">مرجع اطلاعات و دسترسی</div><h1>فدراسیون‌ها و نهادهای ملی ورزش ایران</h1><p>پرونده اختصاصی هر مجموعه، معرفی حوزه فعالیت، نشان و تصاویر مرتبط، اطلاعات ساختاری و مسیر دسترسی به پایگاه اینترنتی مرجع؛ در یک درگاه یکپارچه و قابل جست‌وجو.</p></div>
+<div class="hero-copy"><div class="eyebrow">معرفی فدراسیون‌ها و راه‌های ارتباطی</div><h1>فدراسیون‌ها و نهادهای ملی ورزش ایران</h1><p>معرفی حوزه فعالیت و مأموریت هر فدراسیون، همراه با نشانی دفتر مرکزی، شماره تماس و وب‌سایت رسمی؛ با امکان جست‌وجو و دسترسی مستقیم به پرونده اختصاصی هر فدراسیون.</p></div>
 <div class="hero-meta"><div class="stat"><strong id="total">۶۶</strong><span>پرونده تخصصی</span></div></div>
 </div></section>
 <main class="container main">
-<div class="intro-row"><div><div class="section-title">فهرست مجموعه‌های ورزشی</div><div class="section-sub">برای مشاهده اطلاعات، پرونده هر مجموعه را باز کنید.</div></div></div>
+<div class="intro-row"><div><div class="section-title">فهرست فدراسیون‌های ورزشی</div><div class="section-sub">برای مشاهده معرفی، اطلاعات دفتر مرکزی و راه‌های ارتباطی هر فدراسیون، پرونده آن را باز کنید.</div></div></div>
 <div class="toolbar">
 <label class="search"><input id="search" type="search" placeholder="جست‌وجوی نام فدراسیون، انجمن یا رشته..." autocomplete="off" aria-label="جست‌وجوی مجموعه‌های ورزشی"></label>
-<select class="filter" id="filter" aria-label="فیلتر مجموعه‌ها"><option value="all">تمام مجموعه‌ها</option><option value="has">دارای وب‌سایت ثبت‌شده</option><option value="missing">فاقد پیوند ثبت‌شده</option></select>
+<select class="filter" id="filter" aria-label="فیلتر مجموعه‌ها"><option value="all">تمام مجموعه‌ها</option><option value="has">دارای وب‌سایت ثبت‌شده</option><option value="missing">فاقد وب‌سایت ثبت‌شده</option></select>
 <span class="result-count" id="count" aria-live="polite"></span>
 </div>
 <div class="grid" id="grid"></div><div class="empty" id="empty">موردی با این مشخصات پیدا نشد.</div>
 <dialog class="dialog" id="federationDialog" aria-labelledby="dialogTitle"><div class="dialog-head"><div class="dialog-title" id="dialogTitle">معرفی فدراسیون</div><button class="dialog-close" type="button" id="dialogClose" aria-label="بستن پنجره">×</button></div><div class="dialog-tabs" id="dialogTabs" role="tablist" aria-label="بخش‌های معرفی"></div><div class="dialog-content" id="dialogContent"><div class="dialog-state">برای مشاهده اطلاعات، یک فدراسیون را انتخاب کنید.</div></div></dialog>
-<div class="disclaimer">اطلاعات و پیوندهای این درگاه با هدف معرفی و دسترسی عمومی گردآوری شده‌اند. وضعیت پیوند به‌معنای تأیید مالکیت یا به‌روز بودن محتوای وب‌سایت نیست؛ برای تصمیم‌گیری و دریافت آخرین اطلاعیه‌ها، مرجع اصلی هر مجموعه را بررسی کنید.</div>
+
 </main>
 <footer class="footer">پورتال ورزش · درگاه معرفی فدراسیون‌ها و ساختار ورزش ایران</footer>
 <script>
@@ -117,8 +117,8 @@ const dialog=document.getElementById('federationDialog'),dialogTitle=document.ge
 const profileCache=new Map();
 function classifyPanel(panel){
  const heading=(panel.querySelector('h2')?.textContent||'').trim();
+ if(/منبع|صفحه رسمی|پیوندهای رسمی/i.test(heading)) return null;
  if(/تماس|ارتباط|نشانی|آدرس/i.test(heading)) return 'نشانی و راه‌های ارتباطی';
- if(/منبع|صفحه رسمی|پیوندهای رسمی/i.test(heading)) return 'پیوندهای رسمی';
  return 'معرفی فدراسیون';
 }
 function activateTab(index){
@@ -138,10 +138,10 @@ async function openProfile(name,slug,domain){
    if(!response.ok)throw new Error('profile unavailable');
    const source=await response.text(),doc=new DOMParser().parseFromString(source,'text/html');
    const panels=[...doc.querySelectorAll('.content .panel')];
-   parsed=panels.map(panel=>({category:classifyPanel(panel),html:panel.innerHTML}));
+   parsed=panels.map(panel=>({category:classifyPanel(panel),html:panel.innerHTML})).filter(item=>item.category);
    profileCache.set(slug,parsed);
   }
-  const categories=['معرفی فدراسیون','نشانی و راه‌های ارتباطی','پیوندهای رسمی'];
+  const categories=['معرفی فدراسیون','نشانی و راه‌های ارتباطی'];
   const available=categories.map(category=>({category,items:parsed.filter(p=>p.category===category)})).filter(group=>group.items.length);
   if(!available.length){
    dialogTabs.innerHTML='<button class="dialog-tab" type="button" aria-selected="true">اطلاعات</button>';
@@ -152,13 +152,13 @@ async function openProfile(name,slug,domain){
    dialogTabs.querySelectorAll('button').forEach((button,i)=>button.addEventListener('click',()=>activateTab(i)));
   }
   if(domain){
-   const site=document.createElement('a');site.className='dialog-site';site.href='https://'+domain;site.target='_blank';site.rel='noopener noreferrer';site.textContent='پایگاه رسمی فدراسیون';
+   const site=document.createElement('a');site.className='dialog-site';site.href='https://'+domain;site.target='_blank';site.rel='noopener noreferrer';site.textContent='وب‌سایت رسمی فدراسیون';
    dialogContent.appendChild(site);
   }
  }catch(error){
   dialogTabs.innerHTML='';
   dialogContent.innerHTML='<div class="dialog-state dialog-error">دریافت پرونده با مشکل روبه‌رو شد. می‌توانید از پیوند پایگاه رسمی استفاده کنید.</div>';
-  if(domain){const site=document.createElement('a');site.className='dialog-site';site.href='https://'+domain;site.target='_blank';site.rel='noopener noreferrer';site.textContent='پایگاه رسمی فدراسیون';dialogContent.appendChild(site);}
+  if(domain){const site=document.createElement('a');site.className='dialog-site';site.href='https://'+domain;site.target='_blank';site.rel='noopener noreferrer';site.textContent='وب‌سایت رسمی فدراسیون';dialogContent.appendChild(site);}
  }
 }
 dialogClose.addEventListener('click',()=>dialog.close());
