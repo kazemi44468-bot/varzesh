@@ -11,8 +11,8 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: federation-assets-${{ github.ref }}-${{ github.sha }}
-  cancel-in-progress: true
+  group: federation-assets-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
   assets:
     runs-on: ubuntu-latest
