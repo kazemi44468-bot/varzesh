@@ -146,9 +146,13 @@ async function openProfile(name,slug,domain){
      parsed=parsed.filter(item=>item.category!=='معرفی فدراسیون');
      parsed.unshift({category:'معرفی فدراسیون',html:'<h2>معرفی فدراسیون</h2><p>'+fallback[4]+'</p>'});
     }
-    if(!parsed.some(item=>item.category==='نشانی و راه‌های ارتباطی')){
-     parsed.push({category:'نشانی و راه‌های ارتباطی',html:'<h2>نشانی و راه‌های ارتباطی</h2><p>نشانی دفتر مرکزی و شماره تماس در پرونده فعلی ثبت نشده است. برای مشاهده اطلاعات تماس به وب‌سایت رسمی این فدراسیون مراجعه کنید.</p>'});
+    let contact=parsed.find(item=>item.category==='نشانی و راه‌های ارتباطی');
+    if(!contact){
+     contact={category:'نشانی و راه‌های ارتباطی',html:'<h2>نشانی و راه‌های ارتباطی</h2>'};
+     parsed.push(contact);
     }
+    if(!/آدرس|نشانی/.test(contact.html)) contact.html+='<p>نشانی دفتر مرکزی در پرونده فعلی ثبت نشده است.</p>';
+    if(!/تلفن|شماره تماس|۰۲۱|021/.test(contact.html)) contact.html+='<p>شماره تماس در پرونده فعلی ثبت نشده است؛ برای دریافت اطلاعات تماس به وب‌سایت رسمی فدراسیون مراجعه کنید.</p>';
    }
    profileCache.set(slug,parsed);
   }
