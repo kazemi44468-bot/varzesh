@@ -3,15 +3,39 @@
     "name": "شنا، شیرجه و واترپلو",
     "slug": "aquatics",
     "website": "https://irsf.ir",
-    "status": "fetch-failed",
-    "error": "The read operation timed out",
+    "logo": "aquatics-logo.png",
+    "photos": [
+      "aquatics-photo-1.jpg",
+      "aquatics-photo-2.jpg"
+    ],
+    "logo_found": true,
     "directory_logo": "aquatics-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-43-150x150.png",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://irsf.ir",
-    "official_content_paragraphs": 0,
-    "official_content_sources": [],
-    "official_content_error": "timed out"
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://irsf.ir/%da%a9%d8%b3%d8%a8-%d8%b4%d8%b4-%da%a9%d8%b1%d8%b3%db%8c-%d8%af%d8%b1-%da%a9%d9%86%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86-%d9%88%d8%b1%d8%b2%d8%b4%d9%87%d8%a7%db%8c-%d8%a2%d8%a8/",
+        "title": "کسب شش کرسی در کنفدراسیون ورزش‌های آبی آسیا توسط نمایندگان ایران – فدراسیون شنا، شیرجه و واترپلو جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://irsf.ir/%d8%b4%d9%87%d9%86%d8%a7%d9%85-%d9%86%d8%b8%d8%b1%d9%be%d9%88%d8%b1-%d8%b3%d8%b1%d9%be%d8%b1%d8%b3%d8%aa-%da%a9%d9%85%db%8c%d8%aa%d9%87-%d8%b4%db%8c%d8%b1%d8%ac%d9%87-%d9%81%d8%af%d8%b1%d8%a7%d8%b3/",
+        "title": "شهنام نظرپور سرپرست کمیته شیرجه فدراسیون ورزش‌های آبی شد – فدراسیون شنا، شیرجه و واترپلو جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://irsf.ir/%d8%ad%d8%b6%d9%88%d8%b1-%d8%b1%d8%a6%db%8c%d8%b3-%d9%81%d8%af%d8%b1%d8%a7%d8%b3%db%8c%d9%88%d9%86-%d9%88%d8%b1%d8%b2%d8%b4%d9%87%d8%a7%db%8c-%d8%a2%d8%a8%db%8c-%d9%88-%d9%85%d8%b3%d8%a6/",
+        "title": "حضور رئیس فدراسیون ورزش‌های آبی و مسئول کمیته واترپلو فدراسیون در جمع واترپلوئیست‌های یزد؛تأکید بر آینده روشن واترپلوی استان – فدراسیون شنا، شیرجه و واترپلو جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://irsf.ir/%d9%86%d8%b4%d8%b3%d8%aa-%da%a9%d9%85%db%8c%d8%aa%d9%87-%d9%81%d9%86%db%8c-%d8%a8%d8%a7-%d9%85%d8%b1%d8%a8%db%8c%d8%a7%d9%86-%d9%85%d9%86%d8%aa%d8%ae%d8%a8-%d8%b4%d9%86%d8%a7%d8%9b%d8%b3%d8%a7%d8%b2/",
+        "title": "نشست کمیته فنی با مربیان منتخب شنا؛سازماندهی جدید تیم‌های ملی مشخص می‌شود/ برنامه ریزی فدراسیون برای موفقیت در بازی‌های آسیایی ۲۰۳۰ – فدراسیون شنا، شیرجه و واترپلو جمهوری اسلامی ای"
+      },
+      {
+        "url": "https://irsf.ir",
+        "title": "فدراسیون شنا، شیرجه و واترپلو جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "تیراندازی با کمان",
@@ -59,11 +83,19 @@
     "error": "<urlopen error [Errno 104] Connection reset by peer>",
     "directory_logo": "athletics-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-37-150x150.png",
-    "official_content_status": "fetch-failed",
-    "official_content_url": "https://iranathletics.ir",
-    "official_content_paragraphs": 0,
-    "official_content_sources": [],
-    "official_content_error": "<urlopen error timed out>"
+    "official_content_status": "collected",
+    "official_content_url": "http://iranathletics.ir",
+    "official_content_paragraphs": 4,
+    "official_content_sources": [
+      {
+        "url": "http://iranathletics.ir#",
+        "title": "فدراسیون دو و میدانی جمهوری اسلامی ایران www.IranAthletics.ir"
+      },
+      {
+        "url": "http://iranathletics.ir",
+        "title": "فدراسیون دو و میدانی جمهوری اسلامی ایران www.IranAthletics.ir"
+      }
+    ]
   },
   {
     "name": "بدمینتون",
@@ -140,7 +172,7 @@
     "slug": "blind",
     "website": "https://blindsports.ir",
     "status": "fetch-failed",
-    "error": "<urlopen error timed out>",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
     "directory_logo": "blind-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-2-150x150.png",
     "official_content_status": "collected",
@@ -266,7 +298,7 @@
         "title": "فدراسیون شطرنج جمهوری اسلامی ایران www.ircf.ir"
       },
       {
-        "url": "http://ircf.ir/PhotoReport/dpic?id=7&ts=14050829092420451",
+        "url": "http://ircf.ir/PhotoReport/dpic?id=7&ts=14050829092902411",
         "title": "قدردانی فدراسیون شطرنج از امدادگران هلال احمر"
       },
       {
@@ -659,11 +691,31 @@
     "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid f",
     "directory_logo": "hockey-logo.jpg",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/haki_logo.jpg",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "http://hockeyfed.ir",
-    "official_content_paragraphs": 0,
-    "official_content_sources": [],
-    "official_content_error": "<urlopen error timed out>"
+    "official_content_paragraphs": 10,
+    "official_content_sources": [
+      {
+        "url": "http://hockeyfed.ir#",
+        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.HockeyFed.ir"
+      },
+      {
+        "url": "http://hockeyfed.ir/Personel/All?id=1",
+        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.hockeyfed.ir"
+      },
+      {
+        "url": "http://hockeyfed.ir/Personel/All?id=3",
+        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.hockeyfed.ir"
+      },
+      {
+        "url": "http://hockeyfed.ir/PhotoReport/dpic?id=44&ts=14050829092848603",
+        "title": "مهدی احمدی با کسب ۱۱ رای اعضا مجمع برای مدت ۴سال رییس هیئت هاکی استان گلستان شد."
+      },
+      {
+        "url": "http://hockeyfed.ir",
+        "title": "فدراسیون هاکی جمهوری اسلامی ایران www.HockeyFed.ir"
+      }
+    ]
   },
   {
     "name": "آمادگی جسمانی و تندرستی",
@@ -829,15 +881,31 @@
     "name": "انجمن‌های ورزش‌های رزمی",
     "slug": "martialarts",
     "website": "https://irmaaf.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error _ssl.c:1129: The handshake operation timed out>",
+    "logo": "martialarts-logo.png",
+    "photos": [
+      "martialarts-photo-1.jpg",
+      "martialarts-photo-2.jpg"
+    ],
+    "logo_found": true,
     "directory_logo": "martialarts-logo.gif",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2026/09/fed_anjoman.gif",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://irmaaf.ir",
-    "official_content_paragraphs": 0,
-    "official_content_sources": [],
-    "official_content_error": "<urlopen error _ssl.c:1129: The handshake operation timed out>"
+    "official_content_paragraphs": 9,
+    "official_content_sources": [
+      {
+        "url": "https://irmaaf.ir#",
+        "title": "فدراسیون انجمن ورزش های رزمی ایران"
+      },
+      {
+        "url": "https://irmaaf.ir/history",
+        "title": "فدراسیون انجمن ورزش های رزمی ایران"
+      },
+      {
+        "url": "https://irmaaf.ir",
+        "title": "فدراسیون انجمن ورزش های رزمی ایران"
+      }
+    ]
   },
   {
     "name": "هنرهای رزمی ترکیبی (MMA)",
@@ -1149,7 +1217,7 @@
         "title": "فدراسیون تیراندازی جمهوری اسلامی ایران www.irissf.ir"
       },
       {
-        "url": "https://irissf.ir/PhotoReport/dpic?id=436&ts=14050829092413664",
+        "url": "https://irissf.ir/PhotoReport/dpic?id=436&ts=14050829092935051",
         "title": "مراسم تودیع و معارفه سرپرست و رییس فدراسیون تیراندازی"
       },
       {
@@ -1418,12 +1486,8 @@
     "name": "تنیس",
     "slug": "tennis",
     "website": "https://iritf.ir",
-    "logo": "tennis-logo.png",
-    "photos": [
-      "tennis-photo-1.png",
-      "tennis-photo-2.png"
-    ],
-    "logo_found": true,
+    "status": "fetch-failed",
+    "error": "The read operation timed out",
     "directory_logo": "tennis-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-30-150x150.png",
     "official_content_status": "collected",
@@ -1629,15 +1693,35 @@
     "name": "ووشو",
     "slug": "wushu",
     "website": "https://iranwushufed.ir",
-    "status": "fetch-failed",
-    "error": "<urlopen error _ssl.c:1129: The handshake operation timed out>",
+    "logo": "wushu-logo.png",
+    "photos": [
+      "wushu-photo-1.jpg",
+      "wushu-photo-2.jpg"
+    ],
+    "logo_found": true,
     "directory_logo": "wushu-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-9-150x150.png",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://iranwushufed.ir",
-    "official_content_paragraphs": 0,
-    "official_content_sources": [],
-    "official_content_error": "<urlopen error _ssl.c:1129: The handshake operation timed out>"
+    "official_content_paragraphs": 12,
+    "official_content_sources": [
+      {
+        "url": "https://iranwushufed.ir#",
+        "title": "فدراسیون ووشو جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iranwushufed.ir/history",
+        "title": "فدراسیون ووشو جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iranwushufed.ir/president-of-federation",
+        "title": "فدراسیون ووشو جمهوری اسلامی ایران"
+      },
+      {
+        "url": "https://iranwushufed.ir",
+        "title": "فدراسیون ووشو جمهوری اسلامی ایران"
+      }
+    ]
   },
   {
     "name": "پهلوانی و زورخانه‌ای",
