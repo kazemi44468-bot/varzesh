@@ -1,4 +1,5 @@
-import json, re, time, ssl
+import json, re, time, ssl, shutil
+from PIL import Image
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.request import Request, urlopen
@@ -116,6 +117,7 @@ def collect_bamorabi():
       'muaythai':'https://iranmuaythai.com/en/images/stories/0--00000-000.jpg',
       'mma':'https://immaf.org/wp-content/uploads/2020/02/Iran-IRMMAA_ICON-ONLY-289x205-1.png',
       'sailing':'https://media.licdn.com/dms/image/v2/D4E16AQGqQT3D-5oNew/profile-displaybackgroundimage-shrink_200_800/profile-displaybackgroundimage-shrink_200_800/0/1694867004838?e=2147483647&t=RU9lsdAPnMsAxtXNkTg9W0wWikM8p2qSN6p1INThPsE&v=beta',
+      'savate':'https://s41.uupload.ir/files/savate/Iran%20Savate%20Association-%D8%A7%D9%86%D8%AC%D9%85%D9%86%20%D8%B3%D8%A7%D9%88%D8%A7%D8%AA%D9%87%20%D8%A7%DB%8C%D8%B1%D8%A7%D9%86240.jpg',
       'futsal':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-14-150x150.png',
       'para-athletics':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-33-150x150.png',
       'kungfu':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-51-150x150.png',
@@ -176,13 +178,25 @@ def collect_bamorabi():
     def download(task):
         e,url=task
         saved=save_image(url,e['slug']+'-logo')
-        if saved:return {'slug':e['slug'],'name':e['name'],'logo':saved,'source':url,'source_type':'Bamorabi logo directory'}
+        if saved:
+            source_type='Bamorabi directory' if 'bamorabi.ir' in url else ('Official Savate association publication' if e['slug']=='savate' else 'Official federation or international body source')
+            return {'slug':e['slug'],'name':e['name'],'logo':saved,'source':url,'source_type':source_type}
         return None
     report=[]
     with ThreadPoolExecutor(max_workers=16) as pool:
         for result in as_completed([pool.submit(download,t) for t in logo_sources.values()]):
             item=result.result()
             if item:report.append(item)
+    # The official Savate association poster contains its emblem at the top centre.
+    savate_source=next(iter(OUT.glob('savate-logo.jpg')),None)
+    if savate_source:
+        try:
+            im=Image.open(savate_source).convert('RGB')
+            w,h=im.size
+            shutil.copyfile(savate_source,OUT/'savate-photo-1.jpg')
+            emblem=im.crop((int(w*.32),int(h*.015),int(w*.68),int(h*.24)))
+            emblem.save(OUT/'savate-logo.png',optimize=True)
+        except Exception:pass
     DATA_PATH.write_text(json.dumps(DATA,ensure_ascii=False,indent=2),encoding='utf-8')
     # Keep the public directory cards aligned with the current official domains.
     index_path=ROOT/'centers'/'federations.html'
