@@ -106,7 +106,7 @@ function logoFallback(img){
  const exts=['.jpg','.webp','.gif'];
  const i=Number(img.dataset.try||0);
  if(i<exts.length){img.dataset.try=String(i+1);img.src=img.dataset.base+exts[i];}
- else{img.remove();img.parentElement.innerHTML='<span class="crest-fallback">'+img.dataset.short+'</span>';}
+ else{const parent=img.parentElement,short=img.dataset.short;parent.innerHTML='<span class="crest-fallback">'+short+'</span>';}
 }
 function render(){
  const q=search.value.trim().toLocaleLowerCase('fa'),mode=filter.value;
