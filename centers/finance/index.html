@@ -26,7 +26,7 @@
 
 <section id="workspace" class="hidden">
   <div class="workspace-head"><div><div class="eyebrow" id="roleCaption">محیط خزانه‌داری</div><h1 id="workspaceTitle">پرونده مالی فدراسیون</h1><p id="workspaceSub" class="muted"></p></div><div class="head-tools"><a class="btn btn-outline" href="squash/index.html">ورود به پرونده اسکواش</a><a class="btn btn-outline" href="../../index.html">صفحه نخست پورتال</a><button id="exportBtn" class="btn btn-outline">دریافت نسخه پشتیبان</button><button id="printBtn" class="btn btn-outline">چاپ گزارش</button></div></div>
-  <nav class="tabs" aria-label="بخش‌های مرکز مالی"><button class="tab active" data-view="overview">نمای کلی</button><button class="tab" data-view="transactions">درآمد و هزینه</button><button class="tab" data-view="budget">بودجه و اعتبارات</button><button class="tab" data-view="documents">اسناد و فاکتورها</button><button class="tab" data-view="reports">گزارش‌ها</button><button class="tab admin-only hidden" data-view="access">ساختار فدراسیون‌ها</button></nav>
+  <nav class="tabs" aria-label="بخش‌های مرکز مالی"><button class="tab active" data-view="overview">نمای کلی</button><button class="tab" data-view="transactions">درآمد و هزینه</button><button class="tab" data-view="budget">بودجه و اعتبارات</button><button class="tab" data-view="documents">اسناد و فاکتورها</button><button class="tab" data-view="personnel">پرسنل</button><button class="tab" data-view="payroll">حقوق و دستمزد</button><button class="tab" data-view="profile">پروفایل مالی</button><button class="tab" data-view="reports">گزارش‌ها</button><button class="tab admin-only hidden" data-view="access">ساختار فدراسیون‌ها</button></nav>
 
   <section class="view" id="view-overview">
     <div class="metrics" id="metrics"></div>
@@ -85,6 +85,40 @@
     <article class="panel"><h2>ترکیب هزینه‌ها</h2><div id="categoryReport" class="category-report"></div></article>
   </section>
 
+
+  <section class="view hidden" id="view-personnel">
+    <div class="section-head"><div><h2>بانک اطلاعات پرسنل</h2><p class="muted">برای هر فرد یک کد اختصاصی و ثابت ایجاد می‌شود؛ این کد در حقوق، پرداخت‌ها و سایر اسناد مالی مرجع خواهد بود.</p></div></div>
+    <form id="personnelForm" class="form-panel"><div class="form-grid">
+      <label>کد پرسنلی<input id="personCode" placeholder="تولید خودکار در صورت خالی بودن"></label>
+      <label>نام و نام خانوادگی<input id="personName" maxlength="100" required></label>
+      <label>عنوان شغلی<input id="personJob" maxlength="100" required></label>
+      <label>واحد سازمانی<input id="personUnit" maxlength="100"></label>
+      <label>تاریخ شروع همکاری<input id="personStart" type="date"></label>
+      <label>شماره تماس<input id="personPhone" type="tel" maxlength="30"></label>
+      <label>نوع همکاری<select id="personType"><option>تمام‌وقت</option><option>پاره‌وقت</option><option>قراردادی</option><option>مشاور</option><option>پروژه‌ای</option></select></label>
+      <label>وضعیت همکاری<select id="personStatus"><option>فعال</option><option>مرخصی بلندمدت</option><option>پایان همکاری</option></select></label>
+      <label class="wide">توضیحات<input id="personNote" maxlength="180"></label>
+    </div><button class="btn btn-primary" type="submit">ثبت پرونده پرسنلی</button><span id="personFeedback" class="feedback"></span></form>
+    <article class="panel"><div class="panel-head"><h2>فهرست پرسنل</h2><input id="personSearch" class="search-input" placeholder="جست‌وجو با کد یا نام"></div><div id="personnelTable" class="table-wrap"></div></article>
+  </section>
+  <section class="view hidden" id="view-payroll">
+    <div class="section-head"><div><h2>حقوق و دستمزد ماهیانه</h2><p class="muted">ثبت کارکرد مالی هر ماه برای هر پرسنل، محاسبه خالص پرداختی و تهیه فیش حقوقی.</p></div></div>
+    <form id="payrollForm" class="form-panel"><div class="form-grid">
+      <label>پرسنل<select id="payEmployee" required></select></label>
+      <label>سال پرداخت<input id="payYear" type="number" min="1400" max="1500" value="1405" required></label>
+      <label>ماه پرداخت<select id="payMonth"><option value="01">فروردین</option><option value="02">اردیبهشت</option><option value="03">خرداد</option><option value="04">تیر</option><option value="05">مرداد</option><option value="06">شهریور</option><option value="07">مهر</option><option value="08">آبان</option><option value="09">آذر</option><option value="10">دی</option><option value="11">بهمن</option><option value="12">اسفند</option></select></label>
+      <label>حقوق پایه (ریال)<input id="payBase" type="number" min="0" required></label>
+      <label>مزایا و اضافه‌کاری (ریال)<input id="payBenefits" type="number" min="0" value="0"></label>
+      <label>کسورات (ریال)<input id="payDeductions" type="number" min="0" value="0"></label>
+      <label class="wide">شرح پرداخت / توضیحات<input id="payNote" maxlength="180"></label>
+    </div><div class="pay-preview" id="payPreview">خالص پرداختی: ۰ ریال</div><button class="btn btn-primary" type="submit">ثبت حقوق ماهیانه</button><span id="payFeedback" class="feedback"></span></form>
+    <article class="panel"><div class="panel-head"><h2>سوابق حقوق و دستمزد</h2><div class="inline-tools"><select id="payrollYearFilter"><option value="all">همه سال‌ها</option><option>1405</option><option>1404</option><option>1403</option></select></div></div><div id="payrollTable" class="table-wrap"></div></article>
+  </section>
+  <section class="view hidden" id="view-profile">
+    <div class="section-head"><div><h2>پروفایل مالی پرسنل</h2><p class="muted">نمای یکپارچه اطلاعات شغلی، سوابق حقوق ماهیانه و جمع پرداخت‌های هر فرد.</p></div></div>
+    <div class="form-panel"><label>انتخاب پرسنل<select id="profileEmployee"></select></label></div>
+    <div id="employeeProfile"></div>
+  </section>
   <section class="view hidden" id="view-access">
     <div class="section-head"><div><h2>ساختار پرونده‌های مستقل</h2><p class="muted">فهرست فدراسیون‌ها و وضعیت اطلاعات ثبت‌شده در هر پرونده.</p></div></div>
     <article class="panel"><div id="accessTable" class="table-wrap"></div></article>
