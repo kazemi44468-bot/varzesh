@@ -366,7 +366,7 @@
   {
     "name": "موی‌تای",
     "short": "موی‌تای",
-    "domain": "muaythai.ir",
+    "domain": "iranmuaythai.com",
     "slug": "muaythai",
     "description": "در زمینه سامان‌دهی رشته موی‌تای، آموزش، مسابقات و آماده‌سازی ورزشکاران این رشته فعالیت دارد."
   },
@@ -380,7 +380,7 @@
   {
     "name": "جوجیتسو",
     "short": "جوجیتسو",
-    "domain": "ju-jitsu.ir",
+    "domain": "",
     "slug": "jujitsu",
     "description": "به توسعه جوجیتسو، آموزش فنی و برگزاری رقابت‌های تخصصی در رده‌های مختلف می‌پردازد."
   },
@@ -443,7 +443,7 @@
   {
     "name": "المپیک ویژه",
     "short": "المپیک ویژه",
-    "domain": "specialolympics.ir",
+    "domain": "specialolympicsiran.com",
     "slug": "special-olympics",
     "description": "با فراهم‌کردن فرصت‌های ورزشی برای افراد دارای کم‌توانی ذهنی، بر مشارکت، رشد فردی و رقابت منصفانه تمرکز دارد."
   },
