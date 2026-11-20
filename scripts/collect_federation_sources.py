@@ -115,6 +115,7 @@ def collect_bamorabi():
       'kurash':'https://kurash-ika.org/wp-content/uploads/2022/06/306380608_539153384878374_807882668608004300_n.jpg',
       'muaythai':'https://iranmuaythai.com/en/images/stories/0--00000-000.jpg',
       'mma':'https://immaf.org/wp-content/uploads/2020/02/Iran-IRMMAA_ICON-ONLY-289x205-1.png',
+      'sailing':'https://media.licdn.com/dms/image/v2/D4E16AQGqQT3D-5oNew/profile-displaybackgroundimage-shrink_200_800/profile-displaybackgroundimage-shrink_200_800/0/1694867004838?e=2147483647&t=RU9lsdAPnMsAxtXNkTg9W0wWikM8p2qSN6p1INThPsE&v=beta',
       'futsal':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-14-150x150.png',
       'para-athletics':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-33-150x150.png',
       'kungfu':'https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-51-150x150.png',
@@ -296,7 +297,7 @@ def inject_profiles(profiles):
         if media:
             pieces=[]
             if logo_file:
-                pieces.append('<img class="logo" src="../../assets/images/federations/'+logo_file.name+'" alt="نشان '+esc(e['name'])+'">')
+                pieces.append('<img class="logo" src="../../assets/images/federations/'+logo_file.name+'" alt="نشان '+esc(e['name'])+'"'+(' style="object-fit:cover;object-position:right center;padding:0"' if slug=='sailing' else '')+'>')
             else:
                 pieces.append('<div class="logo-placeholder">نشان '+esc(e.get('short',e['name']))+'</div>')
                 html=html.replace('.media .logo{','.media .logo-placeholder{grid-column:1/-1;min-height:76px;display:grid;place-items:center;background:#fff;color:#6b8292;border:1px solid #e1e8ed;border-radius:8px;font-size:11px}.media .logo{')
