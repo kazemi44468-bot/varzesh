@@ -170,7 +170,7 @@ function render(){
   const [name,short,domain,slug]=f;
   const logoBase='../assets/images/federations/'+slug+'-logo';
   const logo='<img src="'+logoBase+'.png" data-base="'+logoBase+'" data-short="'+short+'" data-slug="'+slug+'" alt="نشان '+name+'" onerror="logoFallback(this)">';
-  const site=domain?'<span class="site-link">پایگاه رسمی در پرونده</span>':'<span class="site-link disabled">پیوند رسمی ثبت نشده</span>';
+  const site=domain?'<a class="site-link" href="https://'+domain+'" target="_blank" rel="noopener noreferrer">وب‌سایت رسمی</a>':'<span class="site-link disabled">وب‌سایت ثبت نشده</span>';
   return '<article class="fed-card"><div class="card-head"><div class="crest">'+logo+'</div><div><div class="fed-title">'+name+'</div><div class="fed-subtitle">اطلاعات و درگاه رسمی</div></div></div><button class="detail-link" type="button" data-profile="'+slug+'" data-name="'+name+'" data-domain="'+domain+'"><span>مشاهده معرفی در همین صفحه</span><span>بازکردن</span></button><div class="card-foot"><span class="domain">'+(domain||'پیوند رسمی ثبت نشده')+'</span>'+site+'</div></article>';
  }).join('');
  count.textContent=faNumber(rows.length)+' مجموعه';
