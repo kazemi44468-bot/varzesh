@@ -296,7 +296,9 @@ def inject_profiles(profiles):
                 html=html.replace(logo_tag.group(0),'<div class="logo-placeholder">نشان '+esc(e.get('short',e['name']))+'</div>')
                 if '.logo-placeholder' not in html:
                     html=html.replace('.media .logo{','.media .logo-placeholder{grid-column:1/-1;min-height:76px;display:grid;place-items:center;background:#fff;color:#6b8292;border:1px solid #e1e8ed;border-radius:8px;font-size:11px}.media .logo{')
-        photo_files=sorted(OUT.glob(slug+'-photo-*'))
+        photo_files=[]
+        for photo in sorted(OUT.glob(slug+'-photo-*')):
+            if photo.stem not in [x.stem for x in photo_files]:photo_files.append(photo)
         for i in range(1,3):
             pattern=r'<img src="[^"]*'+re.escape(slug)+r'-photo-'+str(i)+r'\\.[^"]*"[^>]*>'
             match=re.search(pattern,html)
