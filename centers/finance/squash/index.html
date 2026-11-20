@@ -55,7 +55,7 @@
     <label>شماره شبا<input id="personIban" maxlength="32" dir="ltr"></label><label>نام صاحب حساب<input id="personAccountOwner" maxlength="100"></label>
     <label class="wide">توضیحات پرونده<input id="personNote" maxlength="240"></label>
    </div>
-   <div class="person-form-actions"><button class="btn btn-primary" type="submit">ذخیره پرونده پرسنلی</button><span id="personFeedback" class="feedback" aria-live="polite"></span></div>
+   <label class="wide">مفاد و توضیحات قرارداد<textarea id="personContractTerms" rows="3" maxlength="1200" placeholder="شرح وظایف، تعهدات، ساعات کار و شرایط تمدید"></textarea></label><div id="customPersonInputs" class="form-grid wide"></div><div class="person-form-actions"><button class="btn btn-primary" type="submit">ذخیره پرونده پرسنلی</button><span id="personFeedback" class="feedback" aria-live="polite"></span></div>
    <div class="danger-note">اطلاعات هویتی، نشانی و حساب بانکی در این نسخه صرفاً داده‌های نمایشی و محلی هستند. برای استفاده واقعی باید ذخیره‌سازی و دسترسی‌ها به سرور امن منتقل شود.</div>
   </form>
   <article class="panel"><div class="panel-head"><h2>فهرست پرسنل</h2><div class="filter-row"><input id="personSearch" class="search-input" placeholder="جست‌وجو با کد، نام یا واحد"><select id="personStatusFilter"><option value="all">همه وضعیت‌ها</option><option>فعال</option><option>غیرفعال</option><option>مرخصی بلندمدت</option><option>پایان همکاری</option></select></div></div><div id="personnelTable" class="table-wrap"></div></article>
