@@ -87,18 +87,36 @@
 
 
   <section class="view hidden" id="view-personnel">
-    <div class="section-head"><div><h2>بانک اطلاعات پرسنل</h2><p class="muted">برای هر فرد یک کد اختصاصی و ثابت ایجاد می‌شود؛ این کد در حقوق، پرداخت‌ها و سایر اسناد مالی مرجع خواهد بود.</p></div></div>
+    <div class="section-head"><div><h2>بانک اطلاعات پرسنل</h2><p class="muted">اطلاعات هویتی، شغلی، قراردادی و بانکی هر فرد در یک پرونده یکپارچه ثبت می‌شود؛ کد پرسنلی مرجع اتصال آن به حقوق و اسناد مالی است.</p></div></div>
     <form id="personnelForm" class="form-panel"><div class="form-grid">
       <label>کد پرسنلی<input id="personCode" placeholder="تولید خودکار در صورت خالی بودن"></label>
-      <label>نام و نام خانوادگی<input id="personName" maxlength="100" required></label>
-      <label>عنوان شغلی<input id="personJob" maxlength="100" required></label>
+      <label>نام<input id="personFirstName" maxlength="60" required></label>
+      <label>نام خانوادگی<input id="personLastName" maxlength="80" required></label>
+      <input id="personName" type="hidden">
+      <label>جنسیت<select id="personGender"><option value="">انتخاب کنید</option><option>مرد</option><option>زن</option></select></label>
+      <label>نام پدر<input id="personFatherName" maxlength="100"></label>
+      <label>وضعیت تأهل<select id="personMarital"><option value="">انتخاب کنید</option><option>مجرد</option><option>متأهل</option><option>سایر</option></select></label>
+      <label>تعداد فرزند<input id="personChildren" type="number" min="0" max="30" value="0"></label>
+      <label>تاریخ تولد<input id="personBirthDate" type="date"></label>
+      <label>مدرک تحصیلی<input id="personEducation" maxlength="100"></label>
+      <label>محل تولد<input id="personBirthPlace" maxlength="100"></label>
+      <label>محل صدور شناسنامه<input id="personIssuePlace" maxlength="100"></label>
+      <label>شماره شناسنامه<input id="personBookNo" maxlength="30"></label>
+      <label>کد ملی<input id="personNationalId" inputmode="numeric" maxlength="10" pattern="[0-9۰-۹]{10}"></label>
+      <label>سمت سازمانی<input id="personJob" maxlength="100" required></label>
+      <label>تاریخ اشتغال<input id="personStart" type="date"></label>
+      <label>نوع قرارداد مالی - کد<input id="personContractCode" maxlength="40"></label>
+      <label>نوع قرارداد مالی<input id="personContractType" maxlength="100"></label>
+      <label>محل فعالیت<input id="personWorkplace" maxlength="120"></label>
+      <label>بیمه<input id="personInsurance" maxlength="100" placeholder="نوع بیمه / شماره بیمه"></label>
+      <label>نام بانک<input id="personBank" maxlength="80"></label>
+      <label>شماره حساب<input id="personAccount" inputmode="numeric" maxlength="40"></label>
       <label>واحد سازمانی<input id="personUnit" maxlength="100"></label>
-      <label>تاریخ شروع همکاری<input id="personStart" type="date"></label>
       <label>شماره تماس<input id="personPhone" type="tel" maxlength="30"></label>
       <label>نوع همکاری<select id="personType"><option>تمام‌وقت</option><option>پاره‌وقت</option><option>قراردادی</option><option>مشاور</option><option>پروژه‌ای</option></select></label>
       <label>وضعیت همکاری<select id="personStatus"><option>فعال</option><option>مرخصی بلندمدت</option><option>پایان همکاری</option></select></label>
       <label class="wide">توضیحات<input id="personNote" maxlength="180"></label>
-    </div><button class="btn btn-primary" type="submit">ثبت پرونده پرسنلی</button><span id="personFeedback" class="feedback"></span></form>
+    </div><button class="btn btn-primary" type="submit">ثبت پرونده پرسنلی</button><span id="personFeedback" class="feedback"></span><p class="subtle">اطلاعات هویتی و بانکی در نسخه محلی این نمونه فقط در مرورگر ذخیره می‌شود؛ برای استفاده عملیاتی، نگهداری این داده‌ها باید به سامانه امن دارای احراز هویت و سطح دسترسی منتقل شود.</p></form>
     <article class="panel"><div class="panel-head"><h2>فهرست پرسنل</h2><input id="personSearch" class="search-input" placeholder="جست‌وجو با کد یا نام"></div><div id="personnelTable" class="table-wrap"></div></article>
   </section>
   <section class="view hidden" id="view-payroll">
