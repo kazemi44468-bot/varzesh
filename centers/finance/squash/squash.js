@@ -1,6 +1,6 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id), FED='FED-SQUASH', SCHEMA=1, KEY='varzeshportal.finance.federation.squash.v1';
-const blank=()=>({schemaVersion:SCHEMA,federationId:FED,federationName:'فدراسیون اسکواش',updatedAt:new Date().toISOString(),transactions:[],budgets:[],documents:[]});
+const blank=()=>({schemaVersion:SCHEMA,federationId:FED,federationName:'اسکواش',updatedAt:new Date().toISOString(),transactions:[],budgets:[],documents:[]});
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY));return x&&x.federationId===FED?{...blank(),...x}:blank()}catch(e){return blank()}}
 let db=load(),view='home',mode='treasurer';
 function save(){db.updatedAt=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(db));$('storageState').textContent='ذخیره شد · '+new Date(db.updatedAt).toLocaleString('fa-IR')}
