@@ -36,7 +36,7 @@ button,input,select{font:inherit}
 .hero-meta{display:flex;gap:20px;align-items:center;flex:0 0 auto;border-right:1px solid #ffffff38;padding-right:26px}
 .stat strong{display:block;font-size:30px;line-height:1.5;font-weight:700}
 .stat span{font-size:10px;color:#d6e1e8}
-.hero-seal{width:52px;height:52px;border:1px solid #ffffff55;border-radius:50%;display:grid;place-items:center;font-size:22px;color:#e7eef3}
+.hero-seal{display:none}
 .main{padding:24px 0 52px}
 .intro-row{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:14px}
 .section-title{font-size:16px;font-weight:700;color:#244a65}
@@ -49,30 +49,34 @@ button,input,select{font:inherit}
 .filter{height:45px;border:1px solid #d4dfe6;border-radius:8px;padding:0 12px;background:#fff;color:#3d5c72;font-size:11px;outline:none}
 .result-count{font-size:10px;color:#7b8c98;white-space:nowrap}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.fed-card{min-width:0;display:flex;flex-direction:column;background:#fff;border:1px solid #dce5eb;border-radius:9px;padding:14px 15px 12px;transition:border-color .18s,box-shadow .18s,transform .18s}
-.fed-card:hover{border-color:#a9bbc8;box-shadow:0 8px 22px #1e405511;transform:translateY(-2px)}
+.fed-card{min-width:0;display:flex;flex-direction:column;background:#fff;border:1px solid #dce5eb;border-radius:10px;padding:14px 15px 12px;transition:border-color .18s,box-shadow .18s,transform .18s}
+.fed-card:hover{border-color:#a9bbc8;box-shadow:0 9px 24px #1e405511;transform:translateY(-2px)}
 .card-head{display:flex;align-items:center;gap:11px;min-height:54px;margin-bottom:8px}
 .crest{width:51px;height:51px;flex:0 0 51px;border:1px solid #e2e8ed;border-radius:7px;background:#f8fafb;display:grid;place-items:center;overflow:hidden}
 .crest img{display:block;width:100%;height:100%;object-fit:contain;padding:4px}.crest img[data-slug="sailing"]{object-fit:cover;object-position:right center;padding:0}
 .crest-fallback{font-size:10px;font-weight:700;color:#6d8799;text-align:center;line-height:1.5;padding:3px}
 .fed-title{font-size:12px;line-height:1.8;font-weight:700;color:#24465e}
 .fed-subtitle{font-size:9px;color:#8998a3;margin-top:1px}
-.fed-desc{font-size:10px;line-height:2.1;color:#657b8b;margin:0 0 10px;min-height:42px;flex:1}
-.detail-link{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #edf1f3;padding-top:9px;color:#315d79;font-size:10px;font-weight:700}
-.detail-link span:last-child{font-size:15px}
-.card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
+.fed-desc{display:none}
+.detail-link{display:flex;justify-content:space-between;align-items:center;width:100%;border:1px solid #d7e1e8;border-radius:6px;padding:9px 11px;color:#315d79;background:#f8fafb;font-size:10px;font-weight:700;cursor:pointer;text-align:right;transition:.18s}.detail-link:hover{background:#eef3f6;border-color:#b8c8d3}
+
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;padding-top:8px;border-top:1px solid #edf1f3}
 .domain{font-size:9px;direction:ltr;text-align:left;color:#8595a0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .site-link{font-size:9px;color:#54758b;white-space:nowrap}
 .site-link.disabled{color:#a1adb6}
-.status{display:inline-flex;align-items:center;gap:5px;font-size:9px;color:#718694;margin-top:8px}
-.status:before{content:"";width:5px;height:5px;border-radius:50%;background:#829aaa}
-.status.available:before{background:#547d91}
+.status{display:none}
+
+
 .empty{display:none;text-align:center;padding:34px;background:#fff;border:1px solid #dce5eb;border-radius:9px;color:#718493;font-size:12px}
 .disclaimer{margin-top:19px;padding:12px 15px;border:1px solid #dce5eb;border-right:3px solid #54758c;border-radius:7px;background:#f8fafb;color:#6d8190;font-size:10px;line-height:2.1}
 .footer{background:#fff;border-top:1px solid #dce5eb;padding:18px 0;text-align:center;color:#83929d;font-size:10px}
 @media(max-width:980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-inner{padding:34px 0}.toolbar{grid-template-columns:minmax(180px,1fr) 190px auto}}
 @media(max-width:650px){.container{width:calc(100% - 26px)}.head-inner{min-height:62px}.brand-name{font-size:15px}.brand-mark{width:36px;height:36px}.head-link{font-size:10px;padding:8px 9px}.hero-inner{align-items:flex-start;padding:26px 0;gap:14px}.hero h1{font-size:23px}.hero p{font-size:10.5px;line-height:2.1}.hero-meta{padding-right:12px;gap:10px}.hero-seal{display:none}.stat strong{font-size:24px}.stat span{font-size:9px}.main{padding-top:18px}.intro-row{align-items:flex-start}.section-title{font-size:14px}.toolbar{grid-template-columns:1fr 1fr;gap:8px}.search{grid-column:1/-1}.search input,.filter{height:42px}.result-count{grid-column:1/-1;margin-top:1px}.grid{grid-template-columns:1fr;gap:9px}.fed-card{padding:12px 13px 11px}.fed-desc{min-height:0}.disclaimer{font-size:9px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+.fed-card{gap:0}.fed-title{font-size:12.5px}.fed-subtitle{color:#8796a1}.crest{border-radius:8px;background:#fbfcfd}.card-head{margin-bottom:12px}.detail-link{margin-top:auto}.domain{font-size:9px}.site-link{font-weight:600}.hero{background:linear-gradient(110deg,#173d59,#315f7c)}.hero-inner{padding:38px 0 34px}.toolbar{grid-template-columns:minmax(220px,1fr) 210px auto}
+.dialog{width:min(760px,calc(100% - 24px));max-width:760px;max-height:min(84vh,850px);padding:0;border:1px solid #cfdbe3;border-radius:13px;background:#f5f8fa;color:#203d53;box-shadow:0 24px 80px #102b3f45}.dialog::backdrop{background:rgba(13,31,45,.56);backdrop-filter:blur(3px)}.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 20px;background:#fff;border-bottom:1px solid #dce5eb}.dialog-title{font-size:16px;font-weight:700;color:#244a65}.dialog-close{width:34px;height:34px;border:1px solid #dce5eb;border-radius:7px;background:#fff;color:#45647a;font-size:19px;cursor:pointer}.dialog-tabs{display:flex;gap:7px;flex-wrap:wrap;padding:12px 18px 0;background:#fff}.dialog-tab{border:1px solid #d8e2e9;border-radius:6px;padding:8px 13px;background:#fff;color:#557186;font-size:10px;cursor:pointer}.dialog-tab[aria-selected=true]{background:#eaf0f4;border-color:#b7c8d4;color:#244e69;font-weight:700}.dialog-content{padding:16px 18px 20px;overflow:auto;max-height:calc(84vh - 130px)}.dialog-panel{background:#fff;border:1px solid #dfe7ec;border-radius:9px;padding:16px;margin-bottom:10px}.dialog-panel h2{font-size:13px;color:#244b66;margin:0 0 9px}.dialog-panel p,.dialog-panel li{font-size:11px;line-height:2.25;color:#607687}.dialog-panel p{margin:0 0 8px}.dialog-panel p:last-child{margin-bottom:0}.dialog-panel a{color:#315d79;text-decoration:underline;text-underline-offset:3px}.dialog-site{display:inline-flex;margin:0 18px 15px;padding:9px 13px;background:#244f6c;color:#fff!important;border-radius:6px;font-size:10px}.dialog-state{padding:24px;text-align:center;color:#708494;font-size:11px;line-height:2}.dialog-error{color:#8a5a45}
+@media(max-width:650px){.dialog-head{padding:13px 14px}.dialog-title{font-size:14px}.dialog-content{padding:12px;max-height:calc(84vh - 120px)}.dialog-tabs{padding:10px 12px 0}.dialog-tab{padding:7px 10px}}
 </style>
 </head>
 <body>
@@ -83,16 +87,17 @@ button,input,select{font:inherit}
 </div></header>
 <section class="hero"><div class="container hero-inner">
 <div class="hero-copy"><div class="eyebrow">مرجع اطلاعات و دسترسی</div><h1>فدراسیون‌ها و نهادهای ملی ورزش ایران</h1><p>پرونده اختصاصی هر مجموعه، معرفی حوزه فعالیت، نشان و تصاویر مرتبط، اطلاعات ساختاری و مسیر دسترسی به پایگاه اینترنتی مرجع؛ در یک درگاه یکپارچه و قابل جست‌وجو.</p></div>
-<div class="hero-meta"><div class="stat"><strong id="total">۶۶</strong><span>پرونده تخصصی</span></div><div class="hero-seal" aria-hidden="true">پ</div></div>
+<div class="hero-meta"><div class="stat"><strong id="total">۶۶</strong><span>پرونده تخصصی</span></div></div>
 </div></section>
 <main class="container main">
 <div class="intro-row"><div><div class="section-title">فهرست مجموعه‌های ورزشی</div><div class="section-sub">برای مشاهده اطلاعات، پرونده هر مجموعه را باز کنید.</div></div></div>
 <div class="toolbar">
-<label class="search"><span class="search-icon" aria-hidden="true">⌕</span><input id="search" type="search" placeholder="جست‌وجوی نام فدراسیون، انجمن یا رشته..." autocomplete="off" aria-label="جست‌وجوی مجموعه‌های ورزشی"></label>
+<label class="search"><input id="search" type="search" placeholder="جست‌وجوی نام فدراسیون، انجمن یا رشته..." autocomplete="off" aria-label="جست‌وجوی مجموعه‌های ورزشی"></label>
 <select class="filter" id="filter" aria-label="فیلتر مجموعه‌ها"><option value="all">تمام مجموعه‌ها</option><option value="has">دارای وب‌سایت ثبت‌شده</option><option value="missing">فاقد پیوند ثبت‌شده</option></select>
 <span class="result-count" id="count" aria-live="polite"></span>
 </div>
 <div class="grid" id="grid"></div><div class="empty" id="empty">موردی با این مشخصات پیدا نشد.</div>
+<dialog class="dialog" id="federationDialog" aria-labelledby="dialogTitle"><div class="dialog-head"><div class="dialog-title" id="dialogTitle">معرفی فدراسیون</div><button class="dialog-close" type="button" id="dialogClose" aria-label="بستن پنجره">×</button></div><div class="dialog-tabs" id="dialogTabs" role="tablist" aria-label="بخش‌های معرفی"></div><div class="dialog-content" id="dialogContent"><div class="dialog-state">برای مشاهده اطلاعات، یک فدراسیون را انتخاب کنید.</div></div></dialog>
 <div class="disclaimer">اطلاعات و پیوندهای این درگاه با هدف معرفی و دسترسی عمومی گردآوری شده‌اند. وضعیت پیوند به‌معنای تأیید مالکیت یا به‌روز بودن محتوای وب‌سایت نیست؛ برای تصمیم‌گیری و دریافت آخرین اطلاعیه‌ها، مرجع اصلی هر مجموعه را بررسی کنید.</div>
 </main>
 <footer class="footer">پورتال ورزش · درگاه معرفی فدراسیون‌ها و ساختار ورزش ایران</footer>
@@ -108,19 +113,73 @@ function logoFallback(img){
  if(i<exts.length){img.dataset.try=String(i+1);img.src=img.dataset.base+exts[i];}
  else{const parent=img.parentElement,short=img.dataset.short;parent.innerHTML='<span class="crest-fallback">'+short+'</span>';}
 }
+const dialog=document.getElementById('federationDialog'),dialogTitle=document.getElementById('dialogTitle'),dialogTabs=document.getElementById('dialogTabs'),dialogContent=document.getElementById('dialogContent'),dialogClose=document.getElementById('dialogClose');
+const profileCache=new Map();
+function classifyPanel(panel){
+ const heading=(panel.querySelector('h2')?.textContent||'').trim();
+ if(/تماس|ارتباط|نشانی|آدرس/i.test(heading)) return 'ارتباط و نشانی';
+ if(/منبع|صفحه رسمی/i.test(heading)) return 'منابع رسمی';
+ return 'معرفی';
+}
+function activateTab(index){
+ const tabs=[...dialogTabs.querySelectorAll('button')],panels=[...dialogContent.querySelectorAll('[data-panel]')];
+ tabs.forEach((tab,i)=>tab.setAttribute('aria-selected',String(i===index)));
+ panels.forEach((panel,i)=>panel.hidden=i!==index);
+}
+async function openProfile(name,slug,domain){
+ dialogTitle.textContent=name;
+ dialogTabs.innerHTML='';
+ dialogContent.innerHTML='<div class="dialog-state">در حال دریافت اطلاعات رسمی…</div>';
+ if(!dialog.open)dialog.showModal();
+ try{
+  let parsed=profileCache.get(slug);
+  if(!parsed){
+   const response=await fetch('federations/'+encodeURIComponent(slug)+'.html',{credentials:'same-origin'});
+   if(!response.ok)throw new Error('profile unavailable');
+   const source=await response.text(),doc=new DOMParser().parseFromString(source,'text/html');
+   const panels=[...doc.querySelectorAll('.content .panel')];
+   parsed=panels.map(panel=>({category:classifyPanel(panel),html:panel.innerHTML}));
+   profileCache.set(slug,parsed);
+  }
+  const categories=['معرفی','ارتباط و نشانی','منابع رسمی'];
+  const available=categories.map(category=>({category,items:parsed.filter(p=>p.category===category)})).filter(group=>group.items.length);
+  if(!available.length){
+   dialogTabs.innerHTML='<button class="dialog-tab" type="button" aria-selected="true">اطلاعات</button>';
+   dialogContent.innerHTML='<div class="dialog-state">متن معرفی یا اطلاعات تماس قابل استخراج از بخش‌های رسمی این مجموعه در دسترس نیست. برای مشاهده آخرین اطلاعات به پایگاه رسمی مراجعه کنید.</div>';
+  }else{
+   dialogTabs.innerHTML=available.map((group,i)=>'<button class="dialog-tab" type="button" role="tab" aria-selected="'+(i===0)+'" data-tab="'+i+'">'+group.category+'</button>').join('');
+   dialogContent.innerHTML=available.map((group,i)=>'<section data-panel="'+i+'" '+(i?'hidden':'')+'>'+group.items.map(item=>'<article class="dialog-panel">'+item.html+'</article>').join('')+'</section>').join('');
+   dialogTabs.querySelectorAll('button').forEach((button,i)=>button.addEventListener('click',()=>activateTab(i)));
+  }
+  if(domain){
+   const site=document.createElement('a');site.className='dialog-site';site.href='https://'+domain;site.target='_blank';site.rel='noopener noreferrer';site.textContent='ورود به پایگاه اینترنتی مجموعه';
+   dialogContent.appendChild(site);
+  }
+ }catch(error){
+  dialogTabs.innerHTML='';
+  dialogContent.innerHTML='<div class="dialog-state dialog-error">دریافت پرونده با مشکل روبه‌رو شد. می‌توانید از پیوند پایگاه رسمی استفاده کنید.</div>';
+  if(domain){const site=document.createElement('a');site.className='dialog-site';site.href='https://'+domain;site.target='_blank';site.rel='noopener noreferrer';site.textContent='ورود به پایگاه اینترنتی مجموعه';dialogContent.appendChild(site);}
+ }
+}
+dialogClose.addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});
 function render(){
  const q=search.value.trim().toLocaleLowerCase('fa'),mode=filter.value;
  const rows=federations.filter(f=>(!q||f.join(' ').toLocaleLowerCase('fa').includes(q))&&(mode==='all'||(mode==='has'?!!f[2]:!f[2])));
  grid.innerHTML=rows.map(f=>{
-  const [name,short,domain,slug,desc]=f;
+  const [name,short,domain,slug]=f;
   const logoBase='../assets/images/federations/'+slug+'-logo';
   const logo='<img src="'+logoBase+'.png" data-base="'+logoBase+'" data-short="'+short+'" data-slug="'+slug+'" alt="نشان '+name+'" onerror="logoFallback(this)">';
-  const site=domain?'<a class="site-link" href="https://'+domain+'" target="_blank" rel="noopener noreferrer">پایگاه اینترنتی ↗</a>':'<span class="site-link disabled">پیوند ثبت نشده</span>';
-  return '<article class="fed-card"><div class="card-head"><div class="crest">'+logo+'</div><div><div class="fed-title">'+name+'</div><div class="fed-subtitle">پرونده تخصصی مجموعه</div></div></div><p class="fed-desc">'+desc+'</p><a class="detail-link" href="federations/'+slug+'.html"><span>مشاهده معرفی و اطلاعات</span><span>←</span></a><div class="card-foot"><span class="domain">'+(domain||'نشانی نیازمند بررسی')+'</span>'+site+'</div><span class="status '+(domain?'available':'')+'">'+(domain?'دارای نشانی ثبت‌شده':'نشانی رسمی ثبت نشده')+'</span></article>';
+  const site=domain?'<a class="site-link" href="https://'+domain+'" target="_blank" rel="noopener noreferrer">پایگاه رسمی</a>':'<span class="site-link disabled">پیوند رسمی ثبت نشده</span>';
+  return '<article class="fed-card"><div class="card-head"><div class="crest">'+logo+'</div><div><div class="fed-title">'+name+'</div><div class="fed-subtitle">اطلاعات و درگاه رسمی</div></div></div><button class="detail-link" type="button" data-profile="'+slug+'" data-name="'+name+'" data-domain="'+domain+'"><span>مشاهده معرفی در همین صفحه</span><span aria-hidden="true">+</span></button><div class="card-foot"><span class="domain">'+(domain||'پیوند رسمی ثبت نشده')+'</span>'+site+'</div></article>';
  }).join('');
  count.textContent=faNumber(rows.length)+' مجموعه';
  empty.style.display=rows.length?'none':'block';grid.style.display=rows.length?'grid':'none';
 }
+grid.addEventListener('click',event=>{
+ const button=event.target.closest('[data-profile]');
+ if(button)openProfile(button.dataset.name,button.dataset.profile,button.dataset.domain);
+});
 search.addEventListener('input',render);filter.addEventListener('change',render);render();
 </script>
 </body></html>
