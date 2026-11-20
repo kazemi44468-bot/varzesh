@@ -23,9 +23,9 @@
     "logo_found": true,
     "directory_logo": "archery-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-32-150x150.png",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://iran-archery.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 3,
     "official_content_error": "The read operation timed out"
   },
   {
@@ -65,9 +65,9 @@
     "error": "HTTP Error 404: Not Found",
     "directory_logo": "basketball-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-22-150x150.png",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://www.iribf.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 8,
     "official_content_error": "HTTP Error 404: Not Found"
   },
   {
@@ -103,9 +103,9 @@
     "error": "HTTP Error 404: Not Found",
     "directory_logo": "bodybuilding-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/fed_badansazi-150x150.png",
-    "official_content_status": "fetch-failed",
+    "official_content_status": "collected",
     "official_content_url": "https://www.iranbbf.ir",
-    "official_content_paragraphs": 0,
+    "official_content_paragraphs": 6,
     "official_content_error": "HTTP Error 404: Not Found"
   },
   {
@@ -662,9 +662,10 @@
     "error": "<urlopen error [Errno 104] Connection reset by peer>",
     "directory_logo": "ski-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-19.png",
-    "official_content_status": "collected",
-    "official_content_url": "http://www.skifed.ir",
-    "official_content_paragraphs": 8
+    "official_content_status": "fetch-failed",
+    "official_content_url": "https://www.skifed.ir",
+    "official_content_paragraphs": 0,
+    "official_content_error": "timed out"
   },
   {
     "name": "ورزش بیماران خاص و پیوند اعضا",
@@ -805,9 +806,9 @@
     "logo_found": true,
     "directory_logo": "university-logo.png",
     "directory_logo_source": "https://bamorabi.ir/wp-content/uploads/2021/11/federartion-logo-36-150x150.png",
-    "official_content_status": "collected",
+    "official_content_status": "fetch-failed",
     "official_content_url": "https://iusf.saorg.ir",
-    "official_content_paragraphs": 8,
+    "official_content_paragraphs": 0,
     "official_content_error": "HTTP Error 500: Internal Server Error"
   },
   {
