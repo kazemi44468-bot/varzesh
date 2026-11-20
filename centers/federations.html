@@ -117,9 +117,9 @@ const dialog=document.getElementById('federationDialog'),dialogTitle=document.ge
 const profileCache=new Map();
 function classifyPanel(panel){
  const heading=(panel.querySelector('h2')?.textContent||'').trim();
- if(/تماس|ارتباط|نشانی|آدرس/i.test(heading)) return 'ارتباط و نشانی';
- if(/منبع|صفحه رسمی/i.test(heading)) return 'منابع رسمی';
- return 'معرفی';
+ if(/تماس|ارتباط|نشانی|آدرس/i.test(heading)) return 'نشانی و راه‌های ارتباطی';
+ if(/منبع|صفحه رسمی|پیوندهای رسمی/i.test(heading)) return 'پیوندهای رسمی';
+ return 'معرفی فدراسیون';
 }
 function activateTab(index){
  const tabs=[...dialogTabs.querySelectorAll('button')],panels=[...dialogContent.querySelectorAll('[data-panel]')];
@@ -141,24 +141,24 @@ async function openProfile(name,slug,domain){
    parsed=panels.map(panel=>({category:classifyPanel(panel),html:panel.innerHTML}));
    profileCache.set(slug,parsed);
   }
-  const categories=['معرفی','ارتباط و نشانی','منابع رسمی'];
+  const categories=['معرفی فدراسیون','نشانی و راه‌های ارتباطی','پیوندهای رسمی'];
   const available=categories.map(category=>({category,items:parsed.filter(p=>p.category===category)})).filter(group=>group.items.length);
   if(!available.length){
    dialogTabs.innerHTML='<button class="dialog-tab" type="button" aria-selected="true">اطلاعات</button>';
-   dialogContent.innerHTML='<div class="dialog-state">متن معرفی یا اطلاعات تماس قابل استخراج از بخش‌های رسمی این مجموعه در دسترس نیست. برای مشاهده آخرین اطلاعات به پایگاه رسمی مراجعه کنید.</div>';
+   dialogContent.innerHTML='<article class="dialog-panel"><h2>معرفی فدراسیون</h2><p>برای آشنایی با ساختار، فعالیت‌ها و اطلاعات به‌روز این فدراسیون، درگاه رسمی آن را مشاهده کنید.</p></article>';
   }else{
    dialogTabs.innerHTML=available.map((group,i)=>'<button class="dialog-tab" type="button" role="tab" aria-selected="'+(i===0)+'" data-tab="'+i+'">'+group.category+'</button>').join('');
    dialogContent.innerHTML=available.map((group,i)=>'<section data-panel="'+i+'" '+(i?'hidden':'')+'>'+group.items.map(item=>'<article class="dialog-panel">'+item.html+'</article>').join('')+'</section>').join('');
    dialogTabs.querySelectorAll('button').forEach((button,i)=>button.addEventListener('click',()=>activateTab(i)));
   }
   if(domain){
-   const site=document.createElement('a');site.className='dialog-site';site.href='https://'+domain;site.target='_blank';site.rel='noopener noreferrer';site.textContent='ورود به پایگاه اینترنتی مجموعه';
+   const site=document.createElement('a');site.className='dialog-site';site.href='https://'+domain;site.target='_blank';site.rel='noopener noreferrer';site.textContent='پایگاه رسمی فدراسیون';
    dialogContent.appendChild(site);
   }
  }catch(error){
   dialogTabs.innerHTML='';
   dialogContent.innerHTML='<div class="dialog-state dialog-error">دریافت پرونده با مشکل روبه‌رو شد. می‌توانید از پیوند پایگاه رسمی استفاده کنید.</div>';
-  if(domain){const site=document.createElement('a');site.className='dialog-site';site.href='https://'+domain;site.target='_blank';site.rel='noopener noreferrer';site.textContent='ورود به پایگاه اینترنتی مجموعه';dialogContent.appendChild(site);}
+  if(domain){const site=document.createElement('a');site.className='dialog-site';site.href='https://'+domain;site.target='_blank';site.rel='noopener noreferrer';site.textContent='پایگاه رسمی فدراسیون';dialogContent.appendChild(site);}
  }
 }
 dialogClose.addEventListener('click',()=>dialog.close());
